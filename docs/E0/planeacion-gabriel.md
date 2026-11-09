@@ -9,7 +9,7 @@
 |---|---|---|---|
 | Trabajo general del proyecto | 6 de noviembre de 2026 | 2 de diciembre de 2026 | Intervalo de planeación; no acredita trabajo continuo ni horas realizadas |
 | Fase 0, según su planeación personal | 6 de noviembre de 2026 | 13 de noviembre de 2026 | Ventana de trabajo prevista; no modifica la fecha de entrega E0 |
-| Entrevista al sector | 8 de noviembre de 2026, aproximadamente 16:50 | Aproximadamente 17:05, calculado a partir del inicio y la duración | Mensajes de WhatsApp; duración de 15 minutos confirmada por Gabriel. Consentimiento para notas anónimas pendiente. |
+| Entrevista al sector | 8 de noviembre de 2026, aproximadamente 16:50 | Aproximadamente 17:05, calculado a partir del inicio y la duración | Mensajes de WhatsApp; duración de 15 minutos y consentimiento para usar notas anónimas confirmados por Gabriel. |
 
 El plazo de E0 comunicado en la solicitud es el **9 de noviembre de 2026 a las 23:59**, hora local. El intervalo personal de la fase 0 hasta el día 13 no representa una prórroga.
 

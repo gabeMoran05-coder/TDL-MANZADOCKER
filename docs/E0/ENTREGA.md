@@ -21,7 +21,7 @@
 ## Análisis Estadístico
 | Criterio de la rúbrica | Evidencia (enlace) | Nota del equipo |
 |---|---|---|
-| Pregunta y cliente (20) | [propuesta.md §1](propuesta.md#1-ficha-del-observatorio) · [§2 Entrevista](propuesta.md#2-entrevista-con-el-sector) | Cinco preguntas y respuestas de una dueña de transportista, por mensajes de WhatsApp el 8/11 alrededor de las 16:50; duración de 15 minutos confirmada por Gabriel. Consentimiento y significado de «50%» pendientes. Cliente potencial identificado; pago no confirmado. |
+| Pregunta y cliente (20) | [propuesta.md §1](propuesta.md#1-ficha-del-observatorio) · [§2 Entrevista](propuesta.md#2-entrevista-con-el-sector) | Cinco preguntas y respuestas de una dueña de transportista, por mensajes de WhatsApp el 8/11 alrededor de las 16:50; duración de 15 minutos y consentimiento para usar notas anónimas confirmados por Gabriel. Significado de «50%» pendiente. Cliente potencial identificado; pago no confirmado. |
 | Preguntas analíticas (20) | [propuesta.md §3](propuesta.md#3-preguntas-analíticas) | Variable a pronosticar (E1), factores del experimento (E2) y grupos a comparar (E3) |
 | Serie histórica identificada | [data/bronce/asipona/em_mensual.csv](../../data/bronce/asipona/em_mensual.csv) (`variable = teu_total`, `publicado = True`) | Segunda variable para la correlación cruzada: arribos de buques portacontenedores y tipo de cambio FIX |
 
@@ -36,7 +36,6 @@
 
 ## Pendientes para cerrar E0
 
-- Confirmar el permiso para utilizar las notas anónimas de la entrevista. El medio por mensajes de WhatsApp y la duración de 15 minutos ya fueron confirmados por Gabriel.
 - Aclarar qué significa «valdría un 50%» y validar periodicidad y disposición de pago; no se presenta como precio confirmado.
 - Observar la primera captura con disparador `schedule`. El secret y la primera ejecución manual ya se verificaron; no se confunde una ejecución manual con historial programado.
 - Completar las interrupciones de la entrevista del 8/11 y el inicio y las interrupciones de la sesión del 9/11. La entrevista ya incluye su duración confirmada y una hora de fin aproximada calculada; el registro de defectos permanece abierto, sin incidencias personales reportadas.

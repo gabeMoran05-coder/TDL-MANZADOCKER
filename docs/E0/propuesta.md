@@ -39,7 +39,7 @@ La entrevista se realizó mediante mensajes de WhatsApp y duró **15 minutos**, 
 | Fecha y hora aproximada | 8 de noviembre de 2026, alrededor de las 16:50, hora local de Manzanillo |
 | Medio | Mensajes de WhatsApp |
 | Duración | 15 minutos, confirmados por Gabriel |
-| Consentimiento para usar notas anónimas | Pendiente de confirmar con Gabriel. No se publican capturas ni datos de contacto. |
+| Consentimiento para usar notas anónimas | Sí, confirmado por Gabriel. Se autoriza el uso de las notas de la entrevista para el proyecto. No se publican capturas ni datos de contacto. |
 
 | # | Pregunta | Respuesta (resumen) | Lo que aprendimos |
 |---|---|---|---|
@@ -51,7 +51,7 @@ La entrevista se realizó mediante mensajes de WhatsApp y duró **15 minutos**, 
 
 **Conclusión de la entrevista:** identificamos a una propietaria de transportista como cliente potencial y una necesidad concreta de comparar terminales. Conservamos la pregunta de pronóstico mensual como contexto para planear, complementario a los avisos que llegan uno o dos días antes. La entrevista no demuestra que más TEU provoquen retrasos ni que la entrevistada pagaría una cantidad específica. El tablero deberá explicar su alcance, mostrar el último mes publicado y distinguir el movimiento del puerto de la demanda particular de cada empresa.
 
-**Seguimiento pendiente:** confirmar consentimiento; aclarar a qué se refiere el 50%, la periodicidad del tablero y quién decidiría su contratación. No se agrega una sexta pregunta como si ya hubiera sido realizada.
+**Seguimiento pendiente:** aclarar a qué se refiere el 50%, la periodicidad del tablero y quién decidiría su contratación. No se agrega una sexta pregunta como si ya hubiera sido realizada.
 
 ## 3. Preguntas analíticas
 

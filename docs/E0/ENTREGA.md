@@ -29,7 +29,7 @@
 | Criterio de la rúbrica | Evidencia (enlace) | Nota del equipo |
 |---|---|---|
 | Registros de defectos individuales | [defectos-emilio.csv](../../calidad/defectos-emilio.csv) · [defectos-gabriel.csv](../../calidad/defectos-gabriel.csv) | Tipos PSP; el defecto 1 de Emilio se detectó con la verificación suma = acumulado |
-| Registros de tiempo individuales | [tiempo-emilio.csv](../../calidad/tiempo-emilio.csv) · [tiempo-gabriel.csv](../../calidad/tiempo-gabriel.csv) | Formato del kit. El de Gabriel está abierto, sin sesiones aún; sus fechas generales se conservan como [planeación](planeacion-gabriel.md). |
+| Registros de tiempo individuales | [tiempo-emilio.csv](../../calidad/tiempo-emilio.csv) · [tiempo-gabriel.csv](../../calidad/tiempo-gabriel.csv) | Gabriel tiene dos registros parciales: entrevista del 8/11 (inicio aproximado 16:50) y trabajo asistido de E0 del 9/11 (fin aproximado 13:00). Horas faltantes e interrupciones pendientes; sin cálculo de duración. Ver [detalle](planeacion-gabriel.md). |
 | Bitácora de captura activa | [calidad/bitacora_captura.csv](../../calidad/bitacora_captura.csv) | Inicio, fin, duración, fuente, estado, registros, disparador y error; base para MTBF, MTTR y disponibilidad en E1 |
 | Tres objetivos de calidad medibles | [propuesta.md §6](propuesta.md#6-arranque-del-sistema-de-calidad) | OC1 éxito programado ≥ 95% · OC2 conciliación con tolerancia ≤ 2 unidades en 100% de combinaciones · OC3 completitud 100% |
 | Revisión cruzada | Pendiente de realizar por un integrante y registrar nombre, fecha y resultado | La comprobación asistida de archivos no sustituye la revisión cruzada del equipo. |
@@ -39,7 +39,7 @@
 - Confirmar cuánto duró la entrevista y el permiso para utilizar sus notas anónimas. Aún no se acredita el mínimo de 15 minutos.
 - Aclarar qué significa «valdría un 50%» y validar periodicidad y disposición de pago; no se presenta como precio confirmado.
 - Observar la primera captura con disparador `schedule`. El secret y la primera ejecución manual ya se verificaron; no se confunde una ejecución manual con historial programado.
-- Registrar las sesiones reales de Gabriel en PSP cuando confirme horarios e interrupciones; mantener abiertos los registros de defectos sin inventar incidencias.
+- Completar el fin y las interrupciones de la entrevista del 8/11 y el inicio y las interrupciones de la sesión del 9/11. Las actividades ya están registradas con las horas aproximadas informadas; el registro de defectos permanece abierto, sin incidencias personales reportadas.
 - Realizar la revisión cruzada y resolver la decisión pendiente sobre redistribución de los PDF señalada en [propuesta.md §8](propuesta.md#8-riesgos).
 - Confirmar usuarios de GitHub de los tres docentes y sus invitaciones como colaboradores.
 - Integrar los cambios de `gabriel/e0` a la rama de entrega y crear el tag `e0` en el commit acordado por el equipo antes del 9 de noviembre de 2026 a las 23:59, según la consigna compartida por Gabriel. La planeación personal hasta el 13 de noviembre no cambia este plazo.

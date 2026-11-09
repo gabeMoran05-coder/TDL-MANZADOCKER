@@ -101,7 +101,7 @@ Gabriel compartió cinco preguntas y las respuestas recibidas de una persona del
 
 **Registros PSP individuales:** `calidad/defectos-emilio.csv`, `calidad/defectos-gabriel.csv`, `calidad/tiempo-emilio.csv` y `calidad/tiempo-gabriel.csv`, con el formato del kit.
 
-Los registros de Gabriel están abiertos con encabezados. El intervalo general del 6 de noviembre al 2 de diciembre y la fase 0 del 6 al 13 de noviembre corresponden a [planeación](planeacion-gabriel.md); no se convierten en horas de trabajo ni en defectos observados. Las sesiones se registrarán con fecha, inicio, fin e interrupciones reales.
+El registro de tiempo de Gabriel incluye la entrevista del 8 de noviembre y el trabajo asistido en E0 del día 9, con las horas aproximadas que informó; inicio o fin e interrupciones faltantes se mantienen vacíos y explicados en la [planeación y registro](planeacion-gabriel.md). No se calculan duraciones hasta completarlos. El registro de defectos permanece abierto, sin incidencias personales reportadas. El intervalo del 6 de noviembre al 2 de diciembre y la fase 0 del 6 al 13 corresponden a planeación, no a horas trabajadas.
 
 **Objetivos de calidad medibles** (se miden en E1 con la bitácora del 9 al 16 de noviembre):
 

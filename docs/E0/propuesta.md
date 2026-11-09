@@ -30,15 +30,15 @@
 
 ## 2. Entrevista con el sector
 
-Gabriel compartió cinco preguntas y las respuestas recibidas de una persona del sector. El intercambio se documenta a continuación; **la duración no está confirmada, por lo que aún no se acredita el mínimo de 15 minutos**.
+La entrevista se realizó mediante mensajes de WhatsApp y duró **15 minutos**, según lo confirmado por Gabriel. Se documentan las cinco preguntas y las respuestas recibidas de una persona del sector.
 
 | Dato | Valor |
 |---|---|
 | Persona entrevistada | Entrevistada 1 · dueña de una transportista local en Manzanillo. Identidad y contacto omitidos. |
 | Entrevistador | Karol Gabriel Morán Aréchiga |
 | Fecha y hora aproximada | 8 de noviembre de 2026, alrededor de las 16:50, hora local de Manzanillo |
-| Medio | WhatsApp. No se ha especificado si fueron mensajes, audios o llamada. |
-| Duración | Pendiente de confirmar; no se atribuyen 15 minutos sin evidencia. |
+| Medio | Mensajes de WhatsApp |
+| Duración | 15 minutos, confirmados por Gabriel |
 | Consentimiento para usar notas anónimas | Pendiente de confirmar con Gabriel. No se publican capturas ni datos de contacto. |
 
 | # | Pregunta | Respuesta (resumen) | Lo que aprendimos |
@@ -51,7 +51,7 @@ Gabriel compartió cinco preguntas y las respuestas recibidas de una persona del
 
 **Conclusión de la entrevista:** identificamos a una propietaria de transportista como cliente potencial y una necesidad concreta de comparar terminales. Conservamos la pregunta de pronóstico mensual como contexto para planear, complementario a los avisos que llegan uno o dos días antes. La entrevista no demuestra que más TEU provoquen retrasos ni que la entrevistada pagaría una cantidad específica. El tablero deberá explicar su alcance, mostrar el último mes publicado y distinguir el movimiento del puerto de la demanda particular de cada empresa.
 
-**Seguimiento pendiente:** confirmar duración y consentimiento; aclarar a qué se refiere el 50%, la periodicidad del tablero y quién decidiría su contratación. No se agrega una sexta pregunta como si ya hubiera sido realizada.
+**Seguimiento pendiente:** confirmar consentimiento; aclarar a qué se refiere el 50%, la periodicidad del tablero y quién decidiría su contratación. No se agrega una sexta pregunta como si ya hubiera sido realizada.
 
 ## 3. Preguntas analíticas
 
@@ -101,7 +101,7 @@ Gabriel compartió cinco preguntas y las respuestas recibidas de una persona del
 
 **Registros PSP individuales:** `calidad/defectos-emilio.csv`, `calidad/defectos-gabriel.csv`, `calidad/tiempo-emilio.csv` y `calidad/tiempo-gabriel.csv`, con el formato del kit.
 
-El registro de tiempo de Gabriel incluye la entrevista del 8 de noviembre y el trabajo asistido en E0 del día 9, con las horas aproximadas que informó; inicio o fin e interrupciones faltantes se mantienen vacíos y explicados en la [planeación y registro](planeacion-gabriel.md). No se calculan duraciones hasta completarlos. El registro de defectos permanece abierto, sin incidencias personales reportadas. El intervalo del 6 de noviembre al 2 de diciembre y la fase 0 del 6 al 13 corresponden a planeación, no a horas trabajadas.
+El registro de tiempo de Gabriel incluye la entrevista por mensajes del 8 de noviembre, de 15 minutos, y el trabajo asistido en E0 del día 9. Para la entrevista, el fin aproximado de las 17:05 se calcula a partir del inicio aproximado de las 16:50 y la duración confirmada. El inicio de la sesión del día 9 y las interrupciones de ambas sesiones siguen pendientes en la [planeación y registro](planeacion-gabriel.md); no se calcula el tiempo efectivo sin esos datos. El registro de defectos permanece abierto, sin incidencias personales reportadas. Las fechas generales del proyecto corresponden a planeación, no a horas trabajadas.
 
 **Objetivos de calidad medibles** (se miden en E1 con la bitácora del 9 al 16 de noviembre):
 

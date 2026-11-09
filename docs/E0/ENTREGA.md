@@ -1,9 +1,10 @@
 # Entrega E0 · Observatorio del Puerto de Manzanillo (TDL-MANZADOCKER)
 
-**Equipo:** Emilio Rodrigo Ayala Reynoso · Karol Gabriel Morán Aréchiga · **Etiqueta prevista:** `e0` · **Tablero:** _pendiente (E1)_
+**Equipo:** Emilio Rodrigo Ayala Reynoso · Karol Gabriel Morán Aréchiga · **Etiqueta:** `e0` · **Tablero:** _pendiente (E1)_
 **Repositorio:** https://github.com/gabeMoran05-coder/TDL-MANZADOCKER
+**Versión E0:** [Entrega etiquetada `e0`](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/tree/e0)
 **Rama de Gabriel:** [gabriel/e0](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/tree/gabriel/e0)
-**Estado al 9 de noviembre de 2026:** en preparación; los pendientes de cierre se detallan al final.
+**Estado al 9 de noviembre de 2026:** cambios de Gabriel integrados en `main` y versión marcada con `e0`. Los pendientes de validación y registro de la entrega se detallan al final.
 
 ## Resumen en tres líneas
 1. Observatorio del Puerto de Manzanillo: pronosticar los TEU del mes siguiente y demostrar en qué temporadas se concentra la carga, para quien planea camiones y citas en terminal.
@@ -41,7 +42,6 @@
 - Completar las interrupciones de la entrevista del 8/11 y el inicio y las interrupciones de la sesión del 9/11. La entrevista ya incluye su duración confirmada y una hora de fin aproximada calculada; el registro de defectos permanece abierto, sin incidencias personales reportadas.
 - Realizar la revisión cruzada y resolver la decisión pendiente sobre redistribución de los PDF señalada en [propuesta.md §8](propuesta.md#8-riesgos).
 - Confirmar usuarios de GitHub de los tres docentes y sus invitaciones como colaboradores.
-- Integrar los cambios de `gabriel/e0` a la rama de entrega y crear el tag `e0` en el commit acordado por el equipo antes del 9 de noviembre de 2026 a las 23:59, según la consigna compartida por Gabriel. La planeación personal hasta el 13 de noviembre no cambia este plazo.
 - Registrar el enlace en el formulario oficial y marcar la tarea como entregada. El enlace del formulario no fue proporcionado y estos pasos no se declaran realizados.
 
 ## Relatoría de etapa

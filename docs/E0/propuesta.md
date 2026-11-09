@@ -2,7 +2,7 @@
 
 **Equipo:** Emilio Rodrigo Ayala Reynoso · Karol Gabriel Morán Aréchiga
 **Institución:** Instituto Tecnológico de Colima (TecNM) · Proyecto Integrador Trusted Data Lab
-**Fecha:** 9 de noviembre de 2026 · **Etiqueta prevista:** `e0` · **Rama de Gabriel:** `gabriel/e0`
+**Fecha:** 9 de noviembre de 2026 · **Etiqueta:** `e0` · **Rama de Gabriel:** `gabriel/e0`
 
 > **En un minuto:** vamos a pronosticar el volumen de contenedores, expresado en TEU, que moverá el Puerto de Manzanillo cada mes y a demostrar en qué meses se concentra la actividad. Usamos los informes oficiales de ASIPONA (70 meses capturados, de enero de 2021 a octubre de 2026) y el tipo de cambio diario de Banxico. Le sirve a quien planea camiones y citas en terminal. Un TEU representa capacidad equivalente a un contenedor de 20 pies; no es un conteo de contenedores físicos.
 

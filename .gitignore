@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Secretos y tokens: nunca al repo
+.env*
+*.key
+secrets.*
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Temporales de descarga (los datos de bronce SÍ se versionan)
+data/_tmp/

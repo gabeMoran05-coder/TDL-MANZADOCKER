@@ -1,0 +1,7 @@
+fecha_captura_utc,anio,mes_reporte,url,archivo,bytes,sha256,http_status
+2026-11-09T01:02:46Z,2021,12,https://www.puertomanzanillo.com.mx/upl/sec/ESTADISTICA-MENSUAL1221.pdf,data/bronce/asipona/pdf/2021/EM-2021-12.pdf,216640,b54a99657ad92eb8160830b9b13a4ce278d9a987fd5b4971a6ac0e507657afe3,200
+2026-11-09T01:02:48Z,2022,12,https://www.puertomanzanillo.com.mx/upl/sec/ESTAD%C3%8DSTICA-MENSUAL-A-DICIEMBRE-2022.pdf,data/bronce/asipona/pdf/2022/EM-2022-12.pdf,217309,7d456b4ee48a30c8ae03474f7a854d6be42c2078d77723deff8672c090083534,200
+2026-11-09T01:02:50Z,2023,12,https://www.puertomanzanillo.com.mx/upl/sec/ESTAD%C3%8DSTICA-MENSUAL-A-DICIEMBRE-2023.pdf,data/bronce/asipona/pdf/2023/EM-2023-12.pdf,936671,4a0f2f0a70332b0782db9b479226af7060e718d861b4ceab45923bddc663adf1,200
+2026-11-09T01:02:52Z,2024,12,https://www.puertomanzanillo.com.mx/upl/sec/EM-DICIEMBRE-2024.pdf,data/bronce/asipona/pdf/2024/EM-2024-12.pdf,200279,f4a32b2c5f86e792c07f8e7197484fec7e668af6ebd49bdade2289de76ec7e52,200
+2026-11-09T01:02:54Z,2025,12,https://www.puertomanzanillo.com.mx/upl/sec/2025/estadisticas/EM-DICIEMBRE-2025.pdf,data/bronce/asipona/pdf/2025/EM-2025-12.pdf,169923,f747295c6667ef7f9cd61e3ccdf2a7e4f9926b6233a9879cc01c680982662d8d,200
+2026-11-09T01:02:56Z,2026,9,https://www.puertomanzanillo.com.mx/upl/sec/2026/estadisticas/EM-SEPTIEMBRE-2026.pdf,data/bronce/asipona/pdf/2026/EM-2026-09.pdf,295466,5d97495de32b13d5be77034d5f166727aa250ff5aa405ad9ab89c49bb6baa36c,200

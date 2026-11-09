@@ -1,0 +1,3 @@
+numero,fecha,tipo,fase_introducido,fase_eliminado,minutos_correccion,defecto_origen,descripcion
+1,2026-11-08,datos,codigo,pruebas,5,,"Reparacion de digitos partidos unia el 0 de DIC con el acumulado (0 17,399,502 -> 017,399,502); detectado porque la suma de meses de ton_contenerizada 2026 no cuadraba con el ACUMULADO"
+2,2026-11-08,asignacion,codigo,revision,2,,"En ExtractorEtico.get el timeout se sacaba de kwargs dentro del ciclo de reintentos; solo aplicaba en el primer intento"

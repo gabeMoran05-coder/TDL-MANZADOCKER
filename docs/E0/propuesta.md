@@ -12,6 +12,7 @@
 
 | Campo | Contenido |
 |---|---|
+| Origen de la idea | Propuesta propia del equipo (no proviene del Banco de ideas) |
 | Sector | Logística portuaria: movimiento de contenedores |
 | Región | Puerto de Manzanillo, Colima (el puerto con más TEU del país) |
 | Pregunta central | ¿Cuántos contenedores (TEU) moverá el Puerto de Manzanillo el próximo mes y en qué temporadas se concentra la actividad? |

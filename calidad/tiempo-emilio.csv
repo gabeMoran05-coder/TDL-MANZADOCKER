@@ -3,3 +3,5 @@ fecha,inicio,fin,interrupcion_min,fase,actividad
 2026-11-08,18:56,19:00,0,diseno,Verificar robots.txt y localizar informes EM 2021-2026 en puertomanzanillo.com.mx
 2026-11-08,19:00,19:05,0,codigo,Extractor etico base.py y extractor asipona.py con serie historica a bronce
 2026-11-08,19:05,19:08,0,codigo,Extractor de Banxico SIE (tipo de cambio FIX) y captura del historico 2021-2026
+2026-11-08,19:10,19:20,0,documentacion,Borrador de docs/E0/propuesta.md (ficha plan de recopilacion analiticas objetivos de calidad)
+2026-11-08,19:25,19:40,0,documentacion,Revision de terminos de uso gob.mx y Banxico; ficha ENTREGA.md; ajustes a la propuesta

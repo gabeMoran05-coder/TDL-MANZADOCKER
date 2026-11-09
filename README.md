@@ -8,8 +8,8 @@ Observatorio de datos del Puerto de Manzanillo: pronóstico de TEU, calidad de d
 ## Equipo
 | Integrante | Rol |
 |---|---|
-| Emilio Rodrigo Ayala Reynoso | _por definir_ |
-| Karol Gabriel Morán Aréchiga | _por definir_ |
+| Emilio Rodrigo Ayala Reynoso | Data Engineer |
+| Karol Gabriel Morán Aréchiga | Data Statistician |
 
 Docentes: Mtro. Armando Román Gallardo Heredia (Ingeniería de Datos) · Mtro. Joel (Análisis Estadístico) · Mtra. Isis (Calidad en los Sistemas de Información).
 

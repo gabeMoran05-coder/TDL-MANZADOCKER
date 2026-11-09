@@ -16,7 +16,7 @@ Docentes: Mtro. Armando Román Gallardo Heredia (Ingeniería de Datos) · Mtro. 
 ## Fuentes
 | Fuente | Qué aporta | Acceso | Frecuencia |
 |---|---|---|---|
-| ASIPONA Manzanillo, Estadística Mensual (EM, formato ASPN-MAN-JES-F-05) | TEU mensuales totales, por terminal y por tráfico; toneladas contenerizadas; arribos de buques. Serie ene-2021 → sep-2026 (69 meses) | PDF en puertomanzanillo.com.mx | Mensual; se revisa a diario (GitHub Actions) |
+| ASIPONA Manzanillo, Estadística Mensual (EM, formato ASPN-MAN-JES-F-05) | TEU mensuales totales, por terminal y por tráfico; toneladas contenerizadas; arribos de buques. Serie ene-2021 → oct-2026 (70 meses) | PDF en puertomanzanillo.com.mx | Mensual; se revisa a diario (GitHub Actions) |
 | Banxico SIE, serie SF43718 (tipo de cambio FIX) | Pesos por dólar, diario desde ene-2021 | API REST con token gratuito (`BANXICO_TOKEN`) | Diaria (GitHub Actions) |
 
 ## Arquitectura (medallion)
@@ -33,7 +33,9 @@ pip install -r requirements.txt
 python -m extractores.run_captura           # todas las fuentes + bitácora
 python -m extractores.run_captura asipona   # solo informes EM del puerto
 ```
-La captura corre sola cada día a las 08:00 (hora de Colima) con GitHub Actions (`.github/workflows/captura.yml`) y cada ejecución queda en `calidad/bitacora_captura.csv`.
+La captura está programada cada día a las 08:00 (hora de Colima) con GitHub Actions (`.github/workflows/captura.yml`) y cada ejecución queda en `calidad/bitacora_captura.csv`.
+
+Primera ejecución manual verificada: [Captura programada, 9 de noviembre de 2026](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/actions/runs/42679626943), exitosa para ambas fuentes. La programación diaria está activa; la primera ejecución con disparador `schedule` aún está pendiente de observar.
 
 ## Estructura
 ```

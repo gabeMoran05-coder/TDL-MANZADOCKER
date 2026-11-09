@@ -2,9 +2,9 @@
 
 **Equipo:** Emilio Rodrigo Ayala Reynoso · Karol Gabriel Morán Aréchiga
 **Institución:** Instituto Tecnológico de Colima (TecNM) · Proyecto Integrador Trusted Data Lab
-**Fecha:** 9 de noviembre de 2026 · **Etiqueta:** `e0`
+**Fecha:** 9 de noviembre de 2026 · **Etiqueta prevista:** `e0` · **Rama de Gabriel:** `gabriel/e0`
 
-> **En un minuto:** vamos a pronosticar cuántos contenedores (TEU) moverá el Puerto de Manzanillo cada mes y a demostrar en qué meses se concentra la actividad. Usamos los informes oficiales de ASIPONA Manzanillo (69 meses ya capturados, de enero de 2021 a septiembre de 2026) y el tipo de cambio diario de Banxico. Le sirve a quien tiene que planear camiones, choferes y citas en terminal: transportistas, líneas de autotransporte y agencias de logística.
+> **En un minuto:** vamos a pronosticar el volumen de contenedores, expresado en TEU, que moverá el Puerto de Manzanillo cada mes y a demostrar en qué meses se concentra la actividad. Usamos los informes oficiales de ASIPONA (70 meses capturados, de enero de 2021 a octubre de 2026) y el tipo de cambio diario de Banxico. Le sirve a quien planea camiones y citas en terminal. Un TEU representa capacidad equivalente a un contenedor de 20 pies; no es un conteo de contenedores físicos.
 
 ---
 
@@ -14,46 +14,50 @@
 |---|---|
 | Origen de la idea | Propuesta propia del equipo (no proviene del Banco de ideas) |
 | Sector | Logística portuaria: movimiento de contenedores |
-| Región | Puerto de Manzanillo, Colima (el puerto con más TEU del país) |
+| Región | Puerto de Manzanillo, Colima |
 | Pregunta central | ¿Cuántos contenedores (TEU) moverá el Puerto de Manzanillo el próximo mes y en qué temporadas se concentra la actividad? |
-| Quién paga por la respuesta | Líneas de autotransporte y agencias de logística que programan camiones, choferes y citas en terminal. _[Confirmar con la entrevista: quién decide y quién pagaría.]_ |
-| Por qué pagaría | Un mes con más carga de la esperada significa camiones insuficientes, esperas largas y viajes perdidos; uno con menos carga significa unidades paradas. Saberlo con anticipación permite ajustar flota y turnos. |
-| Modelo de negocio inicial | Reporte de inteligencia mensual por suscripción (pronóstico del mes siguiente con intervalo de confianza y comparativo por terminal). |
+| Cliente potencial | Propietarias y propietarios de transportistas locales que operan en Manzanillo. Se entrevistó a una dueña de una transportista local; su nombre y contacto se omiten en el repositorio público. |
+| Quién pagaría por la respuesta | La empresa transportista es un cliente potencial. La entrevistada pidió información por terminal, pero no confirmó una compra ni un monto de pago. La expresión «valdría un 50%» queda pendiente de aclaración. |
+| Motivo para contratar, como hipótesis | Complementar los avisos del cliente, que llegan uno o dos días antes, con contexto de actividad por terminal. Las citas y el tráfico son necesidades operativas señaladas; un pronóstico mensual de TEU no permite por sí solo predecir retrasos ni viajes de una empresa. |
+| Modelo de negocio por validar | Reporte mensual o tablero por suscripción, con pronóstico e intervalo de predicción y comparativo por terminal. Precio, periodicidad preferida y disposición de pago pendientes. |
 
 **Lo que ya muestran los datos** (capa bronce, cifras oficiales sin procesar):
 
-- El puerto pasó de 3,371,438 TEU en 2021 a 3,924,501 en 2024 (+16.4%). En 2025 bajó ligeramente (3,893,357) y de enero a septiembre de 2026 suma 3,154,778 TEU, +9.5% contra el mismo periodo de 2025.
+- Los acumulados reportados por ASIPONA son 3,371,438 TEU en 2021, 3,924,501 en 2024 y 3,893,357 en 2025; de enero a octubre de 2026 reporta 3,483,498. Se distinguen del resultado de sumar las cifras mensuales, que presenta diferencias de hasta dos unidades (§5).
 - El mes más bajo de la serie fue febrero de 2023 (251,937 TEU) y el más alto, julio de 2026 (384,691 TEU).
 - El promedio por mes de calendario sugiere una temporada más alta en julio-agosto y una más baja en febrero. **Es una observación descriptiva, no un hallazgo**: se pondrá a prueba con la descomposición de la serie en E1.
 - Dos terminales concentran la mayor parte del movimiento (SSA y CONTECON, alrededor de 85% en 2026), seguidas de OCUPA y TIMSA.
 
 ## 2. Entrevista con el sector
 
-_[PENDIENTE — la realiza Gabriel el 9 de noviembre. Mínimo 15 minutos.]_
+Gabriel compartió cinco preguntas y las respuestas recibidas de una persona del sector. El intercambio se documenta a continuación; **la duración no está confirmada, por lo que aún no se acredita el mínimo de 15 minutos**.
 
 | Dato | Valor |
 |---|---|
-| Entrevistado | Entrevistado 1 · transportista _[independiente / de empresa]_, _[n]_ años operando en el puerto (anonimizado: sin nombre ni contacto) |
-| Fecha, hora y duración | _[ ]_ |
-| Medio | _[en persona / llamada]_ |
-| Consentimiento | Se le explicó el proyecto y aceptó que se tomaran notas: _[sí/no]_ |
+| Persona entrevistada | Entrevistada 1 · dueña de una transportista local en Manzanillo. Identidad y contacto omitidos. |
+| Entrevistador | Karol Gabriel Morán Aréchiga |
+| Fecha y hora aproximada | 8 de noviembre de 2026, alrededor de las 16:50, hora local de Manzanillo |
+| Medio | WhatsApp. No se ha especificado si fueron mensajes, audios o llamada. |
+| Duración | Pendiente de confirmar; no se atribuyen 15 minutos sin evidencia. |
+| Consentimiento para usar notas anónimas | Pendiente de confirmar con Gabriel. No se publican capturas ni datos de contacto. |
 
 | # | Pregunta | Respuesta (resumen) | Lo que aprendimos |
 |---|---|---|---|
-| 0 | ¿Eres independiente o trabajas para una empresa? ¿Cuántos años llevas y con qué terminales trabajas más? | | |
-| 1 | ¿Me puedes contar un caso reciente en el que hubo más o menos movimiento de carga del que esperaban? ¿Qué pasó en tu operación? | | |
-| 2 | Cuando hay más carga, ¿qué cambia para ti (más viajes, más espera, otras tarifas)? ¿Con cuántos días de anticipación te serviría saberlo? | | |
-| 3 | ¿Qué datos o señales consultas hoy para anticipar el volumen, cuáles te llegan tarde y qué tan seguido se equivocan? | | |
-| 4 | Cuando se retrasa un viaje, ¿qué influye más: el volumen de carga, las citas en terminal, el clima u otro factor? | | |
-| 5 | Si tuvieras un tablero para planear, ¿qué tendría que mostrar? ¿Mensual, semanal o por terminal? ¿Quién en tu gremio o empresa pagaría por saber esto con anticipación, y cuánto? | | |
+| 1 | ¿Me puedes contar un caso reciente en el que hubo más o menos movimiento de carga del que esperaban? ¿Qué pasó en la operación de tu empresa? | Reportó más movimiento «en este mes» y que todo salió bien en la operación. | Un aumento de carga no implica necesariamente fallas. La respuesta no cuantifica el aumento ni el error respecto de lo esperado. |
+| 2 | Cuando esperan más movimiento, ¿qué cambian en camiones, turnos o programación y con cuánta anticipación necesitan saberlo? | Indicó: «En el transporte federal no hay turnos». | Debemos adaptar el lenguaje a su operación. No se obtuvo una respuesta sobre cambios en flota ni sobre el plazo de anticipación que necesita. |
+| 3 | ¿Qué datos o señales consultan hoy para anticipar el volumen, cuáles les llegan tarde y qué tan seguido se equivocan? | El cliente avisa al transportista uno o dos días antes. | Los avisos del cliente son una señal operativa de corto plazo. No se informaron otras fuentes ni una frecuencia de errores. |
+| 4 | Cuando se retrasa un viaje, ¿qué influye más: el volumen de carga, las citas en terminal, el clima u otro factor? | Señaló las citas en terminal y el tráfico en carretera. | El volumen portuario no explica todos los retrasos. Para estudiar citas y tráfico harían falta fuentes adicionales, fuera del alcance de las dos fuentes iniciales. |
+| 5 | Si tuvieras un tablero para planear la operación, ¿qué tendría que mostrar (mensual, semanal, por terminal?) y cuánto valdría para ti o tu empresa? | Solicitó información «por terminal» y respondió que «valdría un 50%». | El desglose por terminal sí tiene interés. El porcentaje carece de base y unidad; no equivale a un precio, ahorro esperado ni compromiso de pago. La frecuencia deseada sigue pendiente. |
 
-**Conclusión de la entrevista:** _[cómo cambia o confirma la pregunta central y quién es el cliente que paga]_
+**Conclusión de la entrevista:** identificamos a una propietaria de transportista como cliente potencial y una necesidad concreta de comparar terminales. Conservamos la pregunta de pronóstico mensual como contexto para planear, complementario a los avisos que llegan uno o dos días antes. La entrevista no demuestra que más TEU provoquen retrasos ni que la entrevistada pagaría una cantidad específica. El tablero deberá explicar su alcance, mostrar el último mes publicado y distinguir el movimiento del puerto de la demanda particular de cada empresa.
+
+**Seguimiento pendiente:** confirmar duración y consentimiento; aclarar a qué se refiere el 50%, la periodicidad del tablero y quién decidiría su contratación. No se agrega una sexta pregunta como si ya hubiera sido realizada.
 
 ## 3. Preguntas analíticas
 
 | Técnica (entrega) | Pregunta medible | Datos |
 |---|---|---|
-| **Pronóstico (E1)** | ¿Cuántos TEU totales moverá el puerto en cada uno de los próximos 3 meses, con un intervalo de predicción del 95%? Gana el modelo (SES, Holt, Holt-Winters o SARIMA) con menor MAPE en los últimos 6 meses retenidos como prueba. | `teu_total` mensual, ene-2021 a sep-2026 (69 periodos). Correlación cruzada con los arribos mensuales de buques portacontenedores (misma fuente) y con el tipo de cambio FIX promedio mensual (Banxico). |
+| **Pronóstico (E1)** | ¿Cuántos TEU totales moverá el puerto en cada uno de los próximos 3 meses, con un intervalo de predicción del 95%? Gana el modelo (SES, Holt, Holt-Winters o SARIMA) con menor MAPE en los últimos 6 meses retenidos como prueba. | `teu_total` mensual, ene-2021 a oct-2026 (70 periodos). Correlación cruzada con los arribos mensuales de buques portacontenedores (misma fuente) y con el tipo de cambio FIX promedio mensual (Banxico). |
 | **Experimento (E2), ruta ingeniería** | ¿Qué combinación de factores minimiza el tiempo de procesamiento y la tasa de error al extraer los PDF de la capa bronce? Diseño 2³ con al menos 2 réplicas y orden aleatorizado. Factores: A = número de procesos (1 vs 4), B = biblioteca de extracción de texto (pdfplumber vs pypdf), C = formato de salida (CSV vs Parquet). Respuestas: tiempo (s) y tasa de error (% de variables cuya suma no cuadra con el acumulado). | Copias locales de los PDF ya capturados; nunca contra el sitio de ASIPONA. Se incluye la biblioteca como factor porque, con un solo extractor, la tasa de error no variaría entre tratamientos. |
 | **Multivariado (E3)** | ¿Las cuatro terminales (SSA, CONTECON, OCUPA, TIMSA) tienen perfiles de operación distintos cuando se consideran a la vez cinco variables mensuales? MANOVA con unidad de análisis terminal-mes. | Variables candidatas por terminal y mes: TEU totales, TEU de importación, de exportación, de transbordo y participación en el total del puerto. Los TEU totales por terminal ya están mes a mes; los de importación, exportación y transbordo vienen acumulados en el año y se obtendrán restando EM consecutivos. _[A confirmar en E1.]_ |
 
@@ -62,9 +66,9 @@ _[PENDIENTE — la realiza Gabriel el 9 de noviembre. Mínimo 15 minutos.]_
 | | Fuente 1 · ASIPONA Manzanillo | Fuente 2 · Banxico SIE |
 |---|---|---|
 | Qué es | Estadística Mensual (EM, formato ASPN-MAN-JES-F-05) de la Administración del Sistema Portuario Nacional Manzanillo | Serie SF43718, tipo de cambio FIX (pesos por dólar) |
-| Estructura | Tabla de 2 páginas: conceptos en filas y ENE a DIC en columnas, más el acumulado del año, el del año anterior y la variación %. Se extraen 9 variables: TEU total, TEU por terminal (4), TEU por tráfico (impo, expo, transbordo de entrada y de salida; solo 2024 en adelante), toneladas contenerizadas y arribos de buques portacontenedores. | JSON `bmx.series[].datos[]` con `fecha` (dd/mm/aaaa) y `dato` (texto; "N/E" si no hay dato) |
+| Estructura | Tabla de 2 páginas: conceptos en filas y ENE a DIC en columnas, más acumulados y variación %. Se extraen TEU totales, por terminal (4), por tráfico (importación, exportación, transbordo de entrada y de salida; desde 2024), toneladas contenerizadas y arribos de portacontenedores. Son hasta 11 conceptos según el año. | JSON `bmx.series[].datos[]` con `fecha` (dd/mm/aaaa) y `dato` (texto; "N/E" si no hay dato) |
 | Formato | PDF con texto (no escaneado) | JSON por API REST |
-| Frecuencia de actualización | Mensual. El EM de un mes se publica semanas después (el de septiembre de 2026 ya está publicado al 8 de noviembre). | Diaria, cada día hábil bancario |
+| Frecuencia de actualización | Mensual, con retraso de publicación. La ejecución del 9 de noviembre descargó el EM de octubre de 2026. | Diaria, cada día hábil bancario |
 | Método de acceso | Scraping de la página "Año <n>" para encontrar el EM más reciente, más un catálogo de URLs verificadas para 2021-2025; descarga con `extractores/asipona.py`, extracción de texto con pdfplumber | `GET /SieAPIRest/service/v1/series/SF43718/datos/{inicio}/{fin}` con encabezado `Bmx-Token` (token gratuito, guardado como secret de GitHub) |
 | Página de origen | https://www.puertomanzanillo.com.mx/esps/0000209/estadisticas.html | https://www.banxico.org.mx/SieAPIRest/service/v1/ |
 | robots.txt | `https://www.puertomanzanillo.com.mx/robots.txt` y la versión sin `www` responden **404** (verificado el 8/11/2026; captura de pantalla 18:38). Según RFC 9309, un 4xx significa que no hay restricciones declaradas. | `https://www.banxico.org.mx/robots.txt` prohíbe solo `/dyn`, `/ALEPH`, `/ALEPHcgi-bin/` y `/V`. La ruta `/SieAPIRest/` **está permitida** (verificado con el propio extractor). |
@@ -78,17 +82,17 @@ _[PENDIENTE — la realiza Gabriel el 9 de noviembre. Mínimo 15 minutos.]_
 
 ## 5. Captura funcionando (capa bronce)
 
-| Componente | Estado al 8/11/2026 |
+| Componente | Estado comprobado al 9/11/2026 |
 |---|---|
 | `extractores/base.py` | Extractor ético del kit, adaptado: lee robots.txt con nuestro User-Agent, respeta Crawl-delay y pausa mínima, y reintenta ante 429/5xx |
-| `extractores/asipona.py` | 6 PDF descargados (EM de diciembre 2021-2025 y de septiembre 2026) → `data/bronce/asipona/em_mensual.csv`, 648 registros con archivo y URL de origen y fecha de captura; metadatos y SHA-256 de cada PDF en `capturas.csv` |
-| `extractores/banxico.py` | 1,472 días hábiles (4/1/2021 a 6/11/2026) → `data/bronce/banxico/tipo_cambio_fix.csv`, más la respuesta cruda de cada captura en `json/` |
-| Serie histórica | **69 periodos mensuales** de TEU (mínimo pedido: 36) |
-| Captura programada | `.github/workflows/captura.yml`: diaria a las 14:00 UTC (08:00 en Colima) y manual (`workflow_dispatch`); hace commit de `data/bronce` y de la bitácora. _[Actualizar con el enlace a la primera ejecución en GitHub Actions.]_ |
+| `extractores/asipona.py` | 7 PDF descargados (diciembre 2021-2025, septiembre y octubre 2026). `data/bronce/asipona/em_mensual.csv` contiene 648 filas, incluidas posiciones aún no publicadas; cada fila tiene archivo, URL y fecha de captura. Metadatos y SHA-256 de los PDF en `capturas.csv`. |
+| `extractores/banxico.py` | 1,473 fechas (4/1/2021 a 9/11/2026) en `data/bronce/banxico/tipo_cambio_fix.csv`, más las respuestas crudas en `json/`. |
+| Serie histórica | **70 periodos mensuales publicados y consecutivos** de TEU (mínimo pedido: 36), sin duplicados de año-mes. |
+| Captura programada | `.github/workflows/captura.yml`: diaria a las 14:00 UTC (08:00 en Colima) y manual. El secret `BANXICO_TOKEN` está configurado. [Primera ejecución manual exitosa, 9/11/2026](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/actions/runs/42679626943): ambas fuentes en estado `ok`; [commit del bot](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/commit/f126715). La primera ejecución con disparador `schedule` sigue pendiente de observar. |
 | Bitácora | `calidad/bitacora_captura.csv`: inicio, fin, duración, fuente, estado, registros, disparador y error de cada ejecución |
 
 **Problemas de la fuente detectados al capturar** (alimentan la puerta de calidad de E1):
-1. **Redondeo de la fuente:** en 13 combinaciones de variable y año, la suma de los meses difiere del acumulado que publica ASIPONA por 1 o 2 unidades. Se guarda la diferencia en la columna `diferencia`; no se corrige en bronce.
+1. **Discrepancias pequeñas de la fuente:** en 12 combinaciones de variable y año, la suma de los meses difiere del acumulado por 1 o 2 unidades en la captura actual. Se guarda `diferencia`; no se altera bronce ni se afirma una causa sin verificarla.
 2. **Hueco en 2021:** el EM de diciembre de 2021 trae noviembre y diciembre en 0 para cada terminal, aunque el total del puerto sí tiene esos meses. No son ceros reales: se tratarán como faltantes en E1.
 3. **Cifras revisadas:** el total de 2023 es 3,698,582 en su propio EM y 3,699,254 en el EM de 2024 y en el histórico. Habrá que decidir qué versión usar.
 4. **Dígitos partidos:** el texto del PDF a veces separa el primer dígito (`2 70,603`). El extractor lo corrige y la verificación contra el acumulado confirma cada año (defecto 1 en `calidad/defectos-emilio.csv`).
@@ -97,13 +101,15 @@ _[PENDIENTE — la realiza Gabriel el 9 de noviembre. Mínimo 15 minutos.]_
 
 **Registros PSP individuales:** `calidad/defectos-emilio.csv`, `calidad/defectos-gabriel.csv`, `calidad/tiempo-emilio.csv` y `calidad/tiempo-gabriel.csv`, con el formato del kit.
 
+Los registros de Gabriel están abiertos con encabezados. El intervalo general del 6 de noviembre al 2 de diciembre y la fase 0 del 6 al 13 de noviembre corresponden a [planeación](planeacion-gabriel.md); no se convierten en horas de trabajo ni en defectos observados. Las sesiones se registrarán con fecha, inicio, fin e interrupciones reales.
+
 **Objetivos de calidad medibles** (se miden en E1 con la bitácora del 9 al 16 de noviembre):
 
 | # | Objetivo | Métrica | Meta | Cómo se mide |
 |---|---|---|---|---|
-| OC1 | Disponibilidad de la captura | Ejecuciones programadas exitosas ÷ ejecuciones programadas | **≥ 95%** | `calidad/bitacora_captura.csv` (filas con `disparador = schedule`) |
-| OC2 | Exactitud de la extracción de PDF | % de combinaciones variable-año con \|suma de meses − acumulado reportado\| ≤ 2 | **100%** | Columna `diferencia` de `em_mensual.csv` (hoy: 100%, máximo de 2) |
-| OC3 | Completitud de la serie principal | Meses con `teu_total` ÷ meses publicados desde ene-2021 | **100%** | `em_mensual.csv` (hoy: 69 de 69) |
+| OC1 | Éxito de la captura programada | 100 × ejecuciones programadas con ambas fuentes en estado `ok` ÷ ejecuciones programadas iniciadas | **≥ 95%** | Historial de Actions y `calidad/bitacora_captura.csv`, agrupando ambas fuentes por ejecución con `disparador = schedule`. Si no hay ejecuciones, se informa «sin evidencia», no 100%. |
+| OC2 | Conciliación de la extracción de PDF con tolerancia | % de combinaciones variable-año con \|suma de meses − acumulado reportado\| ≤ 2 | **100%** | Columna `diferencia` de `em_mensual.csv` (hoy: 100%, máximo de 2). La tolerancia no significa igualdad exacta. |
+| OC3 | Completitud de la serie principal | 100 × meses con `teu_total` ÷ meses publicados desde ene-2021 | **100%** | `em_mensual.csv` (hoy: 70 de 70) |
 
 Meta adicional para el plan SQA de E1: tiempo medio de reparación (MTTR) de una falla de captura **≤ 24 horas**.
 
@@ -112,7 +118,7 @@ Meta adicional para el plan SQA de E1: tiempo medio de reparación (MTTR) de una
 | Integrante | Rol | E0 |
 |---|---|---|
 | Emilio Rodrigo Ayala Reynoso | Data Engineer | Repositorio, extractores, serie histórica, workflow y bitácora |
-| Karol Gabriel Morán Aréchiga | Data Statistician | Entrevista, secret de la API y del workflow, revisión como Quality Lead |
+| Karol Gabriel Morán Aréchiga | Data Statistician | Entrevista y propuesta; rama `gabriel/e0`; coordinación de secret y ejecución de Actions; revisión como Quality Lead pendiente de realizar |
 
 ## 8. Riesgos
 
@@ -127,3 +133,5 @@ Meta adicional para el plan SQA de E1: tiempo medio de reparación (MTTR) de una
 ## 9. Uso de IA generativa
 
 Se usó Claude Code (Anthropic) para: localizar y verificar las URL de los informes, revisar robots.txt, y redactar el código de los extractores, el workflow y este borrador. Todo se ejecutó y verificó en local antes de subirlo; el equipo revisó y puede explicar cada parte.
+
+Para esta actualización se usó Codex (OpenAI) para clonar el repositorio, crear la rama de Gabriel, integrar sus respuestas, configurar el secret mediante la API de GitHub y comprobar una ejecución manual de Actions. También se verificaron conteos, continuidad mensual, metadatos, SHA-256 y enlaces locales. No se atribuye al asistente la realización de la entrevista ni una revisión cruzada de los integrantes.

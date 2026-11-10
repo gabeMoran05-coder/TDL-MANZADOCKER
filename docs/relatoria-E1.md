@@ -13,6 +13,8 @@ El 10 de noviembre se creó la rama `gabriel/e1` a partir de `main`, incluido el
 
 La primera ejecución admitió 626 de 648 filas ASIPONA, estimó ocho valores por terminal y puso 22 posiciones no publicadas en cuarentena. Banxico aportó 1,473 cotizaciones válidas: se agregaron a 71 meses y se integraron 70 con los datos del puerto; noviembre parcial permaneció en Plata. Se generaron 280 observaciones terminal-mes.
 
+La [verificación de CI](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/actions/runs/42892014765) y la [captura con limpieza completa](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/actions/runs/42892045653) terminaron en verde. Esta última agregó una cotización y dejó Banxico en 1,474 registros. La validación local aprobó 32 pruebas con 96.01% de cobertura; CI exige al menos 90%.
+
 Los tiempos de máquina están en `calidad/bitacora_pipeline.csv`. Las horas personales de los integrantes y la revisión cruzada no están confirmadas para esta sesión y no se fabrican a partir del tiempo del asistente.
 
 ## 3. ¿Qué decidimos y por qué?

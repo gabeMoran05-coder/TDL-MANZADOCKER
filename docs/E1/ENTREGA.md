@@ -12,6 +12,8 @@ El pipeline transforma las tablas de Bronce en Plata validada y Oro integrado me
 
 La primera ejecución de E1, el 10 de noviembre de 2026, produjo 626 registros ASIPONA en Plata (ocho imputaciones identificadas), 1,473 cotizaciones Banxico, 70 meses integrados y 280 registros terminal-mes. Se enviaron 22 posiciones aún no publicadas a cuarentena. Las cifras de futuras capturas se consultan en el [resumen automático](../../calidad/e1/resumen.json), con hashes de las entradas y versiones de las dependencias.
 
+La verificación completa en GitHub del mismo día agregó la cotización del 10 de noviembre: **1,474 registros diarios Banxico**, con 70 meses de Oro y 22 rechazos conservados. Los datos, las bitácoras y los productos fueron guardados por el bot en el commit `005a0ed`.
+
 ## Evidencia por requisito
 
 | Requisito de la tarea | Evidencia | Comportamiento verificable |
@@ -40,7 +42,12 @@ Las pruebas incluyen corrupción de valores y fechas, columnas adicionales o aus
 
 Validación local del 10 de noviembre de 2026: **32 pruebas aprobadas**, **96.01% de cobertura** y Ruff sin errores. La cobertura mínima automática es 90%. [Registro de validación local](../../calidad/e1/validacion_local.json).
 
-Evidencia de ejecución en GitHub: [Calidad E1](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/actions/workflows/ci.yml) y [Captura programada](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/actions/workflows/captura.yml). El [tag `e1`](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/tree/e1) identifica el corte de entrega.
+Ejecuciones verificadas en GitHub el 10 de noviembre de 2026:
+
+- [Calidad E1: linter, pruebas, generación y artefacto, en verde](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/actions/runs/42892014765).
+- [Captura completa: Bronce → Plata → Oro y cuarentena, en verde](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/actions/runs/42892045653).
+
+El [tag `e1`](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/tree/e1) identifica el corte de entrega. Los cambios también están integrados en `main`; se conserva `gabriel/e1` como rama de desarrollo de Gabriel.
 
 ## Límites y revisión del equipo
 

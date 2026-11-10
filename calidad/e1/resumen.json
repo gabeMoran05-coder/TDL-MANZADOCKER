@@ -16,8 +16,8 @@
     }
   },
   "banxico": {
-    "aceptados": 1473,
-    "entrada": 1473,
+    "aceptados": 1474,
+    "entrada": 1474,
     "imputados": 0,
     "rechazados": 0
   },
@@ -28,10 +28,10 @@
     "preprocesamiento.py": "639604417ffb416066c8bd4cd3e19c6bc84fff855aacb0541ecdb9729dd4bdbe"
   },
   "corte_entrenamiento": "2026-04-01",
-  "ejecucion_id": "748e725d949a9dc2",
+  "ejecucion_id": "91617f9ee6676672",
   "entradas_sha256": {
     "data/bronce/asipona/em_mensual.csv": "d04eb674c8de3daa1da7947501b53b4dbf39505a928847142905e997a3e2feb6",
-    "data/bronce/banxico/tipo_cambio_fix.csv": "e388408c8a37dd745f54a9d5e2fc8ed920b29de16c46d268cf85d72b0f0beaee"
+    "data/bronce/banxico/tipo_cambio_fix.csv": "2c5bb7437fbd55c60576ea91bf63d0f10e5c848ae7968a1c47f89b797313350b"
   },
   "estado": "ok",
   "meses_banxico": 71,
@@ -45,12 +45,12 @@
     "periodo_no_publicado": 11,
     "periodo_no_publicado; periodo_posterior_a_captura": 11
   },
-  "reduccion_banxico_pct": 95.1799,
+  "reduccion_banxico_pct": 95.1832,
   "terminales_mes": 280,
   "versiones": {
-    "numpy": "2.5.2",
-    "pandas": "3.0.5",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
     "pandera": "0.36.0",
-    "pyarrow": "26.0.0"
+    "pyarrow": "26.0.1"
   }
 }

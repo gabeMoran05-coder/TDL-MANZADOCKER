@@ -1,0 +1,43 @@
+name: Calidad E1
+
+on:
+  push:
+    branches: [main, gabriel/e1]
+    tags: [e1]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+      - name: Revisar código
+        run: ruff check src tests
+      - name: Probar puerta y pipeline
+        run: python -m pytest -q --cov=src --cov-report=term-missing
+      - name: Generar Plata y Oro desde Bronce
+        run: python -m src.limpieza
+      - name: Conservar evidencia
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidencia-e1
+          path: |
+            data/plata/
+            data/oro/
+            data/cuarentena/e1/
+            calidad/e1/
+            calidad/bitacora_pipeline.csv
+          retention-days: 14

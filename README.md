@@ -32,10 +32,19 @@ python -m venv .venv
 pip install -r requirements.txt
 python -m extractores.run_captura           # todas las fuentes + bitácora
 python -m extractores.run_captura asipona   # solo informes EM del puerto
+python -m src.limpieza                     # Bronce -> Plata -> Oro + cuarentena
+python -m pytest -q --cov=src              # pruebas de calidad y reproducción
+ruff check src tests
 ```
-La captura está programada cada día a las 08:00 (hora de Colima) con GitHub Actions (`.github/workflows/captura.yml`) y cada ejecución queda en `calidad/bitacora_captura.csv`.
+La captura está programada cada día a las 08:00 (hora de Colima) con GitHub Actions (`.github/workflows/captura.yml`). Tras una captura exitosa ejecuta el pipeline E1; guarda datos, cuarentena y bitácoras. Las ejecuciones quedan en `calidad/bitacora_captura.csv` y `calidad/bitacora_pipeline.csv`.
 
-Primera ejecución manual verificada: [Captura programada, 9 de noviembre de 2026](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/actions/runs/42679626943), exitosa para ambas fuentes. La programación diaria está activa; la primera ejecución con disparador `schedule` aún está pendiente de observar.
+Primera ejecución manual verificada: [Captura programada, 9 de noviembre de 2026](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/actions/runs/42679626943), exitosa para ambas fuentes. También existe captura con disparador `schedule` registrada el 9 de noviembre en el commit `0836001`.
+
+## Entrega E1 · Ingeniería de Datos
+
+[Ficha técnica](docs/E1/ENTREGA.md) · [Decisiones de limpieza](docs/E1/limpieza.md) · [Diccionario](docs/E1/diccionario.md) · [Relatoría](docs/relatoria-E1.md)
+
+El pipeline valida contratos estrictos con Pandera, documenta faltantes e imputación causal, marca atípicos, genera Min-Max y Z-Score sin usar los seis meses de prueba, discretiza actividad e integra el FIX diario a frecuencia mensual. Los inválidos conservan contenido y motivo en `data/cuarentena/e1/`; Bronce se mantiene sin cambios. El [resumen automático](calidad/e1/resumen.json) contiene hashes, versiones, conteos y parámetros de la captura procesada.
 
 ## Estructura
 ```
@@ -43,6 +52,7 @@ docs/          fichas de entrega (E0..E4), relatorías, plan SQA, ética, audito
 calidad/       registros PSP de defectos y de tiempo (uno por integrante) y bitácora de captura
 extractores/   un módulo por fuente (base.py = extractor ético)
 pipeline/      bronce -> plata -> oro, puertas de calidad
+src/           implementación E1: limpieza, preprocesamiento y contratos Pandera
 data/          bronce, plata, oro, cuarentena
 laboratorio/   notebooks: series de tiempo, experimento, multivariado
 tablero/       Streamlit

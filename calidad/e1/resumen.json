@@ -1,0 +1,56 @@
+{
+  "asipona": {
+    "aceptados": 626,
+    "entrada": 648,
+    "imputados": 8,
+    "rechazados": 22
+  },
+  "atipicos": {
+    "asipona": {
+      "es_atipico_iqr": 10,
+      "es_atipico_robusto": 0
+    },
+    "banxico": {
+      "es_atipico_iqr": 0,
+      "es_atipico_robusto": 0
+    }
+  },
+  "banxico": {
+    "aceptados": 1473,
+    "entrada": 1473,
+    "imputados": 0,
+    "rechazados": 0
+  },
+  "codigo_sha256": {
+    "__init__.py": "1b1f33f78a7d146333920bccabed02c520ade64dd17377f3fdd33f02cb7db7c2",
+    "calidad.py": "1467559c2772a8d66b0a250a9d7bc4e46bb1859940f4f74ec2e60cbed70f50e4",
+    "limpieza.py": "92d146ae96ffbe3f528d26b84cc189ec4b8776309ebcbca0499b8c023d482cfb",
+    "preprocesamiento.py": "639604417ffb416066c8bd4cd3e19c6bc84fff855aacb0541ecdb9729dd4bdbe"
+  },
+  "corte_entrenamiento": "2026-04-01",
+  "ejecucion_id": "748e725d949a9dc2",
+  "entradas_sha256": {
+    "data/bronce/asipona/em_mensual.csv": "d04eb674c8de3daa1da7947501b53b4dbf39505a928847142905e997a3e2feb6",
+    "data/bronce/banxico/tipo_cambio_fix.csv": "e388408c8a37dd745f54a9d5e2fc8ed920b29de16c46d268cf85d72b0f0beaee"
+  },
+  "estado": "ok",
+  "meses_banxico": 71,
+  "meses_entrenamiento": 64,
+  "meses_fix_sin_asipona": [
+    "2026-11"
+  ],
+  "meses_oro": 70,
+  "meses_prueba": 6,
+  "rechazos_por_motivo": {
+    "periodo_no_publicado": 11,
+    "periodo_no_publicado; periodo_posterior_a_captura": 11
+  },
+  "reduccion_banxico_pct": 95.1799,
+  "terminales_mes": 280,
+  "versiones": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "pandera": "0.36.0",
+    "pyarrow": "26.0.0"
+  }
+}

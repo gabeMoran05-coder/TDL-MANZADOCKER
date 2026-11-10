@@ -34,16 +34,25 @@ jobs:
         env:
           BANXICO_TOKEN: ${{ secrets.BANXICO_TOKEN }}
 
+      - name: Limpiar y validar Plata y Oro
+        id: pipeline
+        if: steps.captura.outcome == 'success'
+        continue-on-error: true
+        run: python -m src.limpieza
+
       - name: Guardar datos y bitácora en el repositorio
         run: |
           git config user.name  "tdl-captura-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/bronce calidad/bitacora_captura.csv
+          git add data/bronce data/plata data/oro data/cuarentena calidad/bitacora_captura.csv
+          for ruta in calidad/bitacora_pipeline.csv calidad/e1; do
+            if [ -e "$ruta" ]; then git add "$ruta"; fi
+          done
           git diff --cached --quiet && echo "Sin cambios" && exit 0
           git commit -m "captura: $(date -u +%Y-%m-%dT%H:%MZ) (${{ github.event_name }})"
           git pull --rebase origin ${{ github.ref_name }}
           git push
 
-      - name: Marcar la ejecución como fallida si alguna fuente falló
-        if: steps.captura.outcome == 'failure'
+      - name: Marcar la ejecución como fallida si captura o pipeline fallaron
+        if: steps.captura.outcome == 'failure' || steps.pipeline.outcome == 'failure'
         run: exit 1

@@ -1,0 +1,14 @@
+src/*.py text eol=lf
+tests/*.py text eol=lf
+.github/workflows/*.yml text eol=lf
+pyproject.toml text eol=lf
+data/oro/*.parquet binary
+.gitattributes text eol=lf
+data/plata/** text eol=lf
+data/oro/*.csv text eol=lf
+data/oro/*.json text eol=lf
+data/cuarentena/e1/** text eol=lf
+calidad/e1/** text eol=lf
+calidad/bitacora_pipeline.csv text eol=lf
+docs/E1/** text eol=lf
+docs/relatoria-E1.md text eol=lf

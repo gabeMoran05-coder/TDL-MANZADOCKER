@@ -1,0 +1,15 @@
+{
+  "alcance": "Validacion local; los tiempos son de maquina y no PSP personal",
+  "cobertura_minima": 90,
+  "cobertura_porcentaje": 96.01,
+  "codigo_sha256": {
+    "__init__.py": "1b1f33f78a7d146333920bccabed02c520ade64dd17377f3fdd33f02cb7db7c2",
+    "calidad.py": "1467559c2772a8d66b0a250a9d7bc4e46bb1859940f4f74ec2e60cbed70f50e4",
+    "limpieza.py": "92d146ae96ffbe3f528d26b84cc189ec4b8776309ebcbca0499b8c023d482cfb",
+    "preprocesamiento.py": "639604417ffb416066c8bd4cd3e19c6bc84fff855aacb0541ecdb9729dd4bdbe"
+  },
+  "ejecucion_pipeline_id": "748e725d949a9dc2",
+  "fecha": "2026-11-10",
+  "pruebas_aprobadas": 32,
+  "ruff": "sin errores"
+}

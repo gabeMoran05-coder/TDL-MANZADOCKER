@@ -11,3 +11,5 @@ inicio_utc,fin_utc,duracion_s,fuente,estado,registros,archivos_nuevos,disparador
 2026-11-10T20:07:31Z,2026-11-10T20:07:34Z,2.4,banxico,ok,1,1,workflow_dispatch,
 2026-11-10T20:42:47Z,2026-11-10T20:42:54Z,6.7,asipona,ok,648,0,schedule,
 2026-11-10T20:42:54Z,2026-11-10T20:42:56Z,2.3,banxico,ok,0,1,schedule,
+2026-11-11T21:04:41Z,2026-11-11T21:04:48Z,7.3,asipona,ok,648,0,schedule,
+2026-11-11T21:04:48Z,2026-11-11T21:04:51Z,2.3,banxico,ok,1,1,schedule,

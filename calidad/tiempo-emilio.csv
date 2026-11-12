@@ -5,3 +5,10 @@ fecha,inicio,fin,interrupcion_min,fase,actividad
 2026-11-08,19:05,19:08,0,codigo,Extractor de Banxico SIE (tipo de cambio FIX) y captura del historico 2021-2026
 2026-11-08,19:10,19:20,0,documentacion,Borrador de docs/E0/propuesta.md (ficha plan de recopilacion analiticas objetivos de calidad)
 2026-11-08,19:25,19:40,0,documentacion,Revision de terminos de uso gob.mx y Banxico; ficha ENTREGA.md; ajustes a la propuesta
+2026-11-12,13:00,13:15,0,planeacion,Revision del avance de E1 en main y reparto de trabajo con prompts para cada integrante
+2026-11-12,13:15,13:30,0,documentacion,Actualizar entrevista E0 con respuestas del transportista nacional (P3 de la local)
+2026-11-12,16:55,17:10,0,codigo,Fiabilidad (MTBF MTTR disponibilidad) y respaldo de bronce con pruebas
+2026-11-12,17:10,17:17,0,documentacion,Seguridad (gitleaks pip-audit) requerimientos verificables y plan SQA IEEE 730
+2026-11-12,17:17,17:27,0,codigo,Tablero Streamlit y verificacion con Playwright en escritorio y movil
+2026-11-12,17:27,17:31,0,documentacion,PDF de avance E1 y prompt para el agente de Gabriel
+2026-11-12,17:31,17:55,0,revision,Commit push y pull request 1 con CI en verde

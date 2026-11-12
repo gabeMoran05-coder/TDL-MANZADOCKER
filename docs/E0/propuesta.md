@@ -38,7 +38,7 @@ Se entrevistó a dos personas del sector con las mismas cinco preguntas. Por sug
 | Entrevistador | Karol Gabriel Morán Aréchiga | Karol Gabriel Morán Aréchiga |
 | Fecha y hora | 10 de noviembre de 2026, alrededor de las 12:30 | 8 de noviembre de 2026, alrededor de las 16:50 |
 | Medio | Mensajes de WhatsApp | Mensajes de WhatsApp |
-| Duración | _[PENDIENTE: confirmar, mínimo 15 minutos]_ | 15 minutos |
+| Duración | No medible: entrevista asíncrona. Se le enviaron las preguntas por WhatsApp y las respondió por escrito cuando pudo, sin registro del tiempo que dedicó | 15 minutos |
 | Consentimiento para usar notas anónimas | _[PENDIENTE: confirmar]_ | Sí |
 
 | # | Pregunta | Respuesta (resumen) | Fuente | Lo que aprendimos |

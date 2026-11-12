@@ -36,7 +36,7 @@ Se entrevistó a dos personas del sector con las mismas cinco preguntas. Por sug
 |---|---|---|
 | Perfil | Transportista de carga federal que también realiza maniobras locales en Manzanillo | Dueña de una transportista local en Manzanillo |
 | Entrevistador | Karol Gabriel Morán Aréchiga | Karol Gabriel Morán Aréchiga |
-| Fecha y hora | _[PENDIENTE: confirmar]_ | 8 de noviembre de 2026, alrededor de las 16:50 |
+| Fecha y hora | 10 de noviembre de 2026, alrededor de las 12:30 | 8 de noviembre de 2026, alrededor de las 16:50 |
 | Medio | Mensajes de WhatsApp | Mensajes de WhatsApp |
 | Duración | _[PENDIENTE: confirmar, mínimo 15 minutos]_ | 15 minutos |
 | Consentimiento para usar notas anónimas | _[PENDIENTE: confirmar]_ | Sí |

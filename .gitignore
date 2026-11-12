@@ -25,3 +25,6 @@ desktop.ini
 
 # Temporales de descarga (los datos de bronce SÍ se versionan)
 data/_tmp/
+
+# Capturas y registros de pruebas con Playwright (evidencia local, no se versiona)
+.playwright-mcp/

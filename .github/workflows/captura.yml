@@ -40,6 +40,27 @@ jobs:
         continue-on-error: true
         run: python -m src.limpieza
 
+      - name: Medir fiabilidad y disponibilidad con la bitácora
+        if: always()
+        continue-on-error: true
+        run: python -m src.fiabilidad
+
+      - name: Respaldar Bronce y verificar la restauración
+        if: always()
+        continue-on-error: true
+        run: |
+          python -m src.respaldo crear --salida "$RUNNER_TEMP/respaldo_bronce.zip"
+          python -m src.respaldo verificar "$RUNNER_TEMP/respaldo_bronce.zip"
+
+      - name: Conservar el respaldo de Bronce (90 días)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: respaldo-bronce-${{ github.run_id }}
+          path: ${{ runner.temp }}/respaldo_bronce.zip
+          retention-days: 90
+          if-no-files-found: warn
+
       - name: Guardar datos y bitácora en el repositorio
         run: |
           git config user.name  "tdl-captura-bot"

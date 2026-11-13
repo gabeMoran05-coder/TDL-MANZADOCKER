@@ -54,4 +54,6 @@ Para Emilio: se propone sustituir «19 de cada 20 meses» del tablero por la fra
 
 Incidencias propuestas para confirmar en PSP: escapes al generar dos celdas (sintaxis), argumento `old_names` retirado de AutoReg 0.15 (interfaz) y lanzador Jupyter bloqueado (entorno). Ya están resueltas/verificadas; no se asignan autoría personal, minutos ni registros CSV sin confirmación.
 
+Se corrigió además la regla Git que normalizaba PNG como texto (construcción): las siete figuras se marcan binarias y se verifica su legibilidad también como objetos Git.
+
 **Codex (OpenAI)** asistió en programación, ejecución y redacción. Las cifras proceden de la ejecución; el notebook enlaza las referencias primarias de statsmodels.

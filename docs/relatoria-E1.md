@@ -71,6 +71,8 @@ La correlación con buques es contemporánea; no se encontraron anticipaciones s
 
 La verificación detectó escapes incorrectos al generar dos celdas y un argumento `old_names` retirado en AutoReg 0.15. Se corrigieron, se validó la sintaxis con Ruff y se ejecutó nuevamente el notebook completo sin errores de celda. Windows bloqueó `jupyter.exe`; se utilizó el punto de entrada oficial `python -m nbconvert`, sin cambiar la política del sistema. Son incidencias propuestas a Gabriel para confirmar como sintaxis, interfaz y entorno; no se inventan tiempos ni se registran como defectos personales automáticamente.
 
+La revisión de los objetos publicados encontró que `.gitattributes` normalizaba las figuras PNG como texto. Se corrigió con una regla binaria, se recuperaron los bytes originales y se añadió una prueba de legibilidad. Se propone como incidencia de construcción para confirmar en PSP, sin atribuir horas ni autoría personal automáticamente.
+
 ### 5. Qué aprendimos de cada materia
 
 **Estadística:** ADF depende de tendencia y rezagos; rechazar una prueba no demuestra todos los supuestos. El menor MAPE no implica menor RMSE, y seis meses no establecen un ganador definitivo. Los residuos no rechazan Ljung-Box/normalidad/varianza en los contrastes usados, pero la varianza móvil cambia.

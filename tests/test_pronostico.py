@@ -10,6 +10,7 @@ from pathlib import Path
 import nbformat
 import numpy as np
 import pandas as pd
+from PIL import Image
 
 RAIZ = Path(__file__).resolve().parents[1]
 COLUMNAS = ["fecha", "tipo", "valor", "li_95", "ls_95", "modelo"]
@@ -84,3 +85,13 @@ def test_notebook_guardado_tiene_salidas_y_cero_celdas_fallidas():
     assert any(
         o.output_type == "display_data" and "image/png" in o.data for c in celdas for o in c.outputs
     )
+
+
+def test_figuras_pronostico_son_png_legibles():
+    figuras = sorted((RAIZ / "docs/E1/figuras").glob("pronostico_*.png"))
+    assert len(figuras) == 7
+    for figura in figuras:
+        assert figura.read_bytes().startswith(b"\x89PNG\r\n\x1a\n")
+        with Image.open(figura) as imagen:
+            assert imagen.format == "PNG"
+            imagen.verify()

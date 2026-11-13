@@ -12,3 +12,4 @@ calidad/e1/** text eol=lf
 calidad/bitacora_pipeline.csv text eol=lf
 docs/E1/** text eol=lf
 docs/relatoria-E1.md text eol=lf
+docs/E1/figuras/*.png binary

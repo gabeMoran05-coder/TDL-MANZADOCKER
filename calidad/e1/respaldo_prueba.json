@@ -1,0 +1,11 @@
+{
+  "zip": "respaldo_bronce.zip",
+  "archivos_verificados": 17,
+  "bytes": 2803570,
+  "comparado_con_bronce_vivo": true,
+  "errores": [],
+  "ok": true,
+  "probado_utc": "2026-11-12T23:24:43Z",
+  "zip_bytes": 2269434,
+  "manifiesto_sha256": "5b5d7bd412479860cd8b23bfe20ddd6b4408eafbf5db4c09778c325f9dbe6d83"
+}

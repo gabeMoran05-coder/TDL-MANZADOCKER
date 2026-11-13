@@ -16,8 +16,8 @@
 | Sector | Logística portuaria: movimiento de contenedores |
 | Región | Puerto de Manzanillo, Colima |
 | Pregunta central | ¿Cuántos contenedores (TEU) moverá el Puerto de Manzanillo el próximo mes y en qué temporadas se concentra la actividad? |
-| Cliente potencial | Propietarias y propietarios de transportistas locales que operan en Manzanillo. Se entrevistó a una dueña de una transportista local; su nombre y contacto se omiten en el repositorio público. |
-| Quién pagaría por la respuesta | La empresa transportista es un cliente potencial. La entrevistada pidió información por terminal, pero no confirmó una compra ni un monto de pago. La expresión «valdría un 50%» queda pendiente de aclaración. |
+| Cliente potencial | Empresas de autotransporte de carga que operan en el Puerto de Manzanillo, tanto de carga federal (nacional) como de maniobras locales. Se entrevistó a un transportista nacional (entrevistado principal) y a una transportista local; sus nombres y contactos se omiten en el repositorio público. |
+| Quién pagaría por la respuesta | La empresa transportista que planea flota y programaciones. Ninguno de los entrevistados confirmó una compra ni un monto; el nacional pidió información diaria para maniobras locales y la local pidió desglose por terminal. El precio queda pendiente de validar. |
 | Motivo para contratar, como hipótesis | Complementar los avisos del cliente, que llegan uno o dos días antes, con contexto de actividad por terminal. Las citas y el tráfico son necesidades operativas señaladas; un pronóstico mensual de TEU no permite por sí solo predecir retrasos ni viajes de una empresa. |
 | Modelo de negocio por validar | Reporte mensual o tablero por suscripción, con pronóstico e intervalo de predicción y comparativo por terminal. Precio, periodicidad preferida y disposición de pago pendientes. |
 
@@ -30,28 +30,28 @@
 
 ## 2. Entrevista con el sector
 
-La entrevista se realizó mediante mensajes de WhatsApp y duró **15 minutos**, según lo confirmado por Gabriel. Se documentan las cinco preguntas y las respuestas recibidas de una persona del sector.
+Se entrevistó a dos personas del sector con las mismas cinco preguntas. Por sugerencia del docente, **se usan como principales las respuestas del transportista nacional**. Este no respondió la pregunta 3 (dijo no entenderla), así que **para la pregunta 3 se usa la respuesta de la transportista local**, señalada como tal en la tabla. Las identidades y los datos de contacto se omiten.
 
-| Dato | Valor |
-|---|---|
-| Persona entrevistada | Entrevistada 1 · dueña de una transportista local en Manzanillo. Identidad y contacto omitidos. |
-| Entrevistador | Karol Gabriel Morán Aréchiga |
-| Fecha y hora aproximada | 8 de noviembre de 2026, alrededor de las 16:50, hora local de Manzanillo |
-| Medio | Mensajes de WhatsApp |
-| Duración | 15 minutos, confirmados por Gabriel |
-| Consentimiento para usar notas anónimas | Sí, confirmado por Gabriel. Se autoriza el uso de las notas de la entrevista para el proyecto. No se publican capturas ni datos de contacto. |
+| Dato | Entrevistado 2 · transportista nacional (principal) | Entrevistada 1 · transportista local (solo pregunta 3) |
+|---|---|---|
+| Perfil | Transportista de carga federal que también realiza maniobras locales en Manzanillo | Dueña de una transportista local en Manzanillo |
+| Entrevistador | Karol Gabriel Morán Aréchiga | Karol Gabriel Morán Aréchiga |
+| Fecha y hora | 10 de noviembre de 2026, alrededor de las 12:30 | 8 de noviembre de 2026, alrededor de las 16:50 |
+| Medio | Mensajes de WhatsApp | Mensajes de WhatsApp |
+| Duración | No medible: entrevista asíncrona. Se le enviaron las preguntas por WhatsApp y las respondió por escrito cuando pudo, sin registro del tiempo que dedicó | 15 minutos |
+| Consentimiento para usar notas anónimas | _[PENDIENTE: confirmar]_ | Sí |
 
-| # | Pregunta | Respuesta (resumen) | Lo que aprendimos |
-|---|---|---|---|
-| 1 | ¿Me puedes contar un caso reciente en el que hubo más o menos movimiento de carga del que esperaban? ¿Qué pasó en la operación de tu empresa? | Reportó más movimiento «en este mes» y que todo salió bien en la operación. | Un aumento de carga no implica necesariamente fallas. La respuesta no cuantifica el aumento ni el error respecto de lo esperado. |
-| 2 | Cuando esperan más movimiento, ¿qué cambian en camiones, turnos o programación y con cuánta anticipación necesitan saberlo? | Indicó: «En el transporte federal no hay turnos». | Debemos adaptar el lenguaje a su operación. No se obtuvo una respuesta sobre cambios en flota ni sobre el plazo de anticipación que necesita. |
-| 3 | ¿Qué datos o señales consultan hoy para anticipar el volumen, cuáles les llegan tarde y qué tan seguido se equivocan? | El cliente avisa al transportista uno o dos días antes. | Los avisos del cliente son una señal operativa de corto plazo. No se informaron otras fuentes ni una frecuencia de errores. |
-| 4 | Cuando se retrasa un viaje, ¿qué influye más: el volumen de carga, las citas en terminal, el clima u otro factor? | Señaló las citas en terminal y el tráfico en carretera. | El volumen portuario no explica todos los retrasos. Para estudiar citas y tráfico harían falta fuentes adicionales, fuera del alcance de las dos fuentes iniciales. |
-| 5 | Si tuvieras un tablero para planear la operación, ¿qué tendría que mostrar (mensual, semanal, por terminal?) y cuánto valdría para ti o tu empresa? | Solicitó información «por terminal» y respondió que «valdría un 50%». | El desglose por terminal sí tiene interés. El porcentaje carece de base y unidad; no equivale a un precio, ahorro esperado ni compromiso de pago. La frecuencia deseada sigue pendiente. |
+| # | Pregunta | Respuesta (resumen) | Fuente | Lo que aprendimos |
+|---|---|---|---|---|
+| 1 | ¿Me puedes contar un caso reciente en el que hubo más o menos movimiento de carga del que esperaban? ¿Qué pasó en la operación de tu empresa? | Bajó la entrada de mercancía por mal tiempo en Asia (tifones en Japón, China, Corea): no llegaba mercancía, «no había importaciones». | Nacional | El volumen del puerto depende de eventos lejanos al origen de la carga, no solo de la demanda local. Una caída brusca en la serie puede ser real y no un error de datos; por eso los atípicos se marcan y no se borran. Falta ubicar con datos el mes al que se refiere. |
+| 2 | Cuando esperan más movimiento, ¿qué cambian en camiones, turnos o programación y con cuánta anticipación necesitan saberlo? | Ajustan las programaciones; «no se sabe con cuánto tiempo de anticipación». | Nacional | La forma de reaccionar es reprogramar. Hoy no tienen un plazo de anticipación definido: un pronóstico con horizonte claro (1 a 3 meses) aporta algo que no tienen. |
+| 3 | ¿Qué datos o señales consultan hoy para anticipar el volumen, cuáles les llegan tarde y qué tan seguido se equivocan? | El cliente avisa al transportista uno o dos días antes. | **Local** (el nacional no la entendió) | La única señal que reciben es de muy corto plazo. No se informaron otras fuentes ni una frecuencia de errores. |
+| 4 | Cuando se retrasa un viaje, ¿qué influye más: el volumen de carga, las citas en terminal, el clima u otro factor? | El volumen de carga: cuando hay más despachos se acumula el tráfico y «se hace el relajo». | Nacional | El entrevistado relaciona más volumen con congestión. Es una hipótesis útil para el observatorio, no un hecho demostrado: nuestros datos no miden tráfico ni tiempos de espera. |
+| 5 | Si tuvieras un tablero para planear la operación, ¿qué tendría que mostrar (mensual, semanal, por terminal) y cuánto valdría para ti o tu empresa? | Información diaria, «en el caso de los que hacemos maniobras locales». No respondió cuánto valdría. | Nacional | Para las maniobras locales se necesita detalle diario, y los datos oficiales del puerto son mensuales. El pronóstico mensual sirve para planear flota y contratos, no para la operación de cada día. El valor económico sigue sin respuesta. |
 
-**Conclusión de la entrevista:** identificamos a una propietaria de transportista como cliente potencial y una necesidad concreta de comparar terminales. Conservamos la pregunta de pronóstico mensual como contexto para planear, complementario a los avisos que llegan uno o dos días antes. La entrevista no demuestra que más TEU provoquen retrasos ni que la entrevistada pagaría una cantidad específica. El tablero deberá explicar su alcance, mostrar el último mes publicado y distinguir el movimiento del puerto de la demanda particular de cada empresa.
+**Conclusión de la entrevista:** el transportista nacional confirma que el volumen del puerto cambia por causas externas (clima en Asia) y que, cuando sube, se congestiona la operación. Hoy reprograman sin saber con cuánta anticipación, y la única señal es el aviso del cliente con uno o dos días. Eso justifica un pronóstico mensual con intervalo como herramienta de planeación. A la vez, marca un límite honesto: para las maniobras locales piden información diaria, que el observatorio no puede dar con fuentes mensuales.
 
-**Seguimiento pendiente:** aclarar a qué se refiere el 50%, la periodicidad del tablero y quién decidiría su contratación. No se agrega una sexta pregunta como si ya hubiera sido realizada.
+**Seguimiento pendiente:** cuánto pagaría y quién decide la contratación (ninguno de los dos entrevistados lo respondió con una cifra), y si un pronóstico semanal o mensual por terminal le serviría para planear.
 
 ## 3. Preguntas analíticas
 

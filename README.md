@@ -46,13 +46,23 @@ Primera ejecución manual verificada: [Captura programada, 9 de noviembre de 202
 
 El pipeline valida contratos estrictos con Pandera, documenta faltantes e imputación causal, marca atípicos, genera Min-Max y Z-Score sin usar los seis meses de prueba, discretiza actividad e integra el FIX diario a frecuencia mensual. Los inválidos conservan contenido y motivo en `data/cuarentena/e1/`; Bronce se mantiene sin cambios. El [resumen automático](calidad/e1/resumen.json) contiene hashes, versiones, conteos y parámetros de la captura procesada.
 
+## Entrega E1 · Calidad en los Sistemas de Información
+
+[Fiabilidad y disponibilidad](docs/E1/fiabilidad.md) · [Seguridad](docs/E1/seguridad.md) · [Requerimientos verificables](docs/E1/requerimientos.md) · [Plan SQA (IEEE 730)](docs/E1/plan-sqa.md)
+
+```bash
+python -m src.fiabilidad          # tasa de éxito, MTBF, MTTR y disponibilidad -> calidad/e1/fiabilidad.json
+python -m src.respaldo probar     # respaldo de Bronce + restauración + comparación SHA-256
+```
+La captura diaria recalcula la fiabilidad y sube un respaldo verificado de Bronce como artefacto de Actions (90 días). La CI corre gitleaks y pip-audit en cada push.
+
 ## Estructura
 ```
 docs/          fichas de entrega (E0..E4), relatorías, plan SQA, ética, auditorías
 calidad/       registros PSP de defectos y de tiempo (uno por integrante) y bitácora de captura
 extractores/   un módulo por fuente (base.py = extractor ético)
 pipeline/      bronce -> plata -> oro, puertas de calidad
-src/           implementación E1: limpieza, preprocesamiento y contratos Pandera
+src/           implementación E1: limpieza, preprocesamiento, contratos Pandera, fiabilidad y respaldo
 data/          bronce, plata, oro, cuarentena
 laboratorio/   notebooks: series de tiempo, experimento, multivariado
 tablero/       Streamlit
@@ -61,7 +71,13 @@ tests/         pruebas automáticas
 ```
 
 ## Tablero público
-_Pendiente (E1)._
+**URL:** _pendiente de publicar en Streamlit Community Cloud._
+
+```bash
+pip install -r tablero/requirements.txt
+streamlit run tablero/app.py
+```
+Muestra el pronóstico de TEU del siguiente mes con su intervalo del 95%, la serie mensual y el resultado de la puerta de calidad. Lee `data/oro/pronostico_teu.csv`; mientras ese archivo no exista, usa `tablero/datos_ejemplo/pronostico_teu.csv` y muestra un aviso de que es un ejemplo.
 
 ## Uso de IA generativa
 Se declara en cada relatoría: herramienta y para qué se usó.

@@ -1,0 +1,8 @@
+# Tema fijo claro: los colores de la gráfica (azul #2a78d6, rejilla #e1e0d9)
+# están elegidos para fondo claro.
+[theme]
+base = "light"
+primaryColor = "#2a78d6"
+
+[browser]
+gatherUsageStats = false

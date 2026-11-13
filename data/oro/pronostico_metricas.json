@@ -1,0 +1,965 @@
+{
+  "objetivo": "teu_total",
+  "unidad": "TEU",
+  "ganador": "SES",
+  "criterio_seleccion": "MAPE; desempate RMSE y MAE",
+  "modelos": {
+    "SES": {
+      "MAE": 24120.5,
+      "RMSE": 30033.687923477097,
+      "MAPE": 6.482439701938063
+    },
+    "Holt-Winters": {
+      "MAE": 23484.11434152209,
+      "RMSE": 27898.446970907058,
+      "MAPE": 6.510722740115743
+    },
+    "SARIMA": {
+      "MAE": 24973.00668040501,
+      "RMSE": 27188.330064566326,
+      "MAPE": 6.88489986125085
+    },
+    "Holt": {
+      "MAE": 25025.627568643802,
+      "RMSE": 27414.61107336349,
+      "MAPE": 6.89180698124565
+    }
+  },
+  "entrenamiento": {
+    "inicio": "2021-01-01",
+    "fin": "2026-04-01",
+    "n": 64
+  },
+  "prueba": {
+    "inicio": "2026-05-01",
+    "fin": "2026-10-01",
+    "n": 6
+  },
+  "datos_sha256": "d31a10301d9634e66cc0a3cdc26a4983ce621fd604107e0d076fa2bb431b775f",
+  "parametros_limpieza_sha256": "db69e75b4b4a502d7c54fac27f6c5db797c3d2ae9f051980f5a26423f3de0df4",
+  "versiones": {
+    "statsmodels": "0.15.0",
+    "pandas": "3.0.5",
+    "numpy": "2.5.2",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.1"
+  },
+  "caracterizacion": {
+    "pendiente_lineal_entrenamiento_teu_mes": 1086.1625000000029,
+    "minimo_fecha": "2023-02",
+    "minimo_teu": 251937.0,
+    "maximo_fecha": "2026-07",
+    "maximo_teu": 384691.0,
+    "variacion_interanual_min_pct": -10.830377576978833,
+    "variacion_interanual_max_pct": 28.47857140467611
+  },
+  "descomposicion": {
+    "elegida": "additive",
+    "comparacion": [
+      {
+        "descomposicion": "additive",
+        "RMSE_reconstruccion_TEU": 12219.41383846123,
+        "meses_comparables": 52
+      },
+      {
+        "descomposicion": "multiplicative",
+        "RMSE_reconstruccion_TEU": 12339.833197425736,
+        "meses_comparables": 52
+      }
+    ],
+    "perfil_mensual": {
+      "1": -11227.908159722223,
+      "2": -22268.168576388893,
+      "3": 8332.883506944449,
+      "4": -6188.803993055565,
+      "5": -4575.8456597222075,
+      "6": -4864.376909722222,
+      "7": 9087.179340277771,
+      "8": 12955.08767361112,
+      "9": -4154.645659722216,
+      "10": 15120.696006944436,
+      "11": 5511.175173611106,
+      "12": 2272.727256944449
+    }
+  },
+  "adf": [
+    {
+      "transformacion": "nivel_c",
+      "ADF": -1.994839505528614,
+      "p_valor": 0.288840370164829,
+      "rezagos": 1,
+      "n_util": 62,
+      "regresion": "c",
+      "critico_5pct": -2.909427202510825
+    },
+    {
+      "transformacion": "nivel_ct",
+      "ADF": -6.340762446402794,
+      "p_valor": 4.10890037e-07,
+      "rezagos": 0,
+      "n_util": 63,
+      "regresion": "ct",
+      "critico_5pct": -3.482636994764984
+    },
+    {
+      "transformacion": "d1",
+      "ADF": -5.008093215556884,
+      "p_valor": 2.1389037214e-05,
+      "rezagos": 6,
+      "n_util": 56,
+      "regresion": "c",
+      "critico_5pct": -2.914730625
+    },
+    {
+      "transformacion": "D1_12",
+      "ADF": -1.992082161646148,
+      "p_valor": 0.290055550342731,
+      "rezagos": 12,
+      "n_util": 39,
+      "regresion": "c",
+      "critico_5pct": -2.939108945868946
+    },
+    {
+      "transformacion": "d1_D1_12",
+      "ADF": -1.657456841857753,
+      "p_valor": 0.4531544216088,
+      "rezagos": 11,
+      "n_util": 39,
+      "regresion": "c",
+      "critico_5pct": -2.939108945868946
+    }
+  ],
+  "acf_significativos_puntuales": [
+    1,
+    6
+  ],
+  "pacf_significativos_puntuales": [
+    1,
+    7
+  ],
+  "ccf": {
+    "convencion": "corr(delta_TEU_t filtrado, delta_X_(t-k) filtrado); k>0 predictor anticipa",
+    "preblanqueo": {
+      "buques_contenerizada": {
+        "orden_ar": 2,
+        "AIC": 400.3835032042011,
+        "n_filtrado": 57
+      },
+      "fix_promedio_mxn_usd": {
+        "orden_ar": 2,
+        "AIC": 59.69380192724259,
+        "n_filtrado": 57
+      }
+    },
+    "ajuste_multiple": "Holm, 50 contrastes",
+    "resultados": [
+      {
+        "variable": "buques_contenerizada",
+        "rezago": -12,
+        "correlacion": 0.166059624185488,
+        "n_pares": 45,
+        "p_nominal": 0.275622514224187,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": -11,
+        "correlacion": -0.137166425880321,
+        "n_pares": 46,
+        "p_nominal": 0.363343688533309,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": -10,
+        "correlacion": 0.011145574850356,
+        "n_pares": 47,
+        "p_nominal": 0.940727980306332,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": -9,
+        "correlacion": -0.018904618245616,
+        "n_pares": 48,
+        "p_nominal": 0.898517854132127,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": -8,
+        "correlacion": 0.111779818177039,
+        "n_pares": 49,
+        "p_nominal": 0.444473808315152,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": -7,
+        "correlacion": -0.108937247832411,
+        "n_pares": 50,
+        "p_nominal": 0.451410921850441,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": -6,
+        "correlacion": -0.267331204979336,
+        "n_pares": 51,
+        "p_nominal": 0.057897511753364,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": -5,
+        "correlacion": -0.049853670796453,
+        "n_pares": 52,
+        "p_nominal": 0.725603941764668,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": -4,
+        "correlacion": -0.191885278530902,
+        "n_pares": 53,
+        "p_nominal": 0.168677783436624,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": -3,
+        "correlacion": -0.188714903017307,
+        "n_pares": 54,
+        "p_nominal": 0.171740554714201,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": -2,
+        "correlacion": 0.020772534092695,
+        "n_pares": 55,
+        "p_nominal": 0.880345704968924,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": -1,
+        "correlacion": -0.00920527801933,
+        "n_pares": 56,
+        "p_nominal": 0.946316046933168,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": 0,
+        "correlacion": 0.683171601492314,
+        "n_pares": 57,
+        "p_nominal": 4.765707e-09,
+        "p_holm": 2.38285365e-07,
+        "significativo_holm": true
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": 1,
+        "correlacion": -0.094610914369805,
+        "n_pares": 56,
+        "p_nominal": 0.487937542882298,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": 2,
+        "correlacion": 0.043349224719929,
+        "n_pares": 55,
+        "p_nominal": 0.753331139104234,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": 3,
+        "correlacion": 0.107985694333727,
+        "n_pares": 54,
+        "p_nominal": 0.437017978038257,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": 4,
+        "correlacion": -0.033928544190649,
+        "n_pares": 53,
+        "p_nominal": 0.809413237591955,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": 5,
+        "correlacion": -0.044476010039197,
+        "n_pares": 52,
+        "p_nominal": 0.754220168793027,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": 6,
+        "correlacion": -0.384849707643263,
+        "n_pares": 51,
+        "p_nominal": 0.00529481334937,
+        "p_holm": 0.259445854119144,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": 7,
+        "correlacion": -0.049933201055941,
+        "n_pares": 50,
+        "p_nominal": 0.73057138877874,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": 8,
+        "correlacion": -0.032939586671156,
+        "n_pares": 49,
+        "p_nominal": 0.822223867543083,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": 9,
+        "correlacion": 0.020315264691446,
+        "n_pares": 48,
+        "p_nominal": 0.89098949016954,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": 10,
+        "correlacion": 0.104107297889419,
+        "n_pares": 47,
+        "p_nominal": 0.486177920335815,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": 11,
+        "correlacion": 0.21991925350054,
+        "n_pares": 46,
+        "p_nominal": 0.141951310884045,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "buques_contenerizada",
+        "rezago": 12,
+        "correlacion": 0.086279326933933,
+        "n_pares": 45,
+        "p_nominal": 0.573063845556711,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": -12,
+        "correlacion": 0.257830277671825,
+        "n_pares": 45,
+        "p_nominal": 0.08727475654469,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": -11,
+        "correlacion": -0.144037537202237,
+        "n_pares": 46,
+        "p_nominal": 0.33956889237682,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": -10,
+        "correlacion": -0.011804451811604,
+        "n_pares": 47,
+        "p_nominal": 0.937230879326161,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": -9,
+        "correlacion": 0.031988511597021,
+        "n_pares": 48,
+        "p_nominal": 0.829115467380329,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": -8,
+        "correlacion": -0.136167808350953,
+        "n_pares": 49,
+        "p_nominal": 0.350859527998926,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": -7,
+        "correlacion": 0.042328033379777,
+        "n_pares": 50,
+        "p_nominal": 0.770389886589088,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": -6,
+        "correlacion": -0.004928578855308,
+        "n_pares": 51,
+        "p_nominal": 0.972618228291476,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": -5,
+        "correlacion": 0.072862451019757,
+        "n_pares": 52,
+        "p_nominal": 0.607720942555074,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": -4,
+        "correlacion": -0.049423220411503,
+        "n_pares": 53,
+        "p_nominal": 0.725257005568459,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": -3,
+        "correlacion": 0.115150097080397,
+        "n_pares": 54,
+        "p_nominal": 0.407024882350462,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": -2,
+        "correlacion": -0.018319001090876,
+        "n_pares": 55,
+        "p_nominal": 0.894392729092106,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": -1,
+        "correlacion": -0.089469981647582,
+        "n_pares": 56,
+        "p_nominal": 0.511986146969606,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": 0,
+        "correlacion": 0.073918819010553,
+        "n_pares": 57,
+        "p_nominal": 0.584750174583928,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": 1,
+        "correlacion": 0.117075127476357,
+        "n_pares": 56,
+        "p_nominal": 0.390169265696258,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": 2,
+        "correlacion": -0.189043864413388,
+        "n_pares": 55,
+        "p_nominal": 0.166884242852866,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": 3,
+        "correlacion": -0.182559974721073,
+        "n_pares": 54,
+        "p_nominal": 0.186407673901203,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": 4,
+        "correlacion": 0.109624709374324,
+        "n_pares": 53,
+        "p_nominal": 0.434562069966316,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": 5,
+        "correlacion": 0.080897868356641,
+        "n_pares": 52,
+        "p_nominal": 0.568597933592129,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": 6,
+        "correlacion": -0.206010533262386,
+        "n_pares": 51,
+        "p_nominal": 0.146962223706508,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": 7,
+        "correlacion": 0.015268901148712,
+        "n_pares": 50,
+        "p_nominal": 0.91618323037501,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": 8,
+        "correlacion": 0.028794390717763,
+        "n_pares": 49,
+        "p_nominal": 0.844298636294667,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": 9,
+        "correlacion": 0.119395951014412,
+        "n_pares": 48,
+        "p_nominal": 0.418922495107037,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": 10,
+        "correlacion": -0.099247882495611,
+        "n_pares": 47,
+        "p_nominal": 0.506863718719491,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": 11,
+        "correlacion": -0.07082645229736,
+        "n_pares": 46,
+        "p_nominal": 0.639973012674548,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      },
+      {
+        "variable": "fix_promedio_mxn_usd",
+        "rezago": 12,
+        "correlacion": 0.075806008590784,
+        "n_pares": 45,
+        "p_nominal": 0.620652760843973,
+        "p_holm": 1.0,
+        "significativo_holm": false
+      }
+    ]
+  },
+  "sarima": {
+    "orden": [
+      2,
+      1,
+      1
+    ],
+    "orden_estacional": [
+      0,
+      0,
+      0,
+      12
+    ],
+    "tendencia": "c",
+    "busqueda": [
+      {
+        "p": 0,
+        "d": 1,
+        "q": 0,
+        "P": 0,
+        "D": 0,
+        "Q": 0,
+        "AIC": 569.0523550429557,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 0,
+        "d": 1,
+        "q": 0,
+        "P": 0,
+        "D": 0,
+        "Q": 1,
+        "AIC": 569.999684326877,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 0,
+        "d": 1,
+        "q": 0,
+        "P": 1,
+        "D": 0,
+        "Q": 0,
+        "AIC": 569.551242382032,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 0,
+        "d": 1,
+        "q": 0,
+        "P": 1,
+        "D": 0,
+        "Q": 1,
+        "AIC": 568.7846837398682,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 0,
+        "d": 1,
+        "q": 1,
+        "P": 0,
+        "D": 0,
+        "Q": 0,
+        "AIC": 545.1088367250604,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 0,
+        "d": 1,
+        "q": 1,
+        "P": 0,
+        "D": 0,
+        "Q": 1,
+        "AIC": 545.2666863909245,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 0,
+        "d": 1,
+        "q": 1,
+        "P": 1,
+        "D": 0,
+        "Q": 0,
+        "AIC": 544.8718540604218,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 0,
+        "d": 1,
+        "q": 1,
+        "P": 1,
+        "D": 0,
+        "Q": 1,
+        "AIC": 545.8281460260498,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 0,
+        "d": 1,
+        "q": 2,
+        "P": 0,
+        "D": 0,
+        "Q": 0,
+        "AIC": 545.3223177101961,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 0,
+        "d": 1,
+        "q": 2,
+        "P": 0,
+        "D": 0,
+        "Q": 1,
+        "AIC": 546.0727836150048,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 0,
+        "d": 1,
+        "q": 2,
+        "P": 1,
+        "D": 0,
+        "Q": 0,
+        "AIC": 545.8299684250757,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 1,
+        "d": 1,
+        "q": 0,
+        "P": 0,
+        "D": 0,
+        "Q": 0,
+        "AIC": 553.1730682084964,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 1,
+        "d": 1,
+        "q": 0,
+        "P": 0,
+        "D": 0,
+        "Q": 1,
+        "AIC": 552.7409035072304,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 1,
+        "d": 1,
+        "q": 0,
+        "P": 1,
+        "D": 0,
+        "Q": 0,
+        "AIC": 552.0188370675153,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 1,
+        "d": 1,
+        "q": 0,
+        "P": 1,
+        "D": 0,
+        "Q": 1,
+        "AIC": 552.0289450332156,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 1,
+        "d": 1,
+        "q": 1,
+        "P": 0,
+        "D": 0,
+        "Q": 0,
+        "AIC": 544.5304227741876,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 1,
+        "d": 1,
+        "q": 1,
+        "P": 0,
+        "D": 0,
+        "Q": 1,
+        "AIC": 545.2348648545909,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 1,
+        "d": 1,
+        "q": 1,
+        "P": 1,
+        "D": 0,
+        "Q": 0,
+        "AIC": 544.9359460600308,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 1,
+        "d": 1,
+        "q": 2,
+        "P": 0,
+        "D": 0,
+        "Q": 0,
+        "AIC": 546.1213852917464,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": "Non-invertible starting MA parameters found. Using zeros as starting parameters.; Non-stationary starting autoregressive parameters found. Using zeros as starting parameters."
+      },
+      {
+        "p": 2,
+        "d": 1,
+        "q": 0,
+        "P": 0,
+        "D": 0,
+        "Q": 0,
+        "AIC": 551.2459679764293,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 2,
+        "d": 1,
+        "q": 0,
+        "P": 0,
+        "D": 0,
+        "Q": 1,
+        "AIC": 550.9913366649705,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 2,
+        "d": 1,
+        "q": 0,
+        "P": 1,
+        "D": 0,
+        "Q": 0,
+        "AIC": 550.4459219622386,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      },
+      {
+        "p": 2,
+        "d": 1,
+        "q": 1,
+        "P": 0,
+        "D": 0,
+        "Q": 0,
+        "AIC": 544.4697156827798,
+        "convergio": true,
+        "admisible": true,
+        "advertencias": ""
+      }
+    ]
+  },
+  "residuos": {
+    "muestra": "reentrenamiento completo, excluidos primeros 12 o burn mayor",
+    "n": 58,
+    "model_df_ljungbox": 0,
+    "ljungbox": [
+      {
+        "rezago": 6,
+        "lb_stat": 11.155775630320203,
+        "lb_pvalue": 0.083679672664413
+      },
+      {
+        "rezago": 12,
+        "lb_stat": 12.933475987854031,
+        "lb_pvalue": 0.373894442217798
+      },
+      {
+        "rezago": 24,
+        "lb_stat": 26.74425515957224,
+        "lb_pvalue": 0.316514542951661
+      }
+    ],
+    "jarque_bera_p": 0.545599903163636,
+    "arch_lm_6_p": 0.8251102140791384,
+    "levene_mitades_p": 0.9950127045592408,
+    "razon_varianza_segunda_primera": 1.0846245702047383,
+    "razon_varianza_movil_max_min": 5.341637336247315
+  },
+  "intervalo": {
+    "nivel_nominal": 0.95,
+    "horizonte_meses": 3,
+    "metodo": "ETS aditivo: intervalo analítico gaussiano de predicción",
+    "advertencias": [
+      "No se rechazaron estos diagnósticos al 5%; su potencia es limitada y no validan por sí solos cobertura del 95%.",
+      "Los intervalos son condicionales a parámetros y modelo estimados; no incorporan plenamente incertidumbre de selección ni cambios estructurales.",
+      "La varianza móvil máxima es 5.34 veces la mínima: revisar cambios locales aunque las pruebas globales no rechacen."
+    ],
+    "replicas_si_simulado": null
+  },
+  "frase_cliente": "Con los datos publicados hasta octubre de 2026, estimamos 344,909 TEU para noviembre de 2026; el intervalo nominal del 95% va de 307,550 a 382,269 TEU, bajo los supuestos del modelo. Es una referencia de incertidumbre para planear capacidad del puerto, no una garantía ni el volumen de tu empresa; combínala con los avisos de tus clientes y revisa las alertas de residuos.",
+  "pronostico": [
+    {
+      "fecha": "2026-11-01T00:00:00.000",
+      "tipo": "pronostico",
+      "valor": 344909.2570759568,
+      "li_95": 307549.9497284032,
+      "ls_95": 382268.56442351046,
+      "modelo": "SES"
+    },
+    {
+      "fecha": "2026-12-01T00:00:00.000",
+      "tipo": "pronostico",
+      "valor": 344909.2570759568,
+      "li_95": 305908.76921577123,
+      "ls_95": 383909.7449361424,
+      "modelo": "SES"
+    },
+    {
+      "fecha": "2027-01-01T00:00:00.000",
+      "tipo": "pronostico",
+      "valor": 344909.2570759568,
+      "li_95": 304333.91652068857,
+      "ls_95": 385484.5976312251,
+      "modelo": "SES"
+    }
+  ]
+}

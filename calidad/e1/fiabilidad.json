@@ -1,100 +1,100 @@
 {
-  "generado_utc": "2026-11-12T23:24:42Z",
-  "corte_utc": "2026-11-11T21:04:51Z",
+  "generado_utc": "2026-11-13T20:47:29Z",
+  "corte_utc": "2026-11-13T20:47:25Z",
   "bitacora": "calidad/bitacora_captura.csv",
   "definiciones": "ver docs/E1/fiabilidad.md",
   "objetivo_oc1": 0.95,
   "programadas": {
-    "ejecuciones": 3,
-    "exitosas": 3,
+    "ejecuciones": 5,
+    "exitosas": 5,
     "fallas": 0,
     "tasa_exito": 1.0,
-    "horas_observadas": 45.79,
+    "horas_observadas": 93.5,
     "mtbf_h": null,
     "mttr_h": null,
     "disponibilidad": 1.0,
-    "nota": "sin fallas en 45.8 h observadas: el MTBF no es medible todavia (cota inferior 45.8 h)"
+    "nota": "sin fallas en 93.5 h observadas: el MTBF no es medible todavia (cota inferior 93.5 h)"
   },
   "manuales": {
     "ejecuciones": 3,
     "exitosas": 3,
     "fallas": 0,
     "tasa_exito": 1.0,
-    "horas_observadas": 68.03,
+    "horas_observadas": 115.73,
     "mtbf_h": null,
     "mttr_h": null,
     "disponibilidad": 1.0,
-    "nota": "sin fallas en 68.0 h observadas: el MTBF no es medible todavia (cota inferior 68.0 h)"
+    "nota": "sin fallas en 115.7 h observadas: el MTBF no es medible todavia (cota inferior 115.7 h)"
   },
   "todas": {
-    "ejecuciones": 6,
-    "exitosas": 6,
+    "ejecuciones": 8,
+    "exitosas": 8,
     "fallas": 0,
     "tasa_exito": 1.0,
-    "horas_observadas": 68.03,
+    "horas_observadas": 115.73,
     "mtbf_h": null,
     "mttr_h": null,
     "disponibilidad": 1.0,
-    "nota": "sin fallas en 68.0 h observadas: el MTBF no es medible todavia (cota inferior 68.0 h)"
+    "nota": "sin fallas en 115.7 h observadas: el MTBF no es medible todavia (cota inferior 115.7 h)"
   },
   "por_fuente": {
     "asipona": {
       "todas": {
-        "ejecuciones": 7,
-        "exitosas": 7,
+        "ejecuciones": 9,
+        "exitosas": 9,
         "fallas": 0,
         "tasa_exito": 1.0,
-        "horas_observadas": 68.03,
+        "horas_observadas": 115.73,
         "mtbf_h": null,
         "mttr_h": null,
         "disponibilidad": 1.0,
-        "nota": "sin fallas en 68.0 h observadas: el MTBF no es medible todavia (cota inferior 68.0 h)"
+        "nota": "sin fallas en 115.7 h observadas: el MTBF no es medible todavia (cota inferior 115.7 h)"
       },
       "programadas": {
-        "ejecuciones": 3,
-        "exitosas": 3,
+        "ejecuciones": 5,
+        "exitosas": 5,
         "fallas": 0,
         "tasa_exito": 1.0,
-        "horas_observadas": 45.79,
+        "horas_observadas": 93.5,
         "mtbf_h": null,
         "mttr_h": null,
         "disponibilidad": 1.0,
-        "nota": "sin fallas en 45.8 h observadas: el MTBF no es medible todavia (cota inferior 45.8 h)"
+        "nota": "sin fallas en 93.5 h observadas: el MTBF no es medible todavia (cota inferior 93.5 h)"
       }
     },
     "banxico": {
       "todas": {
-        "ejecuciones": 7,
-        "exitosas": 7,
+        "ejecuciones": 9,
+        "exitosas": 9,
         "fallas": 0,
         "tasa_exito": 1.0,
-        "horas_observadas": 67.96,
+        "horas_observadas": 115.67,
         "mtbf_h": null,
         "mttr_h": null,
         "disponibilidad": 1.0,
-        "nota": "sin fallas en 68.0 h observadas: el MTBF no es medible todavia (cota inferior 68.0 h)"
+        "nota": "sin fallas en 115.7 h observadas: el MTBF no es medible todavia (cota inferior 115.7 h)"
       },
       "programadas": {
-        "ejecuciones": 3,
-        "exitosas": 3,
+        "ejecuciones": 5,
+        "exitosas": 5,
         "fallas": 0,
         "tasa_exito": 1.0,
-        "horas_observadas": 45.79,
+        "horas_observadas": 93.5,
         "mtbf_h": null,
         "mttr_h": null,
         "disponibilidad": 1.0,
-        "nota": "sin fallas en 45.8 h observadas: el MTBF no es medible todavia (cota inferior 45.8 h)"
+        "nota": "sin fallas en 93.5 h observadas: el MTBF no es medible todavia (cota inferior 93.5 h)"
       }
     }
   },
   "calendario": {
-    "dias_periodo": 3,
-    "dias_con_exito": 3,
+    "dias_periodo": 5,
+    "dias_con_exito": 5,
     "cumplimiento": 1.0,
     "dias_sin_captura": [],
     "retraso_h": {
       "minimo": 6.71,
-      "promedio": 7.69,
+      "promedio": 7.44,
       "maximo": 9.29
     }
   },

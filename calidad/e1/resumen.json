@@ -16,22 +16,24 @@
     }
   },
   "banxico": {
-    "aceptados": 1476,
-    "entrada": 1476,
+    "aceptados": 1477,
+    "entrada": 1477,
     "imputados": 0,
     "rechazados": 0
   },
   "codigo_sha256": {
     "__init__.py": "1b1f33f78a7d146333920bccabed02c520ade64dd17377f3fdd33f02cb7db7c2",
     "calidad.py": "1467559c2772a8d66b0a250a9d7bc4e46bb1859940f4f74ec2e60cbed70f50e4",
+    "fiabilidad.py": "0550a3586544ebb73dc2bdedb86a987b107092ac194816aac9fd4683aa75f30f",
     "limpieza.py": "92d146ae96ffbe3f528d26b84cc189ec4b8776309ebcbca0499b8c023d482cfb",
-    "preprocesamiento.py": "639604417ffb416066c8bd4cd3e19c6bc84fff855aacb0541ecdb9729dd4bdbe"
+    "preprocesamiento.py": "639604417ffb416066c8bd4cd3e19c6bc84fff855aacb0541ecdb9729dd4bdbe",
+    "respaldo.py": "324d77451bed08013a85ff3f29bf89d7f253f29725ab464d05d467a93ed2c528"
   },
   "corte_entrenamiento": "2026-04-01",
-  "ejecucion_id": "1707e8c6d6b4c1cc",
+  "ejecucion_id": "8166c3a5779e7802",
   "entradas_sha256": {
     "data/bronce/asipona/em_mensual.csv": "d04eb674c8de3daa1da7947501b53b4dbf39505a928847142905e997a3e2feb6",
-    "data/bronce/banxico/tipo_cambio_fix.csv": "0f22fac72bb3687e5528b29085ae63ac74ffcaf5be8f56d9054fbd3ff50d5d40"
+    "data/bronce/banxico/tipo_cambio_fix.csv": "0f8f05e44598e549b84a48d9a5e9eb76638380ffb77a9cfad7dc81137fbad32a"
   },
   "estado": "ok",
   "meses_banxico": 71,
@@ -45,7 +47,7 @@
     "periodo_no_publicado": 11,
     "periodo_no_publicado; periodo_posterior_a_captura": 11
   },
-  "reduccion_banxico_pct": 95.1897,
+  "reduccion_banxico_pct": 95.193,
   "terminales_mes": 280,
   "versiones": {
     "numpy": "2.5.4",

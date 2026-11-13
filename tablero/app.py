@@ -150,10 +150,11 @@ def main() -> None:
                 f"{miles(siguiente['li_95'])} – {miles(siguiente['ls_95'])}")
     st.markdown(
         f"> En {siguiente['mes']} esperamos alrededor de **{miles(siguiente['valor'])} TEU**. "
-        f"De cada 20 meses como este, en unos 19 el movimiento real debería quedar entre "
-        f"**{miles(siguiente['li_95'])}** y **{miles(siguiente['ls_95'])}**. Úsalo para "
-        f"planear flota y contratos del mes; no reemplaza el aviso de tu cliente para la "
-        f"operación de cada día."
+        f"Si el puerto mantiene el comportamiento de los meses anteriores, lo más probable "
+        f"es que el movimiento real quede entre **{miles(siguiente['li_95'])}** y "
+        f"**{miles(siguiente['ls_95'])}** (rango del 95% según el modelo; no es una "
+        f"garantía). Úsalo para planear flota y contratos del mes; no reemplaza el aviso de "
+        f"tu cliente para la operación de cada día."
     )
 
     # --- La evidencia -----------------------------------------------------------------------

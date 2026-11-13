@@ -46,6 +46,12 @@ Primera ejecución manual verificada: [Captura programada, 9 de noviembre de 202
 
 El pipeline valida contratos estrictos con Pandera, documenta faltantes e imputación causal, marca atípicos, genera Min-Max y Z-Score sin usar los seis meses de prueba, discretiza actividad e integra el FIX diario a frecuencia mensual. Los inválidos conservan contenido y motivo en `data/cuarentena/e1/`; Bronce se mantiene sin cambios. El [resumen automático](calidad/e1/resumen.json) contiene hashes, versiones, conteos y parámetros de la captura procesada.
 
+## Entrega E1 · Análisis Estadístico
+
+[Resumen del pronóstico](docs/E1/pronostico.md) · [Notebook](laboratorio/E1_pronostico.ipynb) · [Métricas y diagnósticos](data/oro/pronostico_metricas.json) · [Figuras](docs/E1/figuras/)
+
+Cuatro modelos (SES, Holt, Holt-Winters y SARIMA) comparados en los últimos 6 meses; gana SES por MAPE (6.48%). Pronóstico de noviembre de 2026: 344,909 TEU, intervalo nominal del 95% de 307,550 a 382,269. Ficha completa de la entrega: [docs/E1/ENTREGA.md](docs/E1/ENTREGA.md).
+
 ## Entrega E1 · Calidad en los Sistemas de Información
 
 [Fiabilidad y disponibilidad](docs/E1/fiabilidad.md) · [Seguridad](docs/E1/seguridad.md) · [Requerimientos verificables](docs/E1/requerimientos.md) · [Plan SQA (IEEE 730)](docs/E1/plan-sqa.md)

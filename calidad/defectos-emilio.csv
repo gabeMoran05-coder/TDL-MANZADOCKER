@@ -1,3 +1,5 @@
 numero,fecha,tipo,fase_introducido,fase_eliminado,minutos_correccion,defecto_origen,descripcion
 1,2026-11-08,datos,codigo,pruebas,5,,"Reparacion de digitos partidos unia el 0 de DIC con el acumulado (0 17,399,502 -> 017,399,502); detectado porque la suma de meses de ton_contenerizada 2026 no cuadraba con el ACUMULADO"
 2,2026-11-08,asignacion,codigo,revision,2,,"En ExtractorEtico.get el timeout se sacaba de kwargs dentro del ciclo de reintentos; solo aplicaba en el primer intento"
+3,2026-11-12,funcion,diseno,pruebas,5,,"La cache del tablero no dependia de los archivos: si ya habia cargado el pronostico de ejemplo no detectaba el oficial al aparecer; detectado con la prueba de cambio de archivo en Playwright"
+4,2026-11-12,asignacion,codigo,revision,2,3,"La correccion del defecto 3 nombro el parametro de cache _firma; Streamlit excluye de la cache los parametros que empiezan con guion bajo, asi que no invalidaba nada"

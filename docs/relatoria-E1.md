@@ -44,3 +44,41 @@ En la preparación local faltaban dependencias de validación y cobertura; se pr
 [Ficha E1](E1/ENTREGA.md), [decisiones de limpieza](E1/limpieza.md), [scripts](../src/), [pruebas](../tests/test_e1.py), [resumen automático](../calidad/e1/resumen.json), [Plata](../data/plata/), [Oro](../data/oro/) y [cuarentena](../data/cuarentena/e1/).
 
 Se declara el uso de **Codex (OpenAI)** para programación, pruebas y redacción. Esta versión relata el trabajo de Ingeniería de Datos solicitado; no afirma haber completado los pronósticos ni el plan SQA de las otras materias.
+
+---
+
+## Anexo de Estadística · Gabriel · 12 de noviembre de 2026
+
+Este anexo se agrega sin sustituir la relatoría previa; Emilio lo unificará como Quality Lead.
+
+### 1. Qué nos propusimos
+
+Caracterizar y pronosticar `teu_total` de Oro con cuatro familias y el mismo corte de limpieza: 64 meses hasta abril de 2026 para ajustar y seis meses para comparar errores. Exportar un pronóstico de tres meses con un intervalo nominal del 95% y el contrato exacto del tablero.
+
+### 2. Qué hicimos
+
+El 12 de noviembre se actualizó `gabriel/e1` mediante `git pull --rebase origin main`. Se contrastaron diccionario, tabla Oro y parámetros; se ejecutó `laboratorio/E1_pronostico.ipynb`, con siete figuras y sus salidas guardadas, y se generaron CSV/JSON. El notebook no utiliza red ni tokens. Se agregaron dependencias y tres pruebas del contrato. Esta actividad fue asistida por Codex a solicitud de Gabriel; no se atribuye a trabajo manual de Emilio.
+
+No se conocen los horarios personales ni las interrupciones de esta sesión. Se conservan los registros PSP individuales sin nuevas filas; el tiempo del asistente y de la máquina no se presenta como tiempo personal.
+
+### 3. Qué decidimos y por qué
+
+La descomposición aditiva ajustó ligeramente mejor en entrenamiento. Se utiliza una diferencia regular y ninguna estacional para la búsqueda SARIMA, informando la sensibilidad ADF con tendencia. ACF/PACF orientan 23 candidatos; AIC elige SARIMA(2,1,1)×(0,0,0,12), sin parámetros estacionales, y la comparación externa elige SES por MAPE (6.4824%). El margen frente a Holt-Winters es pequeño; se mantienen las tres métricas para no ocultar resultados distintos.
+
+La correlación con buques es contemporánea; no se encontraron anticipaciones significativas tras preblanqueo y Holm. Los modelos son univariados y evitan solicitar buques o FIX futuros. El intervalo es condicional al modelo; no se convierte en promesa de 19/20 meses. Se propone ajustar esa frase del tablero durante la revisión de Emilio.
+
+### 4. Qué salió mal y cómo lo corregimos
+
+La verificación detectó escapes incorrectos al generar dos celdas y un argumento `old_names` retirado en AutoReg 0.15. Se corrigieron, se validó la sintaxis con Ruff y se ejecutó nuevamente el notebook completo sin errores de celda. Windows bloqueó `jupyter.exe`; se utilizó el punto de entrada oficial `python -m nbconvert`, sin cambiar la política del sistema. Son incidencias propuestas a Gabriel para confirmar como sintaxis, interfaz y entorno; no se inventan tiempos ni se registran como defectos personales automáticamente.
+
+### 5. Qué aprendimos de cada materia
+
+**Estadística:** ADF depende de tendencia y rezagos; rechazar una prueba no demuestra todos los supuestos. El menor MAPE no implica menor RMSE, y seis meses no establecen un ganador definitivo. Los residuos no rechazan Ljung-Box/normalidad/varianza en los contrastes usados, pero la varianza móvil cambia.
+
+**Ingeniería de Datos:** el corte y contrato de Oro permiten comparar modelos sin fuga de prueba. Las columnas exportadas, fechas, valores históricos e intervalos se verifican antes de alimentar el tablero; el hash señala el conjunto exacto usado.
+
+**Calidad:** la ejecución completa, las salidas persistidas y las pruebas aportan evidencia reproducible; la revisión cruzada y el cierre común continúan a cargo de Emilio.
+
+### 6. Evidencias y uso de IA
+
+[Notebook ejecutado](../laboratorio/E1_pronostico.ipynb), [resumen del pronóstico](E1/pronostico.md), [CSV](../data/oro/pronostico_teu.csv), [métricas y diagnósticos](../data/oro/pronostico_metricas.json), [figuras](E1/figuras/) y [pruebas](../tests/test_pronostico.py). Codex (OpenAI) se utilizó para código, ejecución, gráficos y redacción; todas las cifras se calcularon con Oro.

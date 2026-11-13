@@ -16,7 +16,7 @@ Que los datos pasaran solos de Bronce a Plata y Oro, sin borrar nada en silencio
 | 12/11, 13:00–13:30 | Emilio | Revisión del avance, reparto de E1; propuesta E0 con la entrevista al transportista nacional | 30 min |
 | 12/11, 16:55–17:55 | Emilio | Fiabilidad, respaldo de Bronce, seguridad, requerimientos, plan SQA, tablero; PR #1 | 60 min |
 | 12/11 (commits 20:11–20:12, unión 20:51) | Gabriel | Notebook de pronóstico, figuras, métricas, CSV para el tablero; PR #2 unido a `main` | No registrado en PSP |
-| 13/11 | Emilio | Revisión del PR #2, unión del PR #1, ficha, esta relatoría y tag | En registro de tiempo |
+| 13/11 | Emilio | Revisión del PR #2; unión de los PR #1 y #3; ficha, esta relatoría y tag | En registro de tiempo |
 
 Resultado: 626 de 648 registros del puerto aceptados y 22 en cuarentena (meses no publicados); 70 meses en Oro; SES pronostica 344,909 TEU para noviembre de 2026 (rango nominal 307,550–382,269); 4 de 4 capturas programadas exitosas; 54 pruebas con 97% de cobertura.
 
@@ -28,7 +28,7 @@ Resultado: 626 de 648 registros del puerto aceptados y 22 en cuarentena (meses n
 
 ## 4. ¿Qué salió mal y cómo lo corregimos?
 
-- **Proceso: los dos pull requests se unieron sin revisión previa.** El PR #2 lo unió Gabriel el 12/11 y el PR #1 Emilio el 13/11, por la hora de entrega. El PR #2 se revisó después (comentario del Quality Lead con la lista del plan SQA §7) y el PR #1 pasó la CI completa. *Corrección para E2:* activar la protección de `main` (hallazgo S3 de seguridad), para que GitHub exija revisión y CI antes de unir.
+- **Proceso: los tres pull requests se unieron sin revisión previa.** El PR #2 lo unió Gabriel el 12/11; el PR #1 y el PR #3 (esta ficha y relatoría) los unió Emilio el 13/11 porque Gabriel no estaba disponible antes de la hora límite. El PR #2 se revisó después (comentario del Quality Lead con la lista del plan SQA §7); el #1 y el #3 pasaron la CI completa y Gabriel los revisará después de la entrega. *Corrección para E2:* activar la protección de `main` (hallazgo S3 de seguridad), para que GitHub exija revisión y CI antes de unir.
 - **Defectos 3 y 4 de Emilio (tablero):** la caché no detectaba el pronóstico oficial (defecto 3, de diseño); la primera corrección usó un parámetro que Streamlit ignora (defecto 4, causado por el 3). Se encontraron con una prueba en Playwright que cambia el archivo con el servidor encendido.
 - **Incidencias de Gabriel (pendientes de confirmar en su PSP):** escapes al generar celdas del notebook, un argumento retirado en statsmodels 0.15 y una regla de `.gitattributes` que trataba las figuras PNG como texto; las tres se corrigieron y la última tiene prueba.
 - **Fuente:** ceros de 2021 que no son ceros reales y diferencias de 1–2 TEU entre la suma de meses y el acumulado oficial; se conservan en Bronce y se interpretan en Plata.

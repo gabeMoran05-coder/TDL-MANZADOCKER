@@ -46,6 +46,7 @@
 |---|---|---|
 | PR #2 (Estadística, Gabriel) | Emilio, como Quality Lead, **después** de la unión | Contrato del CSV correcto, 54 pruebas en verde al combinar ambos PR, pip-audit y gitleaks sin hallazgos, residuos revisados. Se unió el 12/11 sin revisión previa. |
 | PR #1 (Calidad y tablero, Emilio) | Unido por Emilio el 13/11 con CI en verde, **sin revisión previa de Gabriel** | Desviación del plan SQA registrada en la relatoría; acción correctiva para E2: activar la protección de `main`. |
+| PR #3 (ficha y relatoría, Emilio) | Unido por Emilio el 13/11 con CI en verde, **sin revisión de Gabriel** (no estaba disponible antes de la hora límite) | Solo documentación y una frase del tablero; Gabriel revisará después de la entrega. |
 
 ## Relatoría de etapa
 

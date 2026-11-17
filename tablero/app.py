@@ -76,7 +76,7 @@ def mostrar_geografia() -> None:
     ruta = RAIZ / "data/oro/contexto_geografico.csv"
     st.subheader("Entorno industrial y portuario de Manzanillo")
     if not ruta.exists():
-        st.info("El contexto geográfico estará disponible al ejecutar python -m src.e2.")
+        st.info("El contexto geográfico todavía no está disponible en esta actualización.")
         return
     puntos = pd.read_csv(ruta)
     elegidas = st.multiselect("Categorías del mapa", sorted(puntos.categoria.unique()),

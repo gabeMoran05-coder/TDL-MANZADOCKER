@@ -15,12 +15,13 @@ import time
 import traceback
 from datetime import datetime, timezone
 
-from extractores import asipona, banxico
+from extractores import asipona, banxico, denue
 from extractores.base import registrar_bitacora
 
 FUENTES = {
     "asipona": asipona.ejecutar,
     "banxico": banxico.ejecutar,
+    "denue": denue.ejecutar,
 }
 
 

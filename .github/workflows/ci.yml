@@ -1,9 +1,9 @@
-name: Calidad E1
+name: Calidad E1 y E2
 
 on:
   push:
-    branches: [main, gabriel/e1, emilio/e1]
-    tags: [e1]
+    branches: [main, gabriel/e1, emilio/e1, 'codex/**']
+    tags: [e1, e2]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -35,20 +35,22 @@ jobs:
           pip install pip-audit
           pip-audit -r requirements.txt --progress-spinner off
       - name: Revisar código
-        run: ruff check src tests
+        run: ruff check src tests extractores/denue.py extractores/revisar_fuentes.py tablero/app.py
       - name: Probar puerta y pipeline
         run: python -m pytest -q --cov=src --cov-report=term-missing
       - name: Generar Plata y Oro desde Bronce
-        run: python -m src.limpieza
+        run: python -m src.e2
       - name: Conservar evidencia
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: evidencia-e1
+          name: evidencia-e1-e2
           path: |
             data/plata/
             data/oro/
             data/cuarentena/e1/
             calidad/e1/
+            calidad/e2/
+            data/cuarentena/e2/
             calidad/bitacora_pipeline.csv
           retention-days: 14

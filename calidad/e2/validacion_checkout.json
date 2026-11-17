@@ -1,0 +1,10 @@
+{
+  "estado": "ok",
+  "fecha": "2026-11-17",
+  "metodo": "git checkout-index a carpeta nueva; validar linaje sobre los archivos exportados",
+  "archivos_hash_comparados_con_indice": 34,
+  "fallos_hash": 0,
+  "archivos_oro": 8,
+  "registros_con_linaje": 522,
+  "cobertura_pct": 100
+}

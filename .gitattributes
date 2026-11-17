@@ -13,3 +13,13 @@ calidad/bitacora_pipeline.csv text eol=lf
 docs/E1/** text eol=lf
 docs/relatoria-E1.md text eol=lf
 docs/E1/figuras/*.png binary
+
+# Los hashes de linaje deben sobrevivir a un checkout en Windows o Linux.
+extractores/*.py text eol=lf
+tablero/*.py text eol=lf
+data/bronce/denue/** -text whitespace=cr-at-eol
+data/bronce/linaje/** -text whitespace=cr-at-eol
+data/oro/*.csv -text
+data/oro/*.json -text whitespace=cr-at-eol
+data/oro/*.geojson -text
+calidad/e2/** -text whitespace=cr-at-eol

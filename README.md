@@ -76,6 +76,22 @@ tests/         pruebas automáticas
 .github/workflows/  captura programada e integración continua
 ```
 
+## Entrega E2 · Fuente especializada, linaje y dirección comercial
+
+[Ficha E2](docs/E2/ENTREGA.md) · [Ética de datos](docs/etica-datos.md) · [Relatoría](docs/relatoria-E2.md) · [Dirección del producto](docs/E2/enfoque-producto.md)
+
+Se agrega **DENUE Colima de INEGI**, con minimización antes de Bronce, unión espacial en GeoPandas y mapa del contexto logístico en el tablero. La selección conservadora produce dos establecimientos; no representa el mercado completo. Los ocho archivos actuales de Oro y sus 522 registros tienen manifiesto verificable con URL, fecha de ingesta y snapshots de Bronce por SHA-256.
+
+La dirección comercial propuesta es **planeación de capacidad y margen para transportistas que retiran contenedores de importación**, atendiendo a varias empresas del mismo segmento. El tablero incorpora un escenario con entradas propias; TEU no se convierte automáticamente en viajes, ingresos o ahorros. Precio, datos operativos, venta y piloto siguen por validar. Los entregables E2 de Estadística y Calidad completos se declaran pendientes en la ficha.
+
+```bash
+pip install -r requirements.txt
+python -m src.e2                         # E1 + DENUE + linaje, sin red
+python -m src.linaje validar
+python -m extractores.run_captura denue  # nueva captura si venció caché de siete días
+streamlit run tablero/app.py
+```
+
 ## Tablero público
 **URL:** _pendiente de publicar en Streamlit Community Cloud._
 

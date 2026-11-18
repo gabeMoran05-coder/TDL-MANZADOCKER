@@ -34,8 +34,12 @@ Los escenarios del transportista usan agregados ingresados en sesi?n. No se escr
 
 Los datos DENUE seleccionados y sus derivados conservan la atribuci?n al INEGI y los metadatos del proceso de selecci?n: [aviso de datos](../data/bronce/denue/LICENCIA.md). Las adaptaciones se identifican como elaboraci?n del equipo, sin afirmar que las respalda el INEGI. No se licencia todo el repositorio de forma uniforme ni se atribuye esta autorizaci?n a ASIPONA o Banxico.
 
-El tablero no usa teselas externas, consulta INEGI por cada visitante ni transmite costos de clientes. Las URLs de linaje no contienen tokens. Cada registro de Oro figura en `calidad/e2/linaje.json`, con URL, fecha real de ingesta, selector de registro Bronce y archivo con SHA-256. Las entradas CSV que pueden cambiar tienen copia por hash en Bronce. DENUE se enlaza uno a uno; E1 usa conjuntos de dependencia conservadores para no perder agregaciones, imputaciones y escalas globales. La precisi?n de esos conjuntos se declara en el manifiesto y en la ficha.
+El mapa base utiliza CARTO/OpenStreetMap. El comparador consulta OSRM/FOSSGIS solo al solicitar recorridos entre ubicaciones publicas del catalogo; envia coordenadas y conserva en sesion los costos e ingresos. No consulta INEGI por cada visitante. Las fuentes y sus condiciones se distinguen en docs/E2/mapa-costos.md. El linaje de Oro mantiene URL, fecha de ingesta, selectores y SHA-256; sus conjuntos amplios se declaran como tales.
 
 ## Fuente descartada y uso de IA
 
 Se intent? OSM/Overpass. La instancia principal proh?be `/api/` en robots; no se utiliz?. La alternativa Private.coffee no respondi? tras reintentos. No se publica una fuente ficticia: E2 usa DENUE real. Las consultas auxiliares de factibilidad no forman parte del producto. La asistencia de Codex para implementaci?n y documentaci?n se declara en `docs/relatoria-E2.md`.
+
+## Ampliacion del mapa y comparador
+
+El catalogo cerrado de cinco organizaciones conserva etiquetas institucionales publicas elegidas expresamente; no nombres de personas ni datos de contacto. Las consultas OSRM utilizan solo esos puntos publicos. El proveedor registra peticiones; se limita a una por segundo por proceso y cache de 24 horas. El perfil es de automovil y no valida accesos ni restricciones de carga. Los resultados de costos son escenarios del usuario y no cotizaciones verificadas. Detalle y fuentes: [mapa-costos.md](E2/mapa-costos.md).

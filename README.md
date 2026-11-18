@@ -93,6 +93,13 @@ streamlit run tablero/app.py
 ```
 
 ## Tablero público
+
+### Comparador de trayectos y costos
+
+El mapa incorpora cinco ubicaciones públicas del DENUE, recorridos viales de referencia y costos por servicio con entradas propias. Permite copiar el costo sin esperas al escenario mensual. También admite kilómetros validados por la empresa. [Alcance, procedencia y límites](docs/E2/mapa-costos.md).
+
+Las consultas usan un perfil de automóvil y no certifican accesos ni restricciones para tractocamiones. Las ubicaciones no representan clientes o convenios del equipo.
+
 **URL:** _pendiente de publicar en Streamlit Community Cloud._
 
 ```bash

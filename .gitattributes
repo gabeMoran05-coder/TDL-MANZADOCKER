@@ -23,3 +23,5 @@ data/oro/*.csv -text
 data/oro/*.json -text whitespace=cr-at-eol
 data/oro/*.geojson -text
 calidad/e2/** -text whitespace=cr-at-eol
+data/bronce/catalogo_logistico/** -text whitespace=cr-at-eol
+data/referencias/** -text whitespace=cr-at-eol

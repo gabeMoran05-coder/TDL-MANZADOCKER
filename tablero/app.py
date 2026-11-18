@@ -43,16 +43,18 @@ def mostrar_negocio() -> None:
              "Planea capacidad y compara costos mensuales con tus propios datos agregados.")
     st.caption("Escenario de planeación. El volumen del puerto no equivale a tus viajes; "
                "el pronóstico mensual no predice citas ni horas de espera.")
+    if st.session_state.pop("aviso_costo_ruta", False):
+        st.success("Costo variable actualizado desde el comparador del mapa.")
     with st.expander("Calcular capacidad, costo de esperas y resultado operativo"):
         a, b = st.columns(2)
-        solicitados = a.number_input("Servicios solicitados en el mes", min_value=0, value=None)
-        capacidad = b.number_input("Capacidad mensual en servicios", min_value=0, value=None)
-        tarifa = a.number_input("Ingreso cobrado por servicio (MXN, sin IVA)", min_value=0.0, value=None)
-        costo = b.number_input("Costo variable por servicio, sin esperas (MXN)", min_value=0.0, value=None)
-        horas = a.number_input("Horas de espera por servicio", min_value=0.0, value=None)
-        costo_hora = b.number_input("Costo por hora de espera (MXN)", min_value=0.0, value=None)
-        fijos = a.number_input("Costos fijos mensuales asignados (MXN)", min_value=0.0, value=None)
-        precio = b.number_input("Costo mensual de la app a evaluar (MXN)", min_value=0.0, value=None)
+        solicitados = a.number_input("Servicios solicitados en el mes", min_value=0, value=None, key="negocio_solicitados")
+        capacidad = b.number_input("Capacidad mensual en servicios", min_value=0, value=None, key="negocio_capacidad")
+        tarifa = a.number_input("Ingreso cobrado por servicio (MXN, sin IVA)", min_value=0.0, value=None, key="negocio_tarifa")
+        costo = b.number_input("Costo variable por servicio, sin esperas (MXN)", min_value=0.0, value=None, key="negocio_costo_variable")
+        horas = a.number_input("Horas de espera por servicio", min_value=0.0, value=None, key="negocio_horas")
+        costo_hora = b.number_input("Costo por hora de espera (MXN)", min_value=0.0, value=None, key="negocio_costo_hora")
+        fijos = a.number_input("Costos fijos mensuales asignados (MXN)", min_value=0.0, value=None, key="negocio_fijos")
+        precio = b.number_input("Costo mensual de la app a evaluar (MXN)", min_value=0.0, value=None, key="negocio_suscripcion")
         if all(v is not None for v in [solicitados, capacidad, tarifa, costo, horas, costo_hora, fijos, precio]):
             r = escenario(solicitados=solicitados, capacidad=capacidad, tarifa=tarifa,
                           costo_variable=costo, horas_espera=horas, costo_hora=costo_hora,
@@ -73,6 +75,8 @@ def mostrar_negocio() -> None:
 
 
 def mostrar_geografia() -> None:
+    from tablero.logistica import mostrar_comparador
+
     ruta = RAIZ / "data/oro/contexto_geografico.csv"
     st.subheader("Entorno industrial y portuario de Manzanillo")
     if not ruta.exists():
@@ -82,7 +86,13 @@ def mostrar_geografia() -> None:
     elegidas = st.multiselect("Categorías del mapa", sorted(puntos.categoria.unique()),
                              default=sorted(puntos.categoria.unique()))
     seleccion = puntos[puntos.categoria.isin(elegidas)]
-    # Sin teselas externas: el tablero carga únicamente el extracto almacenado en Oro.
+    try:
+        catalogo, recorridos = mostrar_comparador(RAIZ)
+    except (OSError, ValueError, KeyError):
+        catalogo, recorridos = [], []
+        st.info("El catálogo logístico no está disponible en esta actualización.")
+    seleccion = seleccion.assign(nombre="Establecimiento DENUE " + seleccion.id_denue.astype(str),
+                                  tipo=seleccion.categoria)
     capa = pdk.Layer("ScatterplotLayer", data=seleccion.to_dict("records"),
                      get_position="[lon, lat]", get_radius=100, get_fill_color=[42, 120, 214],
                      pickable=True)
@@ -92,11 +102,18 @@ def mostrar_geografia() -> None:
     rejilla = pdk.Layer("PolygonLayer", data=celdas, get_polygon="coordenadas",
                         filled=False, stroked=True, get_line_color=[130, 130, 130],
                         line_width_min_pixels=1)
-    st.pydeck_chart(pdk.Deck(layers=[rejilla, capa], map_style=None,
+    sitios = pdk.Layer("ScatterplotLayer", data=catalogo, get_position="[lon, lat]",
+                       get_radius=90, get_fill_color=[238, 128, 40], pickable=True)
+    trayectos = pdk.Layer("PathLayer", data=recorridos, get_path="coordenadas",
+                          get_color=[17, 138, 72], get_width=4, width_min_pixels=3)
+    st.pydeck_chart(pdk.Deck(layers=[rejilla, capa, sitios, trayectos], map_style="light", map_provider="carto",
                             initial_view_state=pdk.ViewState(latitude=19.06, longitude=-104.30, zoom=11),
-                            tooltip={"text": "DENUE {id_denue}\n{categoria}\nCelda: {zona}\n{lat}, {lon}"}))
-    st.caption("Datos © OpenStreetMap contributors · ODbL 1.0 · "
-               "https://www.inegi.org.mx/inegi/terminos.html")
+                            tooltip={"text": "{nombre}\n{tipo}\nDENUE {id_denue}\n{lat}, {lon}"}))
+    st.caption("Azul: selección DENUE original. Naranja: catálogo de referencia. Verde: recorrido consultado.")
+    st.markdown("**Establecimientos:** [INEGI, DENUE](https://www.inegi.org.mx/inegi/terminos.html). "
+                "**Mapa base:** © OpenStreetMap contributors / CARTO. "
+                "**Recorridos:** OSRM/FOSSGIS, datos OSM bajo "
+                "[ODbL](https://www.openstreetmap.org/copyright).")
     st.caption(f'Captura: {puntos.fecha_captura_utc.iloc[0]}. '
                "Establecimientos de sociedades seleccionadas, SCIAN 484/488/493; no son "
                "rutas, accesos ni límites oficiales. Las cuatro celdas son de estudio. "
@@ -104,7 +121,7 @@ def mostrar_geografia() -> None:
     with st.expander("Ver objetos y procedencia"):
         st.dataframe(seleccion[["id_denue", "categoria", "zona", "url_origen", "fecha_captura_utc"]],
                      hide_index=True)
-        st.download_button("Descargar contexto geográfico (ODbL 1.0)", ruta.read_bytes(),
+        st.download_button("Descargar contexto geográfico (INEGI)", ruta.read_bytes(),
                            file_name=ruta.name, mime="text/csv")
 
 AZUL = "#2a78d6"  # un solo tono: real y pronóstico son la misma magnitud

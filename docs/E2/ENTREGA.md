@@ -79,6 +79,10 @@ Las coordenadas se unen a cuatro celdas del rectángulo de estudio. El mapa actu
 
 ## Dirección comercial
 
+### Ampliación posterior al tag publicado
+
+La rama `codex/mapa-costos` agrega un catálogo de cinco organizaciones públicas del DENUE, recorridos viales de referencia OSRM y comparación de costos que puede alimentar el escenario mensual. [Comportamiento, fuentes y límites](mapa-costos.md). La ampliación pasó 80 pruebas locales con 95.27 % de cobertura; la comprobación vial real OCUPA Puerto–Terminal de Servicios HAZESA devolvió 4.693 km con perfil de automóvil. Es una referencia de planeación, no navegación validada para tractocamiones. El tag `e2` conserva su versión anterior; la integración y publicación pública siguen el proceso de revisión del equipo.
+
 [Decisión de producto, cliente, dinero y piloto](enfoque-producto.md). Un segmento inicial de transportistas puede incluir varias empresas del mismo tipo. La propuesta de suscripción, el acceso a datos operativos, el precio y los ahorros quedan por validar con un comprador real.
 
 ## Issues de la entrega anterior

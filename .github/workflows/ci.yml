@@ -35,7 +35,7 @@ jobs:
           pip install pip-audit
           pip-audit -r requirements.txt --progress-spinner off
       - name: Revisar código
-        run: ruff check src tests extractores/denue.py extractores/revisar_fuentes.py tablero/app.py
+        run: ruff check src tests extractores/denue.py extractores/revisar_fuentes.py tablero
       - name: Probar puerta y pipeline
         run: python -m pytest -q --cov=src --cov-report=term-missing
       - name: Generar Plata y Oro desde Bronce

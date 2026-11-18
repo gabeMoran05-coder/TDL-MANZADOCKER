@@ -1,0 +1,44 @@
+{
+ "url": "https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/2026-11-08/2026-11-18",
+ "fecha_captura_utc": "2026-11-18T21:43:31Z",
+ "respuesta": {
+  "bmx": {
+   "series": [
+    {
+     "idSerie": "SF43718",
+     "titulo": "Tipo de cambio                                          Pesos por dólar E.U.A. Tipo de cambio para solventar obligaciones denominadas en moneda extranjera Fecha de determinación (FIX)",
+     "datos": [
+      {
+       "fecha": "09/11/2026",
+       "dato": "18.5983"
+      },
+      {
+       "fecha": "10/11/2026",
+       "dato": "18.6678"
+      },
+      {
+       "fecha": "11/11/2026",
+       "dato": "18.6192"
+      },
+      {
+       "fecha": "12/11/2026",
+       "dato": "18.6188"
+      },
+      {
+       "fecha": "13/11/2026",
+       "dato": "18.5525"
+      },
+      {
+       "fecha": "17/11/2026",
+       "dato": "18.4677"
+      },
+      {
+       "fecha": "18/11/2026",
+       "dato": "18.6723"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

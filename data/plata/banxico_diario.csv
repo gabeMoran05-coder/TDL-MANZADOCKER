@@ -1477,3 +1477,4 @@ banxico:1476,2026-11-11,https://www.banxico.org.mx/SieAPIRest/service/v1/series/
 banxico:1477,2026-11-12,https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/2026-11-02/2026-11-12,2026-11-12T21:19:35Z,SF43718,18.6188,18.6188,False,False
 banxico:1478,2026-11-13,https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/2026-11-03/2026-11-13,2026-11-13T20:47:25Z,SF43718,18.5525,18.5525,False,False
 banxico:1479,2026-11-17,https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/2026-11-07/2026-11-17,2026-11-17T22:02:56Z,SF43718,18.4677,18.4677,False,False
+banxico:1480,2026-11-18,https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/2026-11-08/2026-11-18,2026-11-18T21:43:31Z,SF43718,18.6723,18.6723,False,False

@@ -17,6 +17,7 @@ from pathlib import Path
 
 import altair as alt
 import pandas as pd
+import pydeck as pdk
 import streamlit as st
 
 RAIZ = Path(__file__).resolve().parents[1]
@@ -27,6 +28,101 @@ RESUMEN = RAIZ / "calidad/e1/resumen.json"
 FIABILIDAD = RAIZ / "calidad/e1/fiabilidad.json"
 REPO = "https://github.com/gabeMoran05-coder/TDL-MANZADOCKER"
 COLUMNAS = ["fecha", "tipo", "valor", "li_95", "ls_95", "modelo"]
+
+
+def mostrar_negocio() -> None:
+    # Cálculo local a la sesión: los datos del cliente no se persisten ni se envían a una API.
+    import sys
+
+    if str(RAIZ) not in sys.path:
+        sys.path.insert(0, str(RAIZ))
+    from src.negocio import escenario
+
+    st.subheader("¿Cuánto deja la operación de tu transportista?")
+    st.write("Para transportistas que retiran contenedores de importación en Manzanillo. "
+             "Planea capacidad y compara costos mensuales con tus propios datos agregados.")
+    st.caption("Escenario de planeación. El volumen del puerto no equivale a tus viajes; "
+               "el pronóstico mensual no predice citas ni horas de espera.")
+    if st.session_state.pop("aviso_costo_ruta", False):
+        st.success("Costo variable actualizado desde el comparador del mapa.")
+    with st.expander("Calcular capacidad, costo de esperas y resultado operativo"):
+        a, b = st.columns(2)
+        solicitados = a.number_input("Servicios solicitados en el mes", min_value=0, value=None, key="negocio_solicitados")
+        capacidad = b.number_input("Capacidad mensual en servicios", min_value=0, value=None, key="negocio_capacidad")
+        tarifa = a.number_input("Ingreso cobrado por servicio (MXN, sin IVA)", min_value=0.0, value=None, key="negocio_tarifa")
+        costo = b.number_input("Costo variable por servicio, sin esperas (MXN)", min_value=0.0, value=None, key="negocio_costo_variable")
+        horas = a.number_input("Horas de espera por servicio", min_value=0.0, value=None, key="negocio_horas")
+        costo_hora = b.number_input("Costo por hora de espera (MXN)", min_value=0.0, value=None, key="negocio_costo_hora")
+        fijos = a.number_input("Costos fijos mensuales asignados (MXN)", min_value=0.0, value=None, key="negocio_fijos")
+        precio = b.number_input("Costo mensual de la app a evaluar (MXN)", min_value=0.0, value=None, key="negocio_suscripcion")
+        if all(v is not None for v in [solicitados, capacidad, tarifa, costo, horas, costo_hora, fijos, precio]):
+            r = escenario(solicitados=solicitados, capacidad=capacidad, tarifa=tarifa,
+                          costo_variable=costo, horas_espera=horas, costo_hora=costo_hora,
+                          costos_fijos=fijos, suscripcion=precio)
+            c1, c2, c3 = st.columns(3)
+            c1.metric("Servicios atendibles", r["servicios_atendibles"])
+            c2.metric("Costo de esperas estimado", f'${r["costo_esperas_estimado"]:,.2f}')
+            c3.metric("Resultado operativo estimado", f'${r["resultado_operativo_estimado"]:,.2f}')
+            st.write(f'Servicios sin capacidad: {r["servicios_sin_capacidad"]}. '
+                     f'Margen por servicio: ${r["margen_contribucion_por_servicio"]:,.2f} MXN.')
+            if r["margen_contribucion_por_servicio"] < 0:
+                st.warning("Con estos supuestos, cada servicio deja margen negativo. "
+                           "Revisa la cotización y sus costos antes de comprometer capacidad.")
+            st.caption("Estimación según tus entradas, antes de intereses e impuestos. "
+                       "No acredita ahorro conseguido ni garantiza demanda. Evita contar un costo dos veces.")
+        else:
+            st.info("Completa las ocho entradas con datos de tu operación. No usamos cifras inventadas.")
+
+
+def mostrar_geografia() -> None:
+    from tablero.logistica import mostrar_comparador
+
+    ruta = RAIZ / "data/oro/contexto_geografico.csv"
+    st.subheader("Entorno industrial y portuario de Manzanillo")
+    if not ruta.exists():
+        st.info("El contexto geográfico todavía no está disponible en esta actualización.")
+        return
+    puntos = pd.read_csv(ruta)
+    elegidas = st.multiselect("Categorías del mapa", sorted(puntos.categoria.unique()),
+                             default=sorted(puntos.categoria.unique()))
+    seleccion = puntos[puntos.categoria.isin(elegidas)]
+    try:
+        catalogo, recorridos = mostrar_comparador(RAIZ)
+    except (OSError, ValueError, KeyError):
+        catalogo, recorridos = [], []
+        st.info("El catálogo logístico no está disponible en esta actualización.")
+    seleccion = seleccion.assign(nombre="Establecimiento DENUE " + seleccion.id_denue.astype(str),
+                                  tipo=seleccion.categoria)
+    capa = pdk.Layer("ScatterplotLayer", data=seleccion.to_dict("records"),
+                     get_position="[lon, lat]", get_radius=100, get_fill_color=[42, 120, 214],
+                     pickable=True)
+    celdas = [{"coordenadas": [[x0, y0], [x1, y0], [x1, y1], [x0, y1]]}
+              for x0, x1 in [(-104.36, -104.30), (-104.30, -104.24)]
+              for y0, y1 in [(18.99, 19.06), (19.06, 19.13)]]
+    rejilla = pdk.Layer("PolygonLayer", data=celdas, get_polygon="coordenadas",
+                        filled=False, stroked=True, get_line_color=[130, 130, 130],
+                        line_width_min_pixels=1)
+    sitios = pdk.Layer("ScatterplotLayer", data=catalogo, get_position="[lon, lat]",
+                       get_radius=90, get_fill_color=[238, 128, 40], pickable=True)
+    trayectos = pdk.Layer("PathLayer", data=recorridos, get_path="coordenadas",
+                          get_color=[17, 138, 72], get_width=4, width_min_pixels=3)
+    st.pydeck_chart(pdk.Deck(layers=[rejilla, capa, sitios, trayectos], map_style="light", map_provider="carto",
+                            initial_view_state=pdk.ViewState(latitude=19.06, longitude=-104.30, zoom=11),
+                            tooltip={"text": "{nombre}\n{tipo}\nDENUE {id_denue}\n{lat}, {lon}"}))
+    st.caption("Azul: selección DENUE original. Naranja: catálogo de referencia. Verde: recorrido consultado.")
+    st.markdown("**Establecimientos:** [INEGI, DENUE](https://www.inegi.org.mx/inegi/terminos.html). "
+                "**Mapa base:** © OpenStreetMap contributors / CARTO. "
+                "**Recorridos:** OSRM/FOSSGIS, datos OSM bajo "
+                "[ODbL](https://www.openstreetmap.org/copyright).")
+    st.caption(f'Captura: {puntos.fecha_captura_utc.iloc[0]}. '
+               "Establecimientos de sociedades seleccionadas, SCIAN 484/488/493; no son "
+               "rutas, accesos ni límites oficiales. Las cuatro celdas son de estudio. "
+               "El mapa actual no se usa para explicar ni predecir TEU históricos.")
+    with st.expander("Ver objetos y procedencia"):
+        st.dataframe(seleccion[["id_denue", "categoria", "zona", "url_origen", "fecha_captura_utc"]],
+                     hide_index=True)
+        st.download_button("Descargar contexto geográfico (INEGI)", ruta.read_bytes(),
+                           file_name=ruta.name, mime="text/csv")
 
 AZUL = "#2a78d6"  # un solo tono: real y pronóstico son la misma magnitud
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
@@ -134,6 +230,8 @@ def main() -> None:
         f"Último mes publicado por ASIPONA: **{ultimo['mes']}**."
     )
 
+    mostrar_negocio()
+
     if es_ejemplo:
         st.warning(
             "**Pronóstico de ejemplo.** Estas cifras usan un método sencillo (repetir el mismo "
@@ -177,6 +275,8 @@ def main() -> None:
             "Máximo probable (95%)": datos["ls_95"].map(celda),
         })
         st.dataframe(tabla.iloc[::-1], hide_index=True, width="stretch")
+
+    mostrar_geografia()
 
     # --- La confianza -----------------------------------------------------------------------
     st.subheader("¿Por qué confiar en estas cifras?")

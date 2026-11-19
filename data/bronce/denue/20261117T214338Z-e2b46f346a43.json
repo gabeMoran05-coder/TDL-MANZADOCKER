@@ -1,0 +1,39 @@
+{
+  "fuente": "INEGI / DENUE Colima",
+  "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
+  "fecha_captura_utc": "2026-11-17T21:43:38Z",
+  "archivo_csv_origen": "conjunto_de_datos/denue_inegi_06_.csv",
+  "sha256_zip_origen": "948e292e567ce16a8b7485f15846ddaaf9c9cda6fda9be07334bb6afc5480af6",
+  "elements": [
+    {
+      "id_denue": "9649444",
+      "codigo_actividad": "488519",
+      "cve_ent": "06",
+      "cve_mun": "007",
+      "lat": 19.1035993,
+      "lon": -104.30847891,
+      "registro_csv_origen": 19710
+    },
+    {
+      "id_denue": "9324893",
+      "codigo_actividad": "484239",
+      "cve_ent": "06",
+      "cve_mun": "007",
+      "lat": 19.07752251,
+      "lon": -104.28609896,
+      "registro_csv_origen": 19783
+    }
+  ],
+  "conteos": {
+    "leidos": 42073,
+    "seleccionados": 2,
+    "sin_forma_societaria": 630,
+    "coordenadas_invalidas": 0
+  },
+  "metadato_edicion": "DICCIONARIO DE DATOS DENUE (20/05/2026),,,,",
+  "codificacion_csv_origen": "cp1252",
+  "licencia": "Términos de Libre Uso de la Información del INEGI",
+  "terminos": "https://www.inegi.org.mx/inegi/terminos.html",
+  "seleccion": "06/007, SCIAN 484/488/493, forma societaria explícita",
+  "privacidad": "Lista blanca; sin nombres, razón social, domicilio, contactos ni CLEE"
+}

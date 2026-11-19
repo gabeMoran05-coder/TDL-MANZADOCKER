@@ -1,0 +1,26 @@
+{
+  "estado": "ok",
+  "tipo": "prueba sintética automática, no datos de un cliente",
+  "excepciones": 0,
+  "entradas": {
+    "Servicios solicitados en el mes": 100,
+    "Capacidad mensual en servicios": 80,
+    "Ingreso cobrado por servicio (MXN, sin IVA)": 1000.0,
+    "Costo variable por servicio, sin esperas (MXN)": 600.0,
+    "Horas de espera por servicio": 2.0,
+    "Costo por hora de espera (MXN)": 100.0,
+    "Costos fijos mensuales asignados (MXN)": 1000.0,
+    "Costo mensual de la app a evaluar (MXN)": 500.0
+  },
+  "resultado_operativo_esperado": 14500,
+  "resultado_observado": {
+    "Servicios atendibles": "80",
+    "Costo de esperas estimado": "$16,000.00",
+    "Resultado operativo estimado": "$14,500.00",
+    "Pronóstico": "344,909 TEU",
+    "Rango probable (95%)": "307,550 – 382,269",
+    "Registros del puerto aceptados": "626 de 648",
+    "Apartados en cuarentena": "22",
+    "Días con captura exitosa": "9 de 9"
+  }
+}

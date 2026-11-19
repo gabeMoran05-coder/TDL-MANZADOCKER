@@ -1,4 +1,5 @@
 # Dependencias del tablero (Streamlit Community Cloud las lee de aquí)
-streamlit>=1.50,<2
+streamlit>=1.60,<2
 pandas>=2.2,<3.1
-altair>=5,<6
+altair>=6,<7
+pydeck>=0.9,<1

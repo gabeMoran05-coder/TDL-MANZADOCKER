@@ -1,0 +1,56 @@
+{
+  "fuente": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
+  "fecha_captura_utc": "2026-11-18T04:11:15Z",
+  "sha256_zip": "948e292e567ce16a8b7485f15846ddaaf9c9cda6fda9be07334bb6afc5480af6",
+  "archivo_csv": "conjunto_de_datos/denue_inegi_06_.csv",
+  "lugares": [
+    {
+      "id_denue": "344488",
+      "nombre": "Estacionamiento de OCUPA",
+      "lat": 19.05841886,
+      "lon": -104.30332204,
+      "codigo_act": "488320",
+      "registro_csv_origen": 19698,
+      "tipo": "Patio de referencia"
+    },
+    {
+      "id_denue": "6304117",
+      "nombre": "OCUPA Puerto",
+      "lat": 19.05953084,
+      "lon": -104.30166032,
+      "codigo_act": "488320",
+      "registro_csv_origen": 19941,
+      "tipo": "Terminal portuaria"
+    },
+    {
+      "id_denue": "9275025",
+      "nombre": "SSA Mexico",
+      "lat": 19.08761518,
+      "lon": -104.3111845,
+      "codigo_act": "488519",
+      "registro_csv_origen": 20081,
+      "tipo": "Servicio logistico"
+    },
+    {
+      "id_denue": "6154747",
+      "nombre": "Transportes HAZESA",
+      "lat": 19.0820837,
+      "lon": -104.2807027,
+      "codigo_act": "484233",
+      "registro_csv_origen": 20171,
+      "tipo": "Transportista"
+    },
+    {
+      "id_denue": "6860189",
+      "nombre": "Terminal de Servicios HAZESA",
+      "lat": 19.0763764,
+      "lon": -104.28213144,
+      "codigo_act": "493190",
+      "registro_csv_origen": 20364,
+      "tipo": "Patio de referencia"
+    }
+  ],
+  "privacidad": "Catalogo cerrado de organizaciones publicas; sin personas ni contactos",
+  "limite": "Ubicacion de referencia DENUE; no acceso autorizado ni convenio comercial",
+  "metadato_edicion": "DICCIONARIO DE DATOS DENUE (20/05/2026),,,,"
+}

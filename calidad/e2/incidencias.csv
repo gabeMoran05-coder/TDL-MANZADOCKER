@@ -1,0 +1,7 @@
+numero,fecha,tipo,fase_introducido,fase_eliminado,minutos_correccion,descripcion,evidencia
+E2-01,2026-11-17,entorno,seleccion_fuente,validacion_fuente,,Overpass bloqueado o sin respuesta; se usa DENUE real,docs/etica-datos.md
+E2-02,2026-11-17,datos,codigo,pruebas,,CSV DENUE requiere cp1252; no UTF-8,extractores/denue.py
+E2-03,2026-11-17,datos,codigo,pruebas,,Normalizar sufijo societario S de RL de CV sin confundirlo con SA,tests/test_e2.py
+E2-04,2026-11-17,funcion,codigo,revision,,Verificar metadatos de origen una vez por origen y no por cada dependencia de cada salida,src/linaje.py
+E2-05,2026-11-17,entorno,integracion,pruebas,,Altair 5 del entorno falla con TypedDict en Python 3.14; tablero probado con Altair 6 en entorno aislado,tests/test_tablero.py
+E2-06,2026-11-17,entorno,integracion,pruebas,,Preservar bytes de datos por gitattributes y renormalizar indice para conservar hashes al clonar,.gitattributes

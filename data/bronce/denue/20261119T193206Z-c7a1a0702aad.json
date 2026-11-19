@@ -1,0 +1,420 @@
+{
+  "fuente": "INEGI / DENUE Colima",
+  "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
+  "fecha_captura_utc": "2026-11-19T19:32:06Z",
+  "archivo_csv_origen": "conjunto_de_datos/denue_inegi_06_.csv",
+  "sha256_zip_origen": "948e292e567ce16a8b7485f15846ddaaf9c9cda6fda9be07334bb6afc5480af6",
+  "elements": [
+    {
+      "id_denue": "9649444",
+      "codigo_actividad": "488519",
+      "cve_ent": "06",
+      "cve_mun": "007",
+      "lat": 19.1035993,
+      "lon": -104.30847891,
+      "registro_csv_origen": 19710
+    },
+    {
+      "id_denue": "9324893",
+      "codigo_actividad": "484239",
+      "cve_ent": "06",
+      "cve_mun": "007",
+      "lat": 19.07752251,
+      "lon": -104.28609896,
+      "registro_csv_origen": 19783
+    }
+  ],
+  "conteos": {
+    "leidos": 42073,
+    "seleccionados": 2,
+    "sin_forma_societaria": 630,
+    "coordenadas_invalidas": 0
+  },
+  "agregado": {
+    "paso_grados": 0.01,
+    "k_minimo": 3,
+    "celdas": [
+      {
+        "celda": "1905_-10432",
+        "sur": 19.05,
+        "oeste": -104.32,
+        "norte": 19.06,
+        "este": -104.31,
+        "total": 4,
+        "por_categoria": {
+          "484": 0,
+          "488": 4,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1905_-10431",
+        "sur": 19.05,
+        "oeste": -104.31,
+        "norte": 19.06,
+        "este": -104.3,
+        "total": 58,
+        "por_categoria": {
+          "484": 6,
+          "488": 52,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1905_-10430",
+        "sur": 19.05,
+        "oeste": -104.3,
+        "norte": 19.06,
+        "este": -104.29,
+        "total": 11,
+        "por_categoria": {
+          "484": 0,
+          "488": 9,
+          "493": null
+        }
+      },
+      {
+        "celda": "1905_-10425",
+        "sur": 19.05,
+        "oeste": -104.25,
+        "norte": 19.06,
+        "este": -104.24,
+        "total": 4,
+        "por_categoria": {
+          "484": 3,
+          "488": null,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1906_-10429",
+        "sur": 19.06,
+        "oeste": -104.29,
+        "norte": 19.07,
+        "este": -104.28,
+        "total": 66,
+        "por_categoria": {
+          "484": 9,
+          "488": 57,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1907_-10431",
+        "sur": 19.07,
+        "oeste": -104.31,
+        "norte": 19.08,
+        "este": -104.3,
+        "total": 16,
+        "por_categoria": {
+          "484": 5,
+          "488": 11,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1907_-10429",
+        "sur": 19.07,
+        "oeste": -104.29,
+        "norte": 19.08,
+        "este": -104.28,
+        "total": 58,
+        "por_categoria": {
+          "484": 24,
+          "488": 32,
+          "493": null
+        }
+      },
+      {
+        "celda": "1907_-10428",
+        "sur": 19.07,
+        "oeste": -104.28,
+        "norte": 19.08,
+        "este": -104.27,
+        "total": 3,
+        "por_categoria": {
+          "484": null,
+          "488": null,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1908_-10432",
+        "sur": 19.08,
+        "oeste": -104.32,
+        "norte": 19.09,
+        "este": -104.31,
+        "total": 4,
+        "por_categoria": {
+          "484": null,
+          "488": null,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1908_-10431",
+        "sur": 19.08,
+        "oeste": -104.31,
+        "norte": 19.09,
+        "este": -104.3,
+        "total": 29,
+        "por_categoria": {
+          "484": 4,
+          "488": 24,
+          "493": null
+        }
+      },
+      {
+        "celda": "1908_-10430",
+        "sur": 19.08,
+        "oeste": -104.3,
+        "norte": 19.09,
+        "este": -104.29,
+        "total": 60,
+        "por_categoria": {
+          "484": 24,
+          "488": 33,
+          "493": 3
+        }
+      },
+      {
+        "celda": "1908_-10429",
+        "sur": 19.08,
+        "oeste": -104.29,
+        "norte": 19.09,
+        "este": -104.28,
+        "total": 88,
+        "por_categoria": {
+          "484": 39,
+          "488": 46,
+          "493": 3
+        }
+      },
+      {
+        "celda": "1908_-10428",
+        "sur": 19.08,
+        "oeste": -104.28,
+        "norte": 19.09,
+        "este": -104.27,
+        "total": 12,
+        "por_categoria": {
+          "484": 5,
+          "488": 6,
+          "493": null
+        }
+      },
+      {
+        "celda": "1909_-10433",
+        "sur": 19.09,
+        "oeste": -104.33,
+        "norte": 19.1,
+        "este": -104.32,
+        "total": 7,
+        "por_categoria": {
+          "484": 4,
+          "488": 3,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1909_-10431",
+        "sur": 19.09,
+        "oeste": -104.31,
+        "norte": 19.1,
+        "este": -104.3,
+        "total": 5,
+        "por_categoria": {
+          "484": null,
+          "488": 4,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1909_-10430",
+        "sur": 19.09,
+        "oeste": -104.3,
+        "norte": 19.1,
+        "este": -104.29,
+        "total": 25,
+        "por_categoria": {
+          "484": 13,
+          "488": 12,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1909_-10429",
+        "sur": 19.09,
+        "oeste": -104.29,
+        "norte": 19.1,
+        "este": -104.28,
+        "total": 52,
+        "por_categoria": {
+          "484": 41,
+          "488": 11,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1909_-10428",
+        "sur": 19.09,
+        "oeste": -104.28,
+        "norte": 19.1,
+        "este": -104.27,
+        "total": 7,
+        "por_categoria": {
+          "484": 5,
+          "488": null,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1910_-10434",
+        "sur": 19.1,
+        "oeste": -104.34,
+        "norte": 19.11,
+        "este": -104.33,
+        "total": 5,
+        "por_categoria": {
+          "484": 0,
+          "488": 5,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1910_-10433",
+        "sur": 19.1,
+        "oeste": -104.33,
+        "norte": 19.11,
+        "este": -104.32,
+        "total": 17,
+        "por_categoria": {
+          "484": 5,
+          "488": 12,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1910_-10432",
+        "sur": 19.1,
+        "oeste": -104.32,
+        "norte": 19.11,
+        "este": -104.31,
+        "total": 7,
+        "por_categoria": {
+          "484": 5,
+          "488": null,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1910_-10431",
+        "sur": 19.1,
+        "oeste": -104.31,
+        "norte": 19.11,
+        "este": -104.3,
+        "total": 11,
+        "por_categoria": {
+          "484": 3,
+          "488": 8,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1911_-10435",
+        "sur": 19.11,
+        "oeste": -104.35,
+        "norte": 19.12,
+        "este": -104.34,
+        "total": 9,
+        "por_categoria": {
+          "484": null,
+          "488": 7,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1911_-10434",
+        "sur": 19.11,
+        "oeste": -104.34,
+        "norte": 19.12,
+        "este": -104.33,
+        "total": 5,
+        "por_categoria": {
+          "484": 4,
+          "488": null,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1911_-10433",
+        "sur": 19.11,
+        "oeste": -104.33,
+        "norte": 19.12,
+        "este": -104.32,
+        "total": 19,
+        "por_categoria": {
+          "484": 8,
+          "488": 11,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1911_-10432",
+        "sur": 19.11,
+        "oeste": -104.32,
+        "norte": 19.12,
+        "este": -104.31,
+        "total": 12,
+        "por_categoria": {
+          "484": 4,
+          "488": 8,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1912_-10427",
+        "sur": 19.12,
+        "oeste": -104.27,
+        "norte": 19.13,
+        "este": -104.26,
+        "total": 11,
+        "por_categoria": {
+          "484": 10,
+          "488": null,
+          "493": 0
+        }
+      },
+      {
+        "celda": "1914_-10457",
+        "sur": 19.14,
+        "oeste": -104.57,
+        "norte": 19.15,
+        "este": -104.56,
+        "total": 3,
+        "por_categoria": {
+          "484": 0,
+          "488": 3,
+          "493": 0
+        }
+      }
+    ],
+    "suprimidas": {
+      "celdas": 18,
+      "establecimientos": 24,
+      "por_categoria": {
+        "484": 12,
+        "488": 10,
+        "493": 2
+      }
+    },
+    "total_establecimientos": 632
+  },
+  "metadato_edicion": "DICCIONARIO DE DATOS DENUE (20/05/2026),,,,",
+  "codificacion_csv_origen": "cp1252",
+  "licencia": "Términos de Libre Uso de la Información del INEGI",
+  "terminos": "https://www.inegi.org.mx/inegi/terminos.html",
+  "seleccion": "06/007, SCIAN 484/488/493, forma societaria explícita",
+  "privacidad": "Lista blanca; sin nombres, razón social, domicilio, contactos ni CLEE",
+  "privacidad_agregado": "Conteos por celda de 0.01 grados y categoría SCIAN, sin identificadores ni coordenadas individuales; celdas y categorías con menos de 3 establecimientos suprimidas"
+}

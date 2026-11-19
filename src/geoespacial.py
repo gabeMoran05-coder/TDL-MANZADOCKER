@@ -64,6 +64,54 @@ def transformar(documento: dict) -> tuple[gpd.GeoDataFrame, list[dict]]:
     return union, rechazos
 
 
+COLUMNAS_CELDAS = ["celda", "registro_bronce", "sur", "oeste", "norte", "este", "lat", "lon",
+                   "total", *[f"scian_{c}" for c in CATEGORIAS], "zona_estudio",
+                   "paso_grados", "k_minimo", "url_origen", "fecha_captura_utc", "archivo_bronce"]
+
+
+def transformar_agregado(documento: dict, archivo_bronce: str) -> tuple[gpd.GeoDataFrame, list[dict]]:
+    """Valida los conteos por celda y los convierte en polígonos con su zona de estudio."""
+    agregado = documento["agregado"]
+    k, paso = agregado["k_minimo"], agregado["paso_grados"]
+    filas, rechazos, vistas = [], [], set()
+    for i, c in enumerate(agregado["celdas"], start=1):
+        try:
+            if c["celda"] in vistas:
+                raise ValueError("celda duplicada")
+            if not (c["sur"] < c["norte"] and c["oeste"] < c["este"]):
+                raise ValueError("celda con límites inválidos")
+            if abs((c["norte"] - c["sur"]) - paso) > 1e-9 or abs((c["este"] - c["oeste"]) - paso) > 1e-9:
+                raise ValueError("celda de tamaño distinto al paso declarado")
+            if c["total"] < k:
+                raise ValueError("celda bajo el umbral de anonimato publicada")
+            conocidos = [n for n in c["por_categoria"].values() if n is not None]
+            if any(0 < n < k for n in conocidos) or sum(conocidos) > c["total"]:
+                raise ValueError("conteo por categoría incoherente o bajo el umbral")
+            vistas.add(c["celda"])
+            filas.append({
+                "celda": c["celda"], "registro_bronce": i,
+                "sur": c["sur"], "oeste": c["oeste"], "norte": c["norte"], "este": c["este"],
+                "lat": round((c["sur"] + c["norte"]) / 2, 6),
+                "lon": round((c["oeste"] + c["este"]) / 2, 6), "total": int(c["total"]),
+                **{f"scian_{cat}": c["por_categoria"].get(cat) for cat in CATEGORIAS},
+                "paso_grados": paso, "k_minimo": k, "url_origen": documento["url_origen"],
+                "fecha_captura_utc": documento["fecha_captura_utc"],
+                "archivo_bronce": archivo_bronce,
+            })
+        except (ValueError, TypeError, KeyError) as error:
+            rechazos.append({"registro_bronce": f"agregado:{i}", "motivo": str(error)})
+    poligonos = gpd.GeoDataFrame(
+        filas, geometry=[box(f["oeste"], f["sur"], f["este"], f["norte"]) for f in filas],
+        crs="EPSG:4326")
+    # Zona de estudio por el centro de la celda (puntos): cada celda recibe a lo más una.
+    centros = gpd.GeoDataFrame(poligonos[["celda"]], crs="EPSG:4326",
+                               geometry=gpd.points_from_xy(poligonos.lon, poligonos.lat))
+    zona = (gpd.sjoin(centros, zonas(), how="left", predicate="intersects")
+            .sort_values(["celda", "zona"]).drop_duplicates("celda").set_index("celda").zona)
+    poligonos["zona_estudio"] = poligonos.celda.map(zona).fillna("fuera del área de estudio")
+    return poligonos, rechazos
+
+
 def ejecutar(raiz: Path) -> dict:
     puntero = json.loads((raiz / "data/bronce/denue/actual.json").read_text(encoding="utf-8"))
     ruta = raiz / puntero["archivo"]
@@ -80,8 +128,33 @@ def ejecutar(raiz: Path) -> dict:
     puntos.to_file(raiz / "data/oro/contexto_geografico.geojson", driver="GeoJSON")
     pd.DataFrame(rechazos, columns=["registro_bronce", "motivo"]).to_csv(
         raiz / "data/cuarentena/e2/denue.csv", index=False, lineterminator="\n")
+    agregado = {}
+    if "agregado" in documento:
+        celdas, rechazos_celdas = transformar_agregado(documento, puntero["archivo"])
+        tabla_celdas = pd.DataFrame(celdas.drop(columns="geometry"))[COLUMNAS_CELDAS]
+        tabla_celdas.to_csv(raiz / "data/plata/denue_celdas.csv", index=False, lineterminator="\n")
+        tabla_celdas.to_csv(raiz / "data/oro/denue_celdas.csv", index=False, lineterminator="\n")
+        celdas[COLUMNAS_CELDAS + ["geometry"]].to_file(
+            raiz / "data/oro/denue_celdas.geojson", driver="GeoJSON")
+        rechazos.extend(rechazos_celdas)
+        pd.DataFrame(rechazos, columns=["registro_bronce", "motivo"]).to_csv(
+            raiz / "data/cuarentena/e2/denue.csv", index=False, lineterminator="\n")
+        sup = documento["agregado"]["suprimidas"]
+        agregado = {
+            "celdas_publicadas": len(celdas), "celdas_rechazadas": len(rechazos_celdas),
+            "establecimientos_en_celdas": int(celdas.total.sum()),
+            "celdas_suprimidas": sup["celdas"], "establecimientos_suprimidos": sup["establecimientos"],
+            "total_establecimientos": documento["agregado"]["total_establecimientos"],
+            "k_minimo": documento["agregado"]["k_minimo"],
+            "paso_grados": documento["agregado"]["paso_grados"],
+            "por_zona_estudio": celdas.groupby("zona_estudio").total.sum().astype(int).to_dict(),
+        }
+    else:  # captura anterior sin agregado: no dejar celdas de otra captura en Oro
+        for viejo in ["data/plata/denue_celdas.csv", "data/oro/denue_celdas.csv",
+                      "data/oro/denue_celdas.geojson"]:
+            (raiz / viejo).unlink(missing_ok=True)
     resumen = {
-        "estado": "ok", "archivo_bronce": puntero["archivo"],
+        "estado": "ok", "archivo_bronce": puntero["archivo"], "agregado": agregado,
         "sha256_bronce": puntero["sha256"], "fecha_captura_utc": documento["fecha_captura_utc"],
         "entrada": len(documento["elements"]), "aceptados": len(puntos),
         "rechazados": len(rechazos), "por_zona": puntos.zona.value_counts().to_dict(),

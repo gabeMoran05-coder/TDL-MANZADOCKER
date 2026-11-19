@@ -96,6 +96,22 @@ def mostrar_geografia() -> None:
     capa = pdk.Layer("ScatterplotLayer", data=seleccion.to_dict("records"),
                      get_position="[lon, lat]", get_radius=100, get_fill_color=[42, 120, 214],
                      pickable=True)
+    agregado = []
+    ruta_celdas = RAIZ / "data/oro/denue_celdas.csv"
+    if ruta_celdas.exists():
+        tabla_celdas = pd.read_csv(ruta_celdas)
+        maximo = max(int(tabla_celdas.total.max()), 1)
+        agregado = [{
+            "coordenadas": [[c.oeste, c.sur], [c.este, c.sur], [c.este, c.norte], [c.oeste, c.norte]],
+            # un solo tono, más opaco donde hay más establecimientos
+            "color": [42, 120, 214, int(40 + 160 * c.total / maximo)],
+            "nombre": "Celda de ~1 km (agregado DENUE)",
+            "tipo": f"{int(c.total)} establecimientos logísticos", "id_denue": "agregado",
+            "lat": c.lat, "lon": c.lon,
+        } for c in tabla_celdas.itertuples()]
+    densidad = pdk.Layer("PolygonLayer", data=agregado, get_polygon="coordenadas",
+                         get_fill_color="color", get_line_color=[255, 255, 255],
+                         line_width_min_pixels=1, pickable=True)
     celdas = [{"coordenadas": [[x0, y0], [x1, y0], [x1, y1], [x0, y1]]}
               for x0, x1 in [(-104.36, -104.30), (-104.30, -104.24)]
               for y0, y1 in [(18.99, 19.06), (19.06, 19.13)]]
@@ -106,10 +122,18 @@ def mostrar_geografia() -> None:
                        get_radius=90, get_fill_color=[238, 128, 40], pickable=True)
     trayectos = pdk.Layer("PathLayer", data=recorridos, get_path="coordenadas",
                           get_color=[17, 138, 72], get_width=4, width_min_pixels=3)
-    st.pydeck_chart(pdk.Deck(layers=[rejilla, capa, sitios, trayectos], map_style="light", map_provider="carto",
+    st.pydeck_chart(pdk.Deck(layers=[densidad, rejilla, capa, sitios, trayectos], map_style="light", map_provider="carto",
                             initial_view_state=pdk.ViewState(latitude=19.06, longitude=-104.30, zoom=11),
                             tooltip={"text": "{nombre}\n{tipo}\nDENUE {id_denue}\n{lat}, {lon}"}))
-    st.caption("Azul: selección DENUE original. Naranja: catálogo de referencia. Verde: recorrido consultado.")
+    st.caption("Celdas azules: cuántos establecimientos de logística hay en cada cuadro de ~1 km "
+               "(más intenso = más establecimientos). Puntos azules: selección DENUE original. "
+               "Naranja: catálogo de referencia. Verde: recorrido consultado.")
+    if agregado:
+        total = int(tabla_celdas.total.sum())
+        st.caption(f"{total} establecimientos en {len(agregado)} celdas. Las celdas con menos de "
+                   f"{int(tabla_celdas.k_minimo.iloc[0])} establecimientos no se muestran, para que "
+                   "ningún negocio sea identificable. Es una rejilla de estudio, no un límite oficial; "
+                   "el municipio sí es el que asigna INEGI.")
     st.markdown("**Establecimientos:** [INEGI, DENUE](https://www.inegi.org.mx/inegi/terminos.html). "
                 "**Mapa base:** © OpenStreetMap contributors / CARTO. "
                 "**Recorridos:** OSRM/FOSSGIS, datos OSM bajo "

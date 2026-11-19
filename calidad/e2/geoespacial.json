@@ -1,8 +1,25 @@
 {
   "estado": "ok",
-  "archivo_bronce": "data/bronce/denue/20261117T214338Z-e2b46f346a43.json",
-  "sha256_bronce": "e2b46f346a436732a0a7d0ded111087078e5f6e20b1240c6a2535f0d2a9e08fb",
-  "fecha_captura_utc": "2026-11-17T21:43:38Z",
+  "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+  "agregado": {
+    "celdas_publicadas": 28,
+    "celdas_rechazadas": 0,
+    "establecimientos_en_celdas": 608,
+    "celdas_suprimidas": 18,
+    "establecimientos_suprimidos": 24,
+    "total_establecimientos": 632,
+    "k_minimo": 3,
+    "paso_grados": 0.01,
+    "por_zona_estudio": {
+      "fuera del área de estudio": 3,
+      "noreste": 382,
+      "noroeste": 146,
+      "sureste": 15,
+      "suroeste": 62
+    }
+  },
+  "sha256_bronce": "c7a1a0702aad0c66de1455a1c5550530c18a66cb8c72925d09ff939d8f9bf26a",
+  "fecha_captura_utc": "2026-11-19T19:32:06Z",
   "entrada": 2,
   "aceptados": 2,
   "rechazados": 0,

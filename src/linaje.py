@@ -102,6 +102,15 @@ def generar(raiz: Path = RAIZ) -> dict:
         }
         denue_ids[identificador] = clave
     grupos["denue"] = sorted(denue_ids.values())
+    celda_ids = {}
+    for n, c in enumerate(documento.get("agregado", {}).get("celdas", []), start=1):
+        clave = f"denue_agregado:{puntero['sha256'][:16]}:{n}"
+        origenes[clave] = {
+            "fuente": "denue_agregado", "archivo_bronce": denue, "registro": n,
+            "id_origen": c["celda"], "url_origen": documento["url_origen"],
+            "fecha_captura_utc": documento["fecha_captura_utc"],
+        }
+        celda_ids[c["celda"]] = clave
     # E1 calcula escalas y atípicos por conjunto; las imputaciones miran meses anteriores.
     # Conservamos un superconjunto explícito de entradas válidas en vez de perder dependencias.
     oro = {}
@@ -112,6 +121,15 @@ def generar(raiz: Path = RAIZ) -> dict:
             raise ValueError("Formato Oro no cubierto por linaje: " + ruta.name)
         registros = []
         for n, r in enumerate(leer(ruta), start=1):
+            if ruta.stem == "denue_celdas":
+                if r["celda"] not in celda_ids:
+                    raise ValueError("Celda Oro sin origen en el agregado Bronce: " + r["celda"])
+                registros.append({
+                    "registro": n, "clave_negocio": r["celda"], "grupos": [],
+                    "origenes_directos": [celda_ids[r["celda"]]],
+                    "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro",
+                })
+                continue
             geo = ruta.stem == "contexto_geografico"
             registros.append({
                 "registro": n,
@@ -160,21 +178,33 @@ def validar(raiz: Path = RAIZ) -> dict:
             raise ValueError("URL de origen inválida")
         if pd.isna(pd.to_datetime(origen["fecha_captura_utc"], utc=True, errors="coerce")):
             raise ValueError("Fecha de ingesta inválida")
-        if archivo not in cache:
+        llave = (archivo, origen["fuente"])
+        if llave not in cache:
             ruta = raiz / archivo
-            cache[archivo] = (json.loads(ruta.read_text(encoding="utf-8"))["elements"]
-                             if origen["fuente"] == "denue" else leer(ruta))
-        if not 1 <= origen["registro"] <= len(cache[archivo]):
+            if origen["fuente"] == "denue":
+                cache[llave] = json.loads(ruta.read_text(encoding="utf-8"))["elements"]
+            elif origen["fuente"] == "denue_agregado":
+                cache[llave] = json.loads(ruta.read_text(encoding="utf-8"))["agregado"]["celdas"]
+            else:
+                cache[llave] = leer(ruta)
+        if not 1 <= origen["registro"] <= len(cache[llave]):
             raise ValueError("Selector Bronce fuera de rango")
-        if origen["fuente"] == "denue":
-            original = cache[archivo][origen["registro"] - 1]
+        if origen["fuente"] == "denue_agregado":
+            celda = cache[llave][origen["registro"] - 1]
+            documento = json.loads((raiz / archivo).read_text(encoding="utf-8"))
+            if (celda["celda"] != origen["id_origen"]
+                    or documento["fecha_captura_utc"] != origen["fecha_captura_utc"]
+                    or documento["url_origen"] != origen["url_origen"]):
+                raise ValueError("Procedencia del agregado DENUE no coincide con Bronce")
+        elif origen["fuente"] == "denue":
+            original = cache[llave][origen["registro"] - 1]
             documento = json.loads((raiz / archivo).read_text(encoding="utf-8"))
             if (str(original["id_denue"]) != origen["id_origen"]
                     or documento["fecha_captura_utc"] != origen["fecha_captura_utc"]
                     or documento["url_origen"] != origen["url_origen"]):
                 raise ValueError("Procedencia DENUE no coincide con Bronce")
         else:
-            original = cache[archivo][origen["registro"] - 1]
+            original = cache[llave][origen["registro"] - 1]
             if any(original[c] != origen[c] for c in ["url_origen", "fecha_captura_utc"]):
                 raise ValueError("Metadatos de ingesta no coinciden con Bronce")
     filas = 0

@@ -7,17 +7,17 @@
 
 ## Resumen en tres líneas
 
-Se agrega DENUE Colima, minimizado antes de Bronce, al pipeline reproducible y al mapa del tablero mediante GeoPandas.
-El linaje cubre los ocho archivos actuales de Oro y sus 522 registros, preservando URL, fecha de ingesta, selectores y copias de las entradas por hash.
+Se agrega DENUE Colima al pipeline reproducible y al mapa del tablero mediante GeoPandas: los 632 establecimientos logísticos de Manzanillo, agregados por celda de ~1 km con k-anonimato (k = 3) antes de Bronce, más la selección de puntos original.
+El linaje cubre los diez archivos actuales de Oro y sus 578 registros (verificación del 19/11/2026), preservando URL, fecha de ingesta, selectores y copias de las entradas por hash; las celdas DENUE se enlazan una a una con su renglón en Bronce.
 La dirección comercial se enfoca en transportistas de retiros de importación: escenarios de capacidad y margen con datos propios, sin convertir TEU en ingresos.
 
 ## Ingeniería de Datos
 
 | Criterio | Evidencia | Resultado y límite |
 |---|---|---|
-| Fuente especializada, 45 puntos | [Extractor DENUE](../../extractores/denue.py), [transformación y sjoin](../../src/geoespacial.py), [pipeline E2](../../src/e2.py), [tablero](../../tablero/app.py), [resumen](../../calidad/e2/geoespacial.json) | Descarga oficial real de INEGI, sin token. Dos establecimientos seleccionados por actividad, municipio y forma societaria explícita, ambos en el área. Es una muestra conservadora pequeña, no un censo ni un mercado estimado. |
+| Fuente especializada, 45 puntos | [Extractor DENUE](../../extractores/denue.py), [transformación y sjoin](../../src/geoespacial.py), [pipeline E2](../../src/e2.py), [tablero](../../tablero/app.py), [resumen](../../calidad/e2/geoespacial.json) | Descarga oficial real de INEGI, sin token. **Agregado (19/11/2026):** 632 establecimientos SCIAN 484/488/493 del municipio; 608 publicados en 28 celdas de 0.01° y 24 suprimidos en 18 celdas con menos de 3 ([celdas en Oro](../../data/oro/denue_celdas.csv), [GeoJSON](../../data/oro/denue_celdas.geojson)). La selección de puntos con forma societaria explícita conserva solo 2 establecimientos. Cuenta establecimientos, no flota, viajes ni demanda. |
 | Ética y legalidad, 30 puntos | [Declaración por fuente](../etica-datos.md), [revisión HTTP/robots](../../calidad/e2/fuentes_web.json), [aviso DENUE](../../data/bronce/denue/LICENCIA.md) | Privacidad antes de persistir, condiciones y atribución del INEGI y Banxico, sesgos y restricciones de ASIPONA declaradas. No se acredita una autorización comercial nueva de ASIPONA. |
-| Linaje, 15 puntos | [Manifiesto](../../calidad/e2/linaje.json), [validación](../../calidad/e2/validacion_linaje.json), [implementación](../../src/linaje.py) | Cada registro referencia Bronce y su fecha real de ingesta. DENUE: uno a uno; E1: referencias por periodo más conjuntos conservadores de entradas válidas para derivadas globales. No es linaje exacto por celda. |
+| Linaje, 15 puntos | [Manifiesto](../../calidad/e2/linaje.json), [validación](../../calidad/e2/validacion_linaje.json), [implementación](../../src/linaje.py) | Cada registro referencia Bronce y su fecha real de ingesta. DENUE: uno a uno, tanto los puntos como cada celda del agregado (`denue_agregado`). E1: referencias por periodo más conjuntos conservadores de entradas válidas para derivadas globales; para E1 no es linaje exacto por celda. |
 | Relatoría, 10 puntos | [Relatoría E2](../relatoria-E2.md) | Seis preguntas, problemas reales, evidencia y uso de IA. No inventa horas de PSP, entrevistas o revisión de compañeros. |
 
 ### Reproducción
@@ -59,6 +59,15 @@ Las coordenadas se unen a cuatro celdas del rectángulo de estudio. El mapa actu
 - El código y las versiones de transformación se registran en el manifiesto. La verificación local terminó con 71 pruebas aprobadas, cobertura 95.48 % (umbral 90 %), Ruff sin hallazgos y pip-audit de requirements sin vulnerabilidades conocidas. [Resultado local](../../calidad/e2/validacion_local.json), [cobertura](../../calidad/e2/cobertura.json) y [auditoría de dependencias](../../calidad/e2/auditoria_dependencias.json).
 - [Pruebas de privacidad, espacialidad, integridad y negocio](../../tests/test_e2.py) y [prueba funcional de tablero](../../tests/test_tablero.py); [evidencia sintética del tablero](../../calidad/e2/validacion_tablero.json). El dinero del caso de prueba no es facturación ni ahorro de un cliente.
 
+### Integración y avance del 19 de noviembre (Emilio)
+
+- **Integración:** `codex/mapa-costos` (que contiene `codex/e2-fuente-linaje`) se unió con `main` en la rama `emilio/e2`. Los únicos conflictos fueron salidas del pipeline: la bitácora del pipeline (unión de filas) y `resumen.json` (regenerado con `python -m src.e2` desde Bronce).
+- **Agregado DENUE:** `extractores/denue.py` (`agregar`), `src/geoespacial.py` (`transformar_agregado`) y `src/linaje.py` (`denue_agregado`). Pruebas en [`tests/test_denue_agregado.py`](../../tests/test_denue_agregado.py).
+- **Robustez de captura:** durante la captura, INEGI cortó la conexión (`ChunkedEncodingError`); el extractor ético solo reintentaba ante 429/5xx. Ahora también reintenta ante conexión cortada o tiempo de espera ([prueba](../../tests/test_extractor_base.py)).
+- **Documentación:** se corrigieron los acentos dañados (`?` en lugar de letra acentuada) de esta ficha y de la declaración de ética; ambos archivos son UTF-8 válido.
+- **Verificación local (19/11/2026):** 87 pruebas aprobadas, cobertura 95.47 % (umbral 90 %), Ruff sin hallazgos, pip-audit sin vulnerabilidades conocidas (incluye `tablero/requirements.txt`) y gitleaks sin secretos en el historial. Pipeline E2 sin red: 10 archivos y 578 registros de Oro con linaje 100 %.
+- **Pendiente:** URL pública del tablero (solo puede publicarla el dueño del repositorio en Streamlit Community Cloud) y la decisión con Gabriel sobre mover el tag `e2`.
+
 ## Análisis Estadístico
 
 | Criterio | Evidencia E2 | Estado |
@@ -87,7 +96,7 @@ La rama `codex/mapa-costos` agrega un catálogo de cinco organizaciones pública
 
 ## Issues de la entrega anterior
 
-No se realizó una revisión remota verificable de issues en esta sesión; no se afirma que estén todos atendidos. La ficha E1 y el historial conservan el estado anterior. Antes de la entrega oficial, revisar las observaciones docentes y enlazar aquí los commits que las atiendan.
+Revisión del 19/11/2026 en GitHub: no hay issues de los docentes abiertos ni cerrados; solo existen los pull requests #1, #2 y #3 de E1.
 
 ## Registro oficial
 

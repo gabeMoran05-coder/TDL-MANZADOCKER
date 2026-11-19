@@ -1,6 +1,6 @@
 # Declaración de ética y legalidad de datos · E2
 
-Equipo: Emilio Rodrigo Ayala Reynoso y Karol Gabriel Morán Aréchiga. Revisión: 17 de noviembre de 2026.
+Equipo: Emilio Rodrigo Ayala Reynoso y Karol Gabriel Morán Aréchiga. Revisión: 17 de noviembre de 2026 (Gabriel); actualización del 19 de noviembre de 2026 (Emilio): agregado DENUE por celda.
 
 ## Fuentes, condiciones y licencia
 
@@ -18,13 +18,15 @@ El ZIP y el CSV completo de DENUE se procesan exclusivamente en memoria. Se sele
 
 Antes de escribir Bronce, la lista blanca conserva únicamente identificador público del establecimiento, código de actividad, entidad/municipio, coordenadas numéricas y posición del registro en el CSV fuente. Se eliminan nombre, razón social, CLEE, domicilio, correo, teléfono, sitio web y demás campos. No se guarda el ZIP original con datos personales. La capa Bronce es cruda con proyección mínima previa por privacidad, excepción prevista por el proyecto.
 
+**Agregado por celda (desde el 19/11/2026).** El filtro societario dejaba solo 2 de los 632 establecimientos logísticos de Manzanillo, porque casi ninguna razón social en DENUE incluye la forma societaria escrita. Para representar el mercado sin datos personales, en la misma pasada en memoria se cuentan **todos** los establecimientos SCIAN 484/488/493 del municipio por celda de 0.01° (~1.1 km) y por categoría. Solo se guardan los conteos: ningún identificador, nombre, razón social ni coordenada individual. Se aplica **k-anonimato con k = 3**: una celda con menos de 3 establecimientos no se publica (se suma a un total suprimido sin ubicación) y, dentro de una celda publicada, una categoría con 1 o 2 establecimientos se reporta como suprimida. Captura del 19/11/2026: 632 establecimientos, 608 en 28 celdas publicadas y 24 en 18 celdas suprimidas. Así se incluyen también personas físicas sin exponerlas, porque un conteo de 3 o más no permite saber cuál negocio es cuál.
+
 El identificador DENUE corresponde a un establecimiento económico, no a un identificador de una persona. Las coordenadas corresponden a las unidades de forma societaria seleccionada. No se capturan ubicaciones de operadores, placas, recorridos, contenedores ni perfiles. Los directorios de servicios aportados por el usuario solo son referencia comercial: no se incorporan como una base de contactos ni se contacta a las personas listadas.
 
 Los escenarios del transportista usan agregados ingresados en sesión. No se escriben en archivos, se versionan ni se mandan a INEGI. Un futuro piloto requiere acuerdo sobre uso, acceso y conservación. Las entrevistas sin consentimiento confirmado no quedan autorizadas por esta declaración.
 
 ## Sesgos y límites
 
-- **Selección:** la forma societaria explícita excluye muchos establecimientos y favorece la identificación más clara en el directorio. La muestra obtenida es pequeña; no representa a todas las transportistas ni sirve para estimar tamaño de mercado, competencia, ingresos o empleo.
+- **Selección:** la capa de puntos (forma societaria explícita) excluye casi todo y solo tiene 2 establecimientos; por eso el mapa usa el agregado por celda, que cubre los 632. Aun así, DENUE registra establecimientos, no empresas ni flota: un conteo alto no mide camiones, viajes ni demanda, y no sirve para estimar ingresos o empleo. La supresión k = 3 oculta 24 establecimientos en zonas poco densas, lo que subrepresenta la periferia.
 - **Cobertura y actualización:** la fecha de ingesta es distinta de la edición del directorio y de la fecha de alta de un establecimiento. No se afirma que la captura describa altas o bajas de hoy. Se preservan el metadato de edición y el hash de la descarga.
 - **Geografía:** el rectángulo 18.99–19.13 N y −104.36–−104.24 E y sus cuatro celdas son área de estudio, no límites oficiales de recinto, colonias o municipio. GeoPandas asigna puntos por intersección y deja en cuarentena los que quedan fuera. Las coordenadas no constituyen accesos viales autorizados ni rutas para camiones.
 - **Temporalidad:** la captura geográfica es contexto actual. No se agrega a los meses históricos de 2021–2026 como variable predictora: eso induciría fuga temporal. El pronóstico TEU mensual no predice citas ni tiempos diarios de espera.
@@ -34,12 +36,12 @@ Los escenarios del transportista usan agregados ingresados en sesión. No se esc
 
 Los datos DENUE seleccionados y sus derivados conservan la atribución al INEGI y los metadatos del proceso de selección: [aviso de datos](../data/bronce/denue/LICENCIA.md). Las adaptaciones se identifican como elaboración del equipo, sin afirmar que las respalda el INEGI. No se licencia todo el repositorio de forma uniforme ni se atribuye esta autorización a ASIPONA o Banxico.
 
-El mapa base utiliza CARTO/OpenStreetMap. El comparador consulta OSRM/FOSSGIS solo al solicitar recorridos entre ubicaciones publicas del catalogo; envia coordenadas y conserva en sesion los costos e ingresos. No consulta INEGI por cada visitante. Las fuentes y sus condiciones se distinguen en docs/E2/mapa-costos.md. El linaje de Oro mantiene URL, fecha de ingesta, selectores y SHA-256; sus conjuntos amplios se declaran como tales.
+El mapa base utiliza CARTO/OpenStreetMap. El comparador consulta OSRM/FOSSGIS solo al solicitar recorridos entre ubicaciones públicas del catálogo; envía coordenadas y conserva en sesion los costos e ingresos. No consulta INEGI por cada visitante. Las fuentes y sus condiciones se distinguen en docs/E2/mapa-costos.md. El linaje de Oro mantiene URL, fecha de ingesta, selectores y SHA-256; sus conjuntos amplios se declaran como tales.
 
 ## Fuente descartada y uso de IA
 
 Se intentó OSM/Overpass. La instancia principal prohíbe `/api/` en robots; no se utilizó. La alternativa Private.coffee no respondió tras reintentos. No se publica una fuente ficticia: E2 usa DENUE real. Las consultas auxiliares de factibilidad no forman parte del producto. La asistencia de Codex para implementación y documentación se declara en `docs/relatoria-E2.md`.
 
-## Ampliacion del mapa y comparador
+## Ampliación del mapa y comparador
 
-El catalogo cerrado de cinco organizaciones conserva etiquetas institucionales publicas elegidas expresamente; no nombres de personas ni datos de contacto. Las consultas OSRM utilizan solo esos puntos publicos. El proveedor registra peticiones; se limita a una por segundo por proceso y cache de 24 horas. El perfil es de automovil y no valida accesos ni restricciones de carga. Los resultados de costos son escenarios del usuario y no cotizaciones verificadas. Detalle y fuentes: [mapa-costos.md](E2/mapa-costos.md).
+El catálogo cerrado de cinco organizaciones conserva etiquetas institucionales públicas elegidas expresamente; no nombres de personas ni datos de contacto. Las consultas OSRM utilizan solo esos puntos públicos. El proveedor registra peticiones; se limita a una por segundo por proceso y caché de 24 horas. El perfil es de automóvil y no valida accesos ni restricciones de carga. Los resultados de costos son escenarios del usuario y no cotizaciones verificadas. Detalle y fuentes: [mapa-costos.md](E2/mapa-costos.md).

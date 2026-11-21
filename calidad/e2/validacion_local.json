@@ -1,0 +1,13 @@
+{
+  "estado": "ok",
+  "fecha": "2026-11-17",
+  "pruebas": 80,
+  "duracion_pytest_s": 90.5,
+  "cobertura_pct": 95.27104959630911,
+  "umbral_cobertura_pct": 90,
+  "ruff": "ok",
+  "pip_audit_requirements": "sin vulnerabilidades conocidas",
+  "tablero": "AppTest, sin excepciones; caso sintético",
+  "linaje": "8 archivos, 522 registros, cobertura 100%",
+  "alcance": "Ampliacion mapa-costos posterior al tag e2; prueba vial real y costos sinteticos separados"
+}

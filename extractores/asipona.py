@@ -134,8 +134,8 @@ def extraer_lineas(texto: str) -> dict[str, list[float | None]]:
     suma_teu = 0
     out: dict[str, list[float | None]] = {}
     for linea in texto.splitlines():
-        l = linea.strip()
-        u = l.upper()
+        limpia = linea.strip()
+        u = limpia.upper()
         if u.startswith("MOVIMIENTO DE CARGA TONELADAS"):
             seccion = "ton"
         elif u.startswith("ARRIBO DE BUQUES"):
@@ -150,20 +150,20 @@ def extraer_lineas(texto: str) -> dict[str, list[float | None]]:
         var = None
         resto = ""
         if seccion == "ton" and u.startswith("CARGA CONTENERIZADA"):
-            var, resto = "ton_contenerizada", l[len("Carga Contenerizada"):]
+            var, resto = "ton_contenerizada", limpia[len("Carga Contenerizada"):]
         elif seccion == "arribos" and u.startswith("CARGA CONTENERIZADA"):
-            var, resto = "buques_contenerizada", l[len("Carga Contenerizada"):]
+            var, resto = "buques_contenerizada", limpia[len("Carga Contenerizada"):]
         elif re.match(r"CONTENEDORES TEU.S", u):
-            var, resto = "teu_total", l[len("CONTENEDORES TEU'S"):]
+            var, resto = "teu_total", limpia[len("CONTENEDORES TEU'S"):]
         elif seccion == "contenedores" and re.match(r"SUMA TEU.S", u):
             suma_teu += 1
             nombres = {1: "teu_importacion", 2: "teu_exportacion",
                        3: "teu_transbordo_entrada", 4: "teu_transbordo_salida"}
-            var, resto = nombres.get(suma_teu), l[len("SUMA TEU'S"):]
+            var, resto = nombres.get(suma_teu), limpia[len("SUMA TEU'S"):]
         elif seccion == "empresa":
             for t in ("SSA", "CONTECON", "OCUPA", "TIMSA"):
                 if u.startswith(t + " "):
-                    var, resto = f"teu_{t.lower()}", l[len(t):]
+                    var, resto = f"teu_{t.lower()}", limpia[len(t):]
         if var and var not in out:
             out[var] = numeros(resto)
     return out

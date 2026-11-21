@@ -14,3 +14,7 @@ fecha,inicio,fin,interrupcion_min,fase,actividad
 2026-11-12,17:31,17:55,0,revision,Commit push y pull request 1 con CI en verde
 2026-11-13,11:45,12:05,0,revision,Revision del PR 2 de Gabriel union del PR 1 ficha ENTREGA.md y relatoria unificada de E1
 2026-11-13,12:05,12:30,0,revision,Union del PR 3 a main ajuste de ficha y relatoria y tag e1
+2026-11-19,13:07,13:26,0,revision,Integracion de codex/mapa-costos con main resolucion de conflictos del pipeline y correccion de acentos en etica y ficha E2
+2026-11-19,13:26,13:38,0,codigo,Agregado DENUE por celda con k-anonimato linaje por celda reintento del extractor capa del tablero y pruebas
+2026-11-19,13:38,13:45,0,documentacion,Actualizacion de etica ficha y relatoria E2 y registros PSP
+2026-11-20,19:36,19:40,0,revision,Actualizar emilio/e2 con main: resolver conflictos del pipeline regenerar salidas y correr pruebas

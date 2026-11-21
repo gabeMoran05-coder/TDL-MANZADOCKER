@@ -74,7 +74,17 @@ class ExtractorEtico:
             espera = pausa - (time.time() - self.ultimo.get(dominio, 0))
             if espera > 0:
                 time.sleep(espera)
-            r = self.sesion.get(url, timeout=timeout, **kwargs)
+            try:
+                r = self.sesion.get(url, timeout=timeout, **kwargs)
+            except (requests.ConnectionError, requests.Timeout,
+                    requests.exceptions.ChunkedEncodingError) as error:
+                # Conexion cortada o lenta (p. ej. INEGI 19/11/2026): misma espera exponencial
+                self.ultimo[dominio] = time.time()
+                if i == intentos - 1:
+                    raise RuntimeError(f"Sin respuesta valida de {url} tras {intentos} "
+                                       f"intentos: {type(error).__name__}") from error
+                time.sleep(pausa * 2 ** i)
+                continue
             self.ultimo[dominio] = time.time()
             if r.status_code == 429 or r.status_code >= 500:
                 time.sleep(pausa * 2 ** i)  # espera exponencial ante saturacion

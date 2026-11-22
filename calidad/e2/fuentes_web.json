@@ -1,0 +1,50 @@
+{
+  "user_agent": "TDL-Observatorio/1.0 (proyecto academico TecNM Colima; +https://github.com/gabeMoran05-coder/TDL-MANZADOCKER)",
+  "verificaciones": [
+    {
+      "url": "https://www.inegi.org.mx/robots.txt",
+      "revisado_utc": "2026-11-17T21:46:35Z",
+      "status_http": 200,
+      "sha256_respuesta": "e1f9f6c0c34a838a1c7e881d693ba673fd4501b90fbd7a307b08a827c001a595",
+      "ruta_comprobada": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
+      "permitido_robots": true,
+      "contenido_robots": "Sitemap: https://www.inegi.org.mx/sitemap_contenidos_generales.xml\r\nSitemap: https://www.inegi.org.mx/sitemap_programas.xml\r\nUser-Agent: *\r\nAllow: /app\r\nAllow: /temas\r\nAllow: /datos\r\nAllow: /datosprimarios\r\nAllow: /eventos\r\nAllow: /inegi\r\nAllow: /investigacion\r\nAllow: /infraestructura\r\nAllow: /mapasitio\r\nAllow: /programas\r\nAllow: /servicios\r\nAllow: /transparencia\r\nAllow: /widgets\r\nAllow: /contenidos/app\r\nAllow: /contenidos/clasificadoresycatalogos\r\nAllow: /contenidos/datosprimarios\r\nAllow: /contenidos/eventos\r\nAllow: /contenidos/inegi\r\nAllow: /contenidos/investigacion\r\nAllow: /contenidos/productos\r\nAllow: /contenidos/programas\r\nAllow: /contenidos/temas\r\nAllow: /contenidos/transparencia\r\n\r\n#SNM 18.03.2025\r\nDisallow: /auth/register/\r\nDisallow: /catalog/*/data-dictionary/*?file_name=*\r\nDisallow: /catalog/*/variable/*/*?name=*\r\nDisallow: /metadata/export_variable/*/*/csv\r\nDisallow: /metadata/export_variable/*/*/json\r\nDisallow: /catalog/*/variable-groups/*\r\nDisallow: /catalog/*/variable/*\r\nDisallow: /catalog/*/download/*\r\nDisallow: /catalog/*/dataprocessing\r\nDisallow: /catalog/*/vargrp/*\r\nDisallow: /catalog/*/accesspolicy\r\nDisallow: /catalog/*/sampling\r\nDisallow: /catalog/*/download/*\r\nDisallow: /catalog/*/link/study-website\r\nDisallow: /catalog/*/dataappraisal\r\nDisallow: /catalog/*/overview\r\nDisallow: /catalog/*/datacollection\r\nDisallow: /catalog/*/link/interactive\r\nDisallow: /catalog/*/function.unserialize\r\nDisallow: /catalog/*/study-descriptio\r\nDisallow: /catalog/*/technicaldocuments\r\nDisallow: /catalog/ddi/*\r\nDisallow: /rnm/index.php/auth/register/\r\nDisallow: /rnm/index.php/catalog/*/data-dictionary/*?file_name=*\r\nDisallow: /rnm/index.php/catalog/*/variable/*/*?name=*\r\nDisallow: /rnm/index.php/metadata/export_variable/*/*/csv\r\nDisallow: /rnm/index.php/metadata/export_variable/*/*/json\r\nDisallow: /rnm/index.php/catalog/*/variable-groups/*\r\nDisallow: /rnm/index.php/catalog/*/variable/*\r\nDisallow: /rnm/index.php/catalog/*/download/*\r\nDisallow: /rnm/index.php/catalog/*/dataprocessing\r\nDisallow: /rnm/index.php/catalog/*/vargrp/*\r\nDisallow: /rnm/index.php/catalog/*/accesspolicy\r\nDisallow: /rnm/index.php/catalog/*/sampling\r\nDisallow: /rnm/index.php/catalog/*/download/*\r\nDisallow: /rnm/index.php/catalog/*/link/study-website\r\nDisallow: /rnm/index.php/catalog/*/dataappraisal\r\nDisallow: /rnm/index.php/catalog/*/overview\r\nDisallow: /rnm/index.php/catalog/*/datacollection\r\nDisallow: /rnm/index.php/catalog/*/link/interactive\r\nDisallow: /rnm/index.php/catalog/*/function.unserialize\r\nDisallow: /rnm/index.php/catalog/*/study-descriptio\r\nDisallow: /rnm/index.php/catalog/*/technicaldocuments\r\nDisallow: /rnm/index.php/catalog/ddi/*"
+    },
+    {
+      "url": "https://www.inegi.org.mx/inegi/terminos.html",
+      "revisado_utc": "2026-11-17T21:46:38Z",
+      "status_http": 200,
+      "sha256_respuesta": "97e97599169f75f455877e85edffcf941d512f56c5c00197ebfec783d802c67a"
+    },
+    {
+      "url": "https://www.puertomanzanillo.com.mx/robots.txt",
+      "revisado_utc": "2026-11-17T21:46:40Z",
+      "status_http": 404,
+      "sha256_respuesta": "90b2d35cd5e08370ed20db81197dd9da1a4dbb421f71293fd5733ea49eb7b3e1",
+      "ruta_comprobada": "https://www.puertomanzanillo.com.mx/esps/0000209/estadisticas.html",
+      "permitido_robots": true,
+      "contenido_robots": null
+    },
+    {
+      "url": "https://www.gob.mx/terminos",
+      "revisado_utc": "2026-11-17T21:46:42Z",
+      "status_http": 200,
+      "sha256_respuesta": "95f1e02aa46f9f316f0fd86a8a3fd7d33a070a5fbece6fe4303bf8d4814e871f"
+    },
+    {
+      "url": "https://www.banxico.org.mx/robots.txt",
+      "revisado_utc": "2026-11-17T21:46:45Z",
+      "status_http": 200,
+      "sha256_respuesta": "0e0e9cc7ddd207105786600df6d1c017c5be803ff616c9d0871583d67113df53",
+      "ruta_comprobada": "https://www.banxico.org.mx/SieAPIRest/",
+      "permitido_robots": true,
+      "contenido_robots": "User-agent: *\r\nDisallow: /dyn\r\n\r\nUser-agent: *\r\nDisallow: /dyn/\r\n\r\nUser-agent: *\r\nDisallow: /ALEPH\r\n\r\nUser-Agent: *\r\nDisallow: /ALEPH\r\n\r\nUser-agent: Googlebot\r\nDisallow: /ALEPH\r\n\r\nUser-agent: googlebot\r\nDisallow: /ALEPH\r\n\r\nUser-agent: WT\r\nDisallow: /ALEPH\r\n\r\nUser-Agent: WT\r\nDisallow: /ALEPH\r\n\r\nUser-agent: WT.*\r\nDisallow: /ALEPH\r\n\r\nUser-Agent: WT.*\r\nDisallow: /ALEPH\r\n\r\nUser-agent: Slurp\r\nDisallow: /ALEPH\r\n\r\nUser-agent: Slurp\r\nDisallow: /ALEPHcgi-bin/\r\n\r\nUser-agent: http://www.almaden.ibm.com/cs/crawler\r\nDisallow: /ALEPH\r\n\r\nUseri-agent: msnbot\r\nDisallow: /ALEPH\r\n\r\nUser-agent; MSNBot\r\nDisallow: /ALEPH\r\n\r\nUser-agent: Exabot\r\nDisallow: /ALEPH\r\n\r\nUser-agent: WebTrends\r\nDisallow: /ALEPH\r\n\r\nUser-agent: webtrends\r\nDisallow: /ALEPH\r\n\r\nUser-agent: *\r\nDisallow: /V\r\n\r\nUser-Agent: *\r\nDisallow: /V\r\n\r\nUser-agent: Googlebot\r\nDisallow: /V\r\n\r\nUser-agent: googlebot\r\nDisallow: /V\r\n\r\nUser-agent: WT\r\nDisallow: /V\r\n\r\nUser-Agent: WT\r\nDisallow: /V\r\n\r\nUser-agent: WT.*\r\nDisallow: /V\r\n\r\nUser-Agent: WT.*\r\nDisallow: /V\r\n\r\nUser-agent: Slurp\r\nDisallow: /V\r\n\r\nUser-agent: http://www.almaden.ibm.com/cs/crawler\r\nDisallow: /V\r\n\r\nUseri-agent: msnbot\r\nDisallow: /V\r\n\r\nUser-agent; MSNBot\r\nDisallow: /V\r\n\r\nUser-agent: Exabot\r\nDisallow: /V\r\n\r\nUser-agent: WebTrends\r\nDisallow: /V\r\n\r\nUser-agent: webtrends\r\nDisallow: /V\r\n"
+    },
+    {
+      "url": "https://www.banxico.org.mx/footer-es/salvedad-politicas-uso-banco-.html",
+      "revisado_utc": "2026-11-17T21:46:47Z",
+      "status_http": 200,
+      "sha256_respuesta": "05494befe5c0706f9cb7217e807cff30bb1de71737b193f75beeb6d0ea6bf70b"
+    }
+  ]
+}

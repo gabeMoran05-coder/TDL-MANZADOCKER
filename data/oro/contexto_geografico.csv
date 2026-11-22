@@ -1,0 +1,3 @@
+id_denue,registro_bronce,lat,lon,codigo_actividad,categoria,puerto,url_origen,fecha_captura_utc,zona,archivo_bronce
+9324893,2,19.07752251,-104.28609896,484239,Autotransporte de carga,Manzanillo,https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip,2026-11-19T19:32:06Z,noreste,data/bronce/denue/20261119T193206Z-c7a1a0702aad.json
+9649444,1,19.1035993,-104.30847891,488519,Servicios relacionados con el transporte,Manzanillo,https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip,2026-11-19T19:32:06Z,noroeste,data/bronce/denue/20261119T193206Z-c7a1a0702aad.json

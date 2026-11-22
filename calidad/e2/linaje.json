@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generado_utc": "2026-11-21T01:39:01Z",
+  "generado_utc": "2026-11-22T20:36:20Z",
   "oro": {
     "data/oro/contexto_geografico.csv": {
       "sha256": "d7b15020b4fefe2ab1d6dfdea093af7f7ea892842e4931dfeb2dbe7ad4d50c0e",
@@ -6301,7 +6301,7 @@
       ]
     },
     "data/oro/parametros_transformacion.json": {
-      "sha256": "f4b1cb1dc72040c510d22a85f62dc5e1cb49516e49a66acb29fbfdb87a1a41a5",
+      "sha256": "db69e75b4b4a502d7c54fac27f6c5db797c3d2ae9f051980f5a26423f3de0df4",
       "registros": [
         {
           "registro": 1,

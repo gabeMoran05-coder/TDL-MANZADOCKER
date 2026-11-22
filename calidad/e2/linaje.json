@@ -1,564 +1,518 @@
 {
   "version": 1,
-  "generado_utc": "2026-11-21T01:39:01Z",
+  "generado_utc": "2026-11-22T19:04:04Z",
   "oro": {
-    "data/oro/contexto_geografico.csv": {
-      "sha256": "d7b15020b4fefe2ab1d6dfdea093af7f7ea892842e4931dfeb2dbe7ad4d50c0e",
-      "registros": [
-        {
-          "registro": 1,
-          "clave_negocio": "9324893",
-          "grupos": [],
-          "origenes_directos": [
-            "denue:c7a1a0702aad0c66:2"
-          ],
-          "metodo": "establecimiento DENUE + sjoin con celdas"
-        },
-        {
-          "registro": 2,
-          "clave_negocio": "9649444",
-          "grupos": [],
-          "origenes_directos": [
-            "denue:c7a1a0702aad0c66:1"
-          ],
-          "metodo": "establecimiento DENUE + sjoin con celdas"
-        }
-      ]
-    },
-    "data/oro/contexto_geografico.geojson": {
-      "sha256": "f9c954c78d3bc8f9e8769d4ad5d0f881c03d0a20910e81097d120637522d9d8a",
-      "registros": [
-        {
-          "registro": 1,
-          "clave_negocio": "9324893",
-          "grupos": [],
-          "origenes_directos": [
-            "denue:c7a1a0702aad0c66:2"
-          ],
-          "metodo": "establecimiento DENUE + sjoin con celdas"
-        },
-        {
-          "registro": 2,
-          "clave_negocio": "9649444",
-          "grupos": [],
-          "origenes_directos": [
-            "denue:c7a1a0702aad0c66:1"
-          ],
-          "metodo": "establecimiento DENUE + sjoin con celdas"
-        }
-      ]
-    },
     "data/oro/denue_celdas.csv": {
-      "sha256": "07e2e787b7bb616d699bd8b0bac5cf8d162db541681b5bc48fdafd89bb9d00b9",
+      "sha256": "6e9e5d407f2746cf35352d756f9ba6239a207d0a5d75e9e5343c70336416d506",
       "registros": [
         {
           "registro": 1,
           "clave_negocio": "1905_-10432",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:1"
+            "denue_agregado:3d9c2e884a78484f:1"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 2,
           "clave_negocio": "1905_-10431",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:2"
+            "denue_agregado:3d9c2e884a78484f:2"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 3,
           "clave_negocio": "1905_-10430",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:3"
+            "denue_agregado:3d9c2e884a78484f:3"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 4,
           "clave_negocio": "1905_-10425",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:4"
+            "denue_agregado:3d9c2e884a78484f:4"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 5,
           "clave_negocio": "1906_-10429",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:5"
+            "denue_agregado:3d9c2e884a78484f:5"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 6,
           "clave_negocio": "1907_-10431",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:6"
+            "denue_agregado:3d9c2e884a78484f:6"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 7,
           "clave_negocio": "1907_-10429",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:7"
+            "denue_agregado:3d9c2e884a78484f:7"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 8,
           "clave_negocio": "1907_-10428",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:8"
+            "denue_agregado:3d9c2e884a78484f:8"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 9,
           "clave_negocio": "1908_-10432",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:9"
+            "denue_agregado:3d9c2e884a78484f:9"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 10,
           "clave_negocio": "1908_-10431",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:10"
+            "denue_agregado:3d9c2e884a78484f:10"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 11,
           "clave_negocio": "1908_-10430",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:11"
+            "denue_agregado:3d9c2e884a78484f:11"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 12,
           "clave_negocio": "1908_-10429",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:12"
+            "denue_agregado:3d9c2e884a78484f:12"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 13,
           "clave_negocio": "1908_-10428",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:13"
+            "denue_agregado:3d9c2e884a78484f:13"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 14,
           "clave_negocio": "1909_-10433",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:14"
+            "denue_agregado:3d9c2e884a78484f:14"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 15,
           "clave_negocio": "1909_-10431",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:15"
+            "denue_agregado:3d9c2e884a78484f:15"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 16,
           "clave_negocio": "1909_-10430",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:16"
+            "denue_agregado:3d9c2e884a78484f:16"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 17,
           "clave_negocio": "1909_-10429",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:17"
+            "denue_agregado:3d9c2e884a78484f:17"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 18,
           "clave_negocio": "1909_-10428",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:18"
+            "denue_agregado:3d9c2e884a78484f:18"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 19,
           "clave_negocio": "1910_-10434",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:19"
+            "denue_agregado:3d9c2e884a78484f:19"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 20,
           "clave_negocio": "1910_-10433",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:20"
+            "denue_agregado:3d9c2e884a78484f:20"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 21,
           "clave_negocio": "1910_-10432",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:21"
+            "denue_agregado:3d9c2e884a78484f:21"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 22,
           "clave_negocio": "1910_-10431",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:22"
+            "denue_agregado:3d9c2e884a78484f:22"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 23,
           "clave_negocio": "1911_-10435",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:23"
+            "denue_agregado:3d9c2e884a78484f:23"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 24,
           "clave_negocio": "1911_-10434",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:24"
+            "denue_agregado:3d9c2e884a78484f:24"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 25,
           "clave_negocio": "1911_-10433",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:25"
+            "denue_agregado:3d9c2e884a78484f:25"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 26,
           "clave_negocio": "1911_-10432",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:26"
+            "denue_agregado:3d9c2e884a78484f:26"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 27,
           "clave_negocio": "1912_-10427",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:27"
+            "denue_agregado:3d9c2e884a78484f:27"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 28,
           "clave_negocio": "1914_-10457",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:28"
+            "denue_agregado:3d9c2e884a78484f:28"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         }
       ]
     },
     "data/oro/denue_celdas.geojson": {
-      "sha256": "07090d55f413949e8ea8004b0d3d8e7561930584162f89d961a116439f4ff038",
+      "sha256": "aac078c2edb02650556dd530db92b5195bf98743ff1330845e98b14c59c76ec3",
       "registros": [
         {
           "registro": 1,
           "clave_negocio": "1905_-10432",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:1"
+            "denue_agregado:3d9c2e884a78484f:1"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 2,
           "clave_negocio": "1905_-10431",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:2"
+            "denue_agregado:3d9c2e884a78484f:2"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 3,
           "clave_negocio": "1905_-10430",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:3"
+            "denue_agregado:3d9c2e884a78484f:3"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 4,
           "clave_negocio": "1905_-10425",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:4"
+            "denue_agregado:3d9c2e884a78484f:4"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 5,
           "clave_negocio": "1906_-10429",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:5"
+            "denue_agregado:3d9c2e884a78484f:5"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 6,
           "clave_negocio": "1907_-10431",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:6"
+            "denue_agregado:3d9c2e884a78484f:6"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 7,
           "clave_negocio": "1907_-10429",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:7"
+            "denue_agregado:3d9c2e884a78484f:7"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 8,
           "clave_negocio": "1907_-10428",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:8"
+            "denue_agregado:3d9c2e884a78484f:8"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 9,
           "clave_negocio": "1908_-10432",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:9"
+            "denue_agregado:3d9c2e884a78484f:9"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 10,
           "clave_negocio": "1908_-10431",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:10"
+            "denue_agregado:3d9c2e884a78484f:10"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 11,
           "clave_negocio": "1908_-10430",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:11"
+            "denue_agregado:3d9c2e884a78484f:11"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 12,
           "clave_negocio": "1908_-10429",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:12"
+            "denue_agregado:3d9c2e884a78484f:12"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 13,
           "clave_negocio": "1908_-10428",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:13"
+            "denue_agregado:3d9c2e884a78484f:13"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 14,
           "clave_negocio": "1909_-10433",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:14"
+            "denue_agregado:3d9c2e884a78484f:14"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 15,
           "clave_negocio": "1909_-10431",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:15"
+            "denue_agregado:3d9c2e884a78484f:15"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 16,
           "clave_negocio": "1909_-10430",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:16"
+            "denue_agregado:3d9c2e884a78484f:16"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 17,
           "clave_negocio": "1909_-10429",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:17"
+            "denue_agregado:3d9c2e884a78484f:17"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 18,
           "clave_negocio": "1909_-10428",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:18"
+            "denue_agregado:3d9c2e884a78484f:18"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 19,
           "clave_negocio": "1910_-10434",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:19"
+            "denue_agregado:3d9c2e884a78484f:19"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 20,
           "clave_negocio": "1910_-10433",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:20"
+            "denue_agregado:3d9c2e884a78484f:20"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 21,
           "clave_negocio": "1910_-10432",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:21"
+            "denue_agregado:3d9c2e884a78484f:21"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 22,
           "clave_negocio": "1910_-10431",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:22"
+            "denue_agregado:3d9c2e884a78484f:22"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 23,
           "clave_negocio": "1911_-10435",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:23"
+            "denue_agregado:3d9c2e884a78484f:23"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 24,
           "clave_negocio": "1911_-10434",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:24"
+            "denue_agregado:3d9c2e884a78484f:24"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 25,
           "clave_negocio": "1911_-10433",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:25"
+            "denue_agregado:3d9c2e884a78484f:25"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 26,
           "clave_negocio": "1911_-10432",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:26"
+            "denue_agregado:3d9c2e884a78484f:26"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 27,
           "clave_negocio": "1912_-10427",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:27"
+            "denue_agregado:3d9c2e884a78484f:27"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         },
         {
           "registro": 28,
           "clave_negocio": "1914_-10457",
           "grupos": [],
           "origenes_directos": [
-            "denue_agregado:c7a1a0702aad0c66:28"
+            "denue_agregado:3d9c2e884a78484f:28"
           ],
-          "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro"
+          "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro"
         }
       ]
     },
@@ -3432,7 +3386,7 @@
       ]
     },
     "data/oro/mensual_integrado.parquet": {
-      "sha256": "9f3f54dc532ff499af0ea995b91a56c14fbb99d5643b292df0cbcdc657783229",
+      "sha256": "50a21db2135baf6274727fa6ded9d5fed87638b237f58ebcf4896450562ae8e3",
       "registros": [
         {
           "registro": 1,
@@ -20940,9 +20894,9 @@
     "src/calidad.py": "1467559c2772a8d66b0a250a9d7bc4e46bb1859940f4f74ec2e60cbed70f50e4",
     "src/e2.py": "41a72d14c5a309cbc16606e0ab5db52354af78255a8e8f5e1ca582550aac564d",
     "src/fiabilidad.py": "0550a3586544ebb73dc2bdedb86a987b107092ac194816aac9fd4683aa75f30f",
-    "src/geoespacial.py": "26bfa06ef4e9b5f4b874e8452dc94450aa533f74f7167f8cf5f4139fc80f8088",
+    "src/geoespacial.py": "5cb74c10e9d5a700f75675866e55fda3132d0bb02c1f91a87cd666b68ca66fbb",
     "src/limpieza.py": "92d146ae96ffbe3f528d26b84cc189ec4b8776309ebcbca0499b8c023d482cfb",
-    "src/linaje.py": "2e2a8b86c10622cdb8ed25f557b449464e542c96315fe7ec4322d64dd68fe086",
+    "src/linaje.py": "64b5baba7988596f6c1aee9e72849d3096bd95c00d8803a60ad4147bdce7c150",
     "src/negocio.py": "6dc1a5ee983829d141a298a12dedb7fd31e34808f8bd0c7f35bbf8675891f196",
     "src/preprocesamiento.py": "639604417ffb416066c8bd4cd3e19c6bc84fff855aacb0541ecdb9729dd4bdbe",
     "src/respaldo.py": "324d77451bed08013a85ff3f29bf89d7f253f29725ab464d05d467a93ed2c528",
@@ -20951,15 +20905,15 @@
     "extractores/asipona.py": "2656d5e52a7044b781d9ef5a72cc4c01e30ee5c93499ab050ee9fc8019e44cde",
     "extractores/banxico.py": "9e41b0246fbe8c9be7ee8b0d3003409cd6d4d5deffc648138000062cc4a3d1b7",
     "extractores/base.py": "e71c597a9857bec335a9225bafd7ba045510d2837099b6098cd42e2e97b0b469",
-    "extractores/denue.py": "45c7e0d45d8402bac264480bac5c08dc9964117326f2fd6075880be1d76a5893",
+    "extractores/denue.py": "238bf122cac9c1059de7572e0123f189b2598aa2001277408c44cb93de656ed1",
     "extractores/revisar_fuentes.py": "be33eae3a31a1f0fdafdb405acbd864bbe6034571a19d392f4b8f40494086842",
     "extractores/run_captura.py": "430fde6f9d26b466e501afdf37adfc0d999b075f09df9c003ffedc70388b218a"
   },
   "versiones": {
-    "pandas": "3.0.6",
+    "pandas": "3.0.5",
     "geopandas": "1.2.0",
     "shapely": "2.2.0",
-    "pyarrow": "26.0.1"
+    "pyarrow": "26.0.0"
   },
   "origenes": {
     "asipona:d04eb674c8de3daa:1": {
@@ -46246,241 +46200,225 @@
       "periodo": "2026-11",
       "variable_o_serie": "SF43718"
     },
-    "denue:c7a1a0702aad0c66:1": {
-      "fuente": "denue",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
-      "registro": 1,
-      "id_origen": "9649444",
-      "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
-      "fecha_captura_utc": "2026-11-19T19:32:06Z"
-    },
-    "denue:c7a1a0702aad0c66:2": {
-      "fuente": "denue",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
-      "registro": 2,
-      "id_origen": "9324893",
-      "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
-      "fecha_captura_utc": "2026-11-19T19:32:06Z"
-    },
-    "denue_agregado:c7a1a0702aad0c66:1": {
+    "denue_agregado:3d9c2e884a78484f:1": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 1,
       "id_origen": "1905_-10432",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:2": {
+    "denue_agregado:3d9c2e884a78484f:2": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 2,
       "id_origen": "1905_-10431",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:3": {
+    "denue_agregado:3d9c2e884a78484f:3": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 3,
       "id_origen": "1905_-10430",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:4": {
+    "denue_agregado:3d9c2e884a78484f:4": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 4,
       "id_origen": "1905_-10425",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:5": {
+    "denue_agregado:3d9c2e884a78484f:5": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 5,
       "id_origen": "1906_-10429",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:6": {
+    "denue_agregado:3d9c2e884a78484f:6": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 6,
       "id_origen": "1907_-10431",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:7": {
+    "denue_agregado:3d9c2e884a78484f:7": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 7,
       "id_origen": "1907_-10429",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:8": {
+    "denue_agregado:3d9c2e884a78484f:8": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 8,
       "id_origen": "1907_-10428",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:9": {
+    "denue_agregado:3d9c2e884a78484f:9": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 9,
       "id_origen": "1908_-10432",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:10": {
+    "denue_agregado:3d9c2e884a78484f:10": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 10,
       "id_origen": "1908_-10431",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:11": {
+    "denue_agregado:3d9c2e884a78484f:11": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 11,
       "id_origen": "1908_-10430",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:12": {
+    "denue_agregado:3d9c2e884a78484f:12": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 12,
       "id_origen": "1908_-10429",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:13": {
+    "denue_agregado:3d9c2e884a78484f:13": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 13,
       "id_origen": "1908_-10428",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:14": {
+    "denue_agregado:3d9c2e884a78484f:14": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 14,
       "id_origen": "1909_-10433",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:15": {
+    "denue_agregado:3d9c2e884a78484f:15": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 15,
       "id_origen": "1909_-10431",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:16": {
+    "denue_agregado:3d9c2e884a78484f:16": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 16,
       "id_origen": "1909_-10430",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:17": {
+    "denue_agregado:3d9c2e884a78484f:17": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 17,
       "id_origen": "1909_-10429",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:18": {
+    "denue_agregado:3d9c2e884a78484f:18": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 18,
       "id_origen": "1909_-10428",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:19": {
+    "denue_agregado:3d9c2e884a78484f:19": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 19,
       "id_origen": "1910_-10434",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:20": {
+    "denue_agregado:3d9c2e884a78484f:20": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 20,
       "id_origen": "1910_-10433",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:21": {
+    "denue_agregado:3d9c2e884a78484f:21": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 21,
       "id_origen": "1910_-10432",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:22": {
+    "denue_agregado:3d9c2e884a78484f:22": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 22,
       "id_origen": "1910_-10431",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:23": {
+    "denue_agregado:3d9c2e884a78484f:23": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 23,
       "id_origen": "1911_-10435",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:24": {
+    "denue_agregado:3d9c2e884a78484f:24": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 24,
       "id_origen": "1911_-10434",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:25": {
+    "denue_agregado:3d9c2e884a78484f:25": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 25,
       "id_origen": "1911_-10433",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:26": {
+    "denue_agregado:3d9c2e884a78484f:26": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 26,
       "id_origen": "1911_-10432",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:27": {
+    "denue_agregado:3d9c2e884a78484f:27": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 27,
       "id_origen": "1912_-10427",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
       "fecha_captura_utc": "2026-11-19T19:32:06Z"
     },
-    "denue_agregado:c7a1a0702aad0c66:28": {
+    "denue_agregado:3d9c2e884a78484f:28": {
       "fuente": "denue_agregado",
-      "archivo_bronce": "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json",
+      "archivo_bronce": "data/bronce/denue/sanitizado-3d9c2e884a78.json",
       "registro": 28,
       "id_origen": "1914_-10457",
       "url_origen": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
@@ -48598,10 +48536,6 @@
       "banxico:d60c75fb1c6a29ca:1479",
       "banxico:d60c75fb1c6a29ca:1480",
       "banxico:d60c75fb1c6a29ca:1481"
-    ],
-    "denue": [
-      "denue:c7a1a0702aad0c66:1",
-      "denue:c7a1a0702aad0c66:2"
     ]
   },
   "archivos_bronce": {
@@ -48613,7 +48547,7 @@
     "data/bronce/asipona/pdf/2025/EM-2025-12.pdf": "f747295c6667ef7f9cd61e3ccdf2a7e4f9926b6233a9879cc01c680982662d8d",
     "data/bronce/asipona/pdf/2026/EM-2026-10.pdf": "ba97dc6398d3186a0d06dfaec24f11d0158f585c4c99fed24c72eae224cdf4f7",
     "data/bronce/linaje/banxico-d60c75fb1c6a29ca6f3276ee369210d483f0cf333741361c6feb0da488617186.csv": "d60c75fb1c6a29ca6f3276ee369210d483f0cf333741361c6feb0da488617186",
-    "data/bronce/denue/20261119T193206Z-c7a1a0702aad.json": "c7a1a0702aad0c66de1455a1c5550530c18a66cb8c72925d09ff939d8f9bf26a"
+    "data/bronce/denue/sanitizado-3d9c2e884a78.json": "3d9c2e884a78484fc73fdf89bc81645ecc6877a28d50cb725fefe81fdf2e7691"
   },
   "granularidad": "Cada registro Oro identifica registros Bronce, URL y fecha real de ingesta.",
   "precision": "E1 usa grupos conservadores de todas las filas válidas de ASIPONA y Banxico; pueden incluir filas no utilizadas por una celda concreta. DENUE es uno a uno. La generación del manifiesto no es la fecha de ingesta."

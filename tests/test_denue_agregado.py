@@ -39,9 +39,8 @@ def test_agregado_k_anonimato_sin_datos_individuales():
     assert len(a["celdas"]) == 1
     celda = a["celdas"][0]
     assert celda["total"] == 4
-    assert celda["por_categoria"] == {"484": 3, "488": None, "493": 0}  # 1 de 488: suprimido
-    assert a["suprimidas"] == {"celdas": 1, "establecimientos": 1,
-                               "por_categoria": {"484": 1, "488": 0, "493": 0}}
+    assert "por_categoria" not in celda
+    assert a["suprimidas"] == {"celdas": 1, "establecimientos": 1}
     texto = json.dumps(a)
     for prohibido in ["NO_GUARDAR", "NOMBRE EXCLUIDO", "PERSONA", "19.0405", "-104.3205"]:
         assert prohibido not in texto
@@ -51,14 +50,14 @@ def test_agregado_k_anonimato_sin_datos_individuales():
 def documento_agregado(celdas):
     return {"url_origen": denue.URL, "fecha_captura_utc": "2026-11-19T19:00:00Z",
             "agregado": {"paso_grados": 0.01, "k_minimo": 3, "celdas": celdas,
-                         "suprimidas": {"celdas": 0, "establecimientos": 0, "por_categoria": {}},
+                         "suprimidas": {"celdas": 0, "establecimientos": 0},
                          "total_establecimientos": sum(c["total"] for c in celdas)}}
 
 
 def celda(i=1904, j=-10433, total=3, **cats):
     return {"celda": f"{i}_{j}", "sur": round(i * 0.01, 6), "oeste": round(j * 0.01, 6),
             "norte": round((i + 1) * 0.01, 6), "este": round((j + 1) * 0.01, 6),
-            "total": total, "por_categoria": {"484": total, "488": 0, "493": 0, **cats}}
+            "total": total, **({"por_categoria": cats} if cats else {})}
 
 
 def test_transformar_agregado_valida_y_rechaza():
@@ -135,3 +134,50 @@ def test_captura_sin_agregado_limpia_celdas_viejas(raiz_agregado, tmp_path):
                                    "sha256": hashlib.sha256(contenido).hexdigest()}), encoding="utf-8")
     geoespacial.ejecutar(tmp_path)
     assert not (tmp_path / "data/oro/denue_celdas.csv").exists()
+
+
+def test_documento_con_individuales_no_se_transforma():
+    doc = documento_agregado([celda()])
+    doc["elements"] = [{"id_denue": "77", "lat": 19.0405, "lon": -104.3205}]
+    with pytest.raises(ValueError, match="detalle individual"):
+        geoespacial.transformar_agregado(doc, "captura.json")
+
+
+def test_sin_celdas_publicables_es_error_claro():
+    with pytest.raises(ValueError, match="Ninguna celda"):
+        geoespacial.transformar_agregado(documento_agregado([]), "captura.json")
+
+
+def test_intercambio_de_origenes_validos_no_oculta_error(raiz_agregado, tmp_path):
+    shutil.copytree(raiz_agregado, tmp_path, dirs_exist_ok=True)
+    ruta = tmp_path / linaje.MANIFIESTO
+    m = json.loads(ruta.read_text(encoding="utf-8"))
+    filas = m["oro"]["data/oro/denue_celdas.csv"]["registros"]
+    filas[0]["origenes_directos"], filas[1]["origenes_directos"] = (
+        filas[1]["origenes_directos"], filas[0]["origenes_directos"])
+    linaje.guardar(m, ruta)
+    with pytest.raises(ValueError, match="Celda Oro no coincide"):
+        linaje.validar(tmp_path)
+
+
+def test_valor_oro_cambiado_con_hash_actualizado_no_pasa(raiz_agregado, tmp_path):
+    import csv
+
+    shutil.copytree(raiz_agregado, tmp_path, dirs_exist_ok=True)
+    archivo = "data/oro/denue_celdas.csv"
+    ruta = tmp_path / archivo
+    with ruta.open(encoding="utf-8", newline="") as f:
+        reader = csv.DictReader(f)
+        campos = reader.fieldnames
+        filas = list(reader)
+    filas[0]["total"] = str(int(filas[0]["total"]) + 1)
+    with ruta.open("w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=campos)
+        writer.writeheader()
+        writer.writerows(filas)
+    manifiesto = tmp_path / linaje.MANIFIESTO
+    m = json.loads(manifiesto.read_text(encoding="utf-8"))
+    m["oro"][archivo]["sha256"] = linaje.hash_archivo(ruta)
+    linaje.guardar(m, manifiesto)
+    with pytest.raises(ValueError, match="Valores de celda Oro"):
+        linaje.validar(tmp_path)

@@ -77,25 +77,17 @@ def mostrar_negocio() -> None:
 def mostrar_geografia() -> None:
     from tablero.logistica import mostrar_comparador
 
-    ruta = RAIZ / "data/oro/contexto_geografico.csv"
+    ruta = RAIZ / "data/oro/denue_celdas.csv"
     st.subheader("Entorno industrial y portuario de Manzanillo")
     if not ruta.exists():
         st.info("El contexto geográfico todavía no está disponible en esta actualización.")
         return
-    puntos = pd.read_csv(ruta)
-    elegidas = st.multiselect("Categorías del mapa", sorted(puntos.categoria.unique()),
-                             default=sorted(puntos.categoria.unique()))
-    seleccion = puntos[puntos.categoria.isin(elegidas)]
+    tabla_celdas = pd.read_csv(ruta)
     try:
         catalogo, recorridos = mostrar_comparador(RAIZ)
     except (OSError, ValueError, KeyError):
         catalogo, recorridos = [], []
         st.info("El catálogo logístico no está disponible en esta actualización.")
-    seleccion = seleccion.assign(nombre="Establecimiento DENUE " + seleccion.id_denue.astype(str),
-                                  tipo=seleccion.categoria)
-    capa = pdk.Layer("ScatterplotLayer", data=seleccion.to_dict("records"),
-                     get_position="[lon, lat]", get_radius=100, get_fill_color=[42, 120, 214],
-                     pickable=True)
     agregado = []
     ruta_celdas = RAIZ / "data/oro/denue_celdas.csv"
     if ruta_celdas.exists():
@@ -122,28 +114,28 @@ def mostrar_geografia() -> None:
                        get_radius=90, get_fill_color=[238, 128, 40], pickable=True)
     trayectos = pdk.Layer("PathLayer", data=recorridos, get_path="coordenadas",
                           get_color=[17, 138, 72], get_width=4, width_min_pixels=3)
-    st.pydeck_chart(pdk.Deck(layers=[densidad, rejilla, capa, sitios, trayectos], map_style="light", map_provider="carto",
+    st.pydeck_chart(pdk.Deck(layers=[densidad, rejilla, sitios, trayectos], map_style="light", map_provider="carto",
                             initial_view_state=pdk.ViewState(latitude=19.06, longitude=-104.30, zoom=11),
                             tooltip={"text": "{nombre}\n{tipo}\nDENUE {id_denue}\n{lat}, {lon}"}))
     st.caption("Celdas azules: cuántos establecimientos de logística hay en cada cuadro de ~1 km "
-               "(más intenso = más establecimientos). Puntos azules: selección DENUE original. "
+               "(más intenso = más establecimientos). "
                "Naranja: catálogo de referencia. Verde: recorrido consultado.")
     if agregado:
         total = int(tabla_celdas.total.sum())
         st.caption(f"{total} establecimientos en {len(agregado)} celdas. Las celdas con menos de "
                    f"{int(tabla_celdas.k_minimo.iloc[0])} establecimientos no se muestran, para que "
-                   "ningún negocio sea identificable. Es una rejilla de estudio, no un límite oficial; "
+                   "se reduzca el riesgo de identificación. Es una rejilla de estudio, no un límite oficial; "
                    "el municipio sí es el que asigna INEGI.")
     st.markdown("**Establecimientos:** [INEGI, DENUE](https://www.inegi.org.mx/inegi/terminos.html). "
                 "**Mapa base:** © OpenStreetMap contributors / CARTO. "
                 "**Recorridos:** OSRM/FOSSGIS, datos OSM bajo "
                 "[ODbL](https://www.openstreetmap.org/copyright).")
-    st.caption(f'Captura: {puntos.fecha_captura_utc.iloc[0]}. '
-               "Establecimientos de sociedades seleccionadas, SCIAN 484/488/493; no son "
+    st.caption(f'Captura: {tabla_celdas.fecha_captura_utc.iloc[0]}. '
+               "Conteos de establecimientos SCIAN 484/488/493; no son "
                "rutas, accesos ni límites oficiales. Las cuatro celdas son de estudio. "
                "El mapa actual no se usa para explicar ni predecir TEU históricos.")
     with st.expander("Ver objetos y procedencia"):
-        st.dataframe(seleccion[["id_denue", "categoria", "zona", "url_origen", "fecha_captura_utc"]],
+        st.dataframe(tabla_celdas[["celda", "total", "zona_estudio", "url_origen", "fecha_captura_utc"]],
                      hide_index=True)
         st.download_button("Descargar contexto geográfico (INEGI)", ruta.read_bytes(),
                            file_name=ruta.name, mime="text/csv")

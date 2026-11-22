@@ -1,7 +1,7 @@
 # Fuente: INEGI, DENUE Colima
 
-Los extractos minimizados de esta carpeta y sus derivados geogr?ficos se utilizan conforme a los [T?rminos de Libre Uso de la Informaci?n del INEGI](https://www.inegi.org.mx/inegi/terminos.html).
+Los extractos minimizados de esta carpeta y sus derivados geográficos conservan la atribución y los [Términos de Libre Uso de la Información del INEGI](https://www.inegi.org.mx/inegi/terminos.html).
 
-Elaboraci?n del equipo: selecci?n de Manzanillo (06/007), subsectores 484/488/493 y forma societaria expl?cita; supresi?n de nombres, razones sociales, domicilios y contactos antes de persistir. Conservar URL, metadato de edici?n, posici?n de registro en el CSV, fecha de ingesta y SHA-256 del ZIP en el JSON Bronce.
+Elaboración del equipo: selección de Manzanillo (06/007), subsectores 484/488/493 y conteos por celda de 0.01°. Solo se publican celdas con al menos tres establecimientos, sin desglose por categoría ni registros individuales. Se conservan URL, metadato de edición, fecha de ingesta y SHA-256 del ZIP. El derivado sanitizado conserva además el hash de la captura anterior y su fecha original; no representa una nueva descarga.
 
-No implica aval del INEGI ni licencia para fuentes de terceros. El ZIP ?ntegro no se redistribuye; el filtro introduce sesgo y la muestra no representa todas las empresas. V?ase `docs/etica-datos.md`.
+No implica aval del INEGI ni licencia para fuentes de terceros. El ZIP íntegro no se redistribuye; la supresión subrepresenta las zonas menos densas. Las versiones anteriores siguen en el historial de Git. Véase `docs/etica-datos.md`.

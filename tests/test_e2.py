@@ -64,7 +64,8 @@ def zip_prueba(nombre="conjunto_de_datos/denue.csv"):
         texto = io.StringIO()
         escritor = csv.DictWriter(texto, fieldnames=list(registro))
         escritor.writeheader()
-        escritor.writerow(registro)
+        for _ in range(3):
+            escritor.writerow(registro)
         archivo.writestr(nombre, texto.getvalue().encode("cp1252"))
     return memoria.getvalue()
 
@@ -87,6 +88,8 @@ def test_captura_sin_zip_personal_cache_y_error(tmp_path, monkeypatch):
     actual = json.loads(p.read_text())
     contenido = (tmp_path / actual["archivo"]).read_text()
     assert "NO_GUARDAR" not in contenido and "NOMBRE EXCLUIDO" not in contenido
+    assert '"elements"' not in contenido and '"id_denue"' not in contenido
+    assert '"por_categoria"' not in contenido
     assert not list(tmp_path.rglob("*.zip"))
     Respuesta.content = zip_prueba("otro.csv")
     with pytest.raises(ValueError, match="único CSV"):
@@ -110,18 +113,18 @@ def copia_e2(base_e2, tmp_path):
 
 
 def test_linaje_hasta_bronce_inalterable_y_reproduccion(copia_e2):
-    r = linaje.consultar(copia_e2, "data/oro/contexto_geografico.csv", 1)
+    r = linaje.consultar(copia_e2, "data/oro/denue_celdas.csv", 1)
     assert len(r["origenes"]) == 1
     origen = r["origenes"][0]
     bruto = json.loads((copia_e2 / origen["archivo_bronce"]).read_text())
-    assert bruto["elements"][origen["registro"] - 1]["id_denue"] == r["clave_negocio"]
+    assert bruto["agregado"]["celdas"][origen["registro"] - 1]["celda"] == r["clave_negocio"]
     assert origen["fecha_captura_utc"] == bruto["fecha_captura_utc"]
     r2 = linaje.consultar(copia_e2, "data/oro/mensual_integrado.csv", 1)
     assert {o["fuente"] for o in r2["origenes"]} == {"asipona", "banxico"}
     assert all((copia_e2 / o["archivo_bronce"]).exists() for o in r2["origenes"])
     assert e2.ejecutar(copia_e2)["linaje"] == linaje.validar(copia_e2)
     with pytest.raises(ValueError, match="empieza en 1"):
-        linaje.consultar(copia_e2, "data/oro/contexto_geografico.csv", 0)
+        linaje.consultar(copia_e2, "data/oro/denue_celdas.csv", 0)
 
 
 @pytest.mark.parametrize("ataque", ["oro", "bronce", "nuevo", "indice", "sin_origen", "fecha", "url", "selector"])
@@ -129,7 +132,7 @@ def test_tampering_y_perdida_de_linaje_bloquean(copia_e2, ataque):
     ruta = copia_e2 / linaje.MANIFIESTO
     m = json.loads(ruta.read_text())
     if ataque == "oro":
-        with (copia_e2 / "data/oro/contexto_geografico.csv").open("a") as f:
+        with (copia_e2 / "data/oro/denue_celdas.csv").open("a") as f:
             f.write("alterado")
     elif ataque == "bronce":
         archivo = next(iter(m["archivos_bronce"]))
@@ -137,7 +140,7 @@ def test_tampering_y_perdida_de_linaje_bloquean(copia_e2, ataque):
     elif ataque == "nuevo":
         (copia_e2 / "data/oro/sin_linaje.csv").write_text("valor\n1\n")
     else:
-        fila_geo = m["oro"]["data/oro/contexto_geografico.csv"]["registros"][0]
+        fila_geo = m["oro"]["data/oro/denue_celdas.csv"]["registros"][0]
         origen = m["origenes"][fila_geo["origenes_directos"][0]]
         if ataque == "indice":
             fila_geo["registro"] = 9999
@@ -177,10 +180,10 @@ def test_pronostico_no_puede_sellar_entradas_diferentes(copia_e2):
 def test_fecha_inventada_en_linaje_no_cambia_la_ingesta(copia_e2):
     ruta = copia_e2 / linaje.MANIFIESTO
     m = json.loads(ruta.read_text())
-    next(o for o in m["origenes"].values() if o["fuente"] == "denue")[
+    next(o for o in m["origenes"].values() if o["fuente"] == "denue_agregado")[
         "fecha_captura_utc"] = "2026-01-01T00:00:00Z"
     linaje.guardar(m, ruta)
-    with pytest.raises(ValueError, match="Procedencia DENUE"):
+    with pytest.raises(ValueError, match="Procedencia del agregado DENUE"):
         linaje.validar(copia_e2)
 
 

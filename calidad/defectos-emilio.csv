@@ -6,3 +6,4 @@ numero,fecha,tipo,fase_introducido,fase_eliminado,minutos_correccion,defecto_ori
 5,2026-11-19,funcion,codigo,pruebas,10,,"ExtractorEtico solo reintentaba ante 429/5xx; INEGI corto la conexion a media descarga de DENUE (ChunkedEncodingError) y la captura fallo sin reintento"
 6,2026-11-19,asignacion,codigo,revision,2,,"En transformar_agregado la condicion 'not sur < norte and oeste < este' agrupaba mal el not y dejaba pasar celdas con limites invertidos"
 7,2026-11-19,funcion,codigo,revision,3,5,"La correccion del defecto 5 atrapaba ConnectionError y Timeout pero no ChunkedEncodingError, que no hereda de ConnectionError"
+8,2026-11-22,datos,diseno,revision,,,"El agregado DENUE suprimia categorias con 1-2 establecimientos pero publicaba el total de la celda, asi que el valor suprimido se despejaba por resta (11 celdas); la prueba lo mostraba y se dio por buena. Detectado por Gabriel; corregido por el al quitar el desglose. Minutos de correccion no medidos por Emilio"

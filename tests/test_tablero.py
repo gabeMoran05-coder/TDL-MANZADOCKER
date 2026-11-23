@@ -33,7 +33,7 @@ def test_tablero_con_entradas_propias_y_mapa():
     assert metricas["Servicios atendibles"] == "80"
     assert metricas["Costo de esperas estimado"] == "$16,000.00"
     assert metricas["Resultado operativo estimado"] == "$14,500.00"
-    assert any("id_denue" in d.value.columns for d in app.dataframe)
+    assert any("celda" in d.value.columns for d in app.dataframe)
     # Las entradas del usuario no se deben guardar: solo este caso sintético de QA.
     evidencia = RAIZ / "calidad/e2/validacion_tablero.json"
     if evidencia.parent.exists():

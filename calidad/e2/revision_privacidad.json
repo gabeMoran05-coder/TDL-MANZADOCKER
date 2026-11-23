@@ -1,0 +1,26 @@
+{
+  "fecha_revision": "2026-11-22",
+  "estado": "ok",
+  "python": "3.14.7",
+  "pruebas": 91,
+  "duracion_pytest_s": 102.41,
+  "cobertura_src_pct": 94.64668094218415,
+  "ruff": "sin hallazgos",
+  "pip_install_requirements": "completado",
+  "linaje": {
+    "estado": "ok",
+    "archivos_oro": 8,
+    "registros_oro": 574,
+    "registros_con_linaje": 574,
+    "cobertura_pct": 100,
+    "registros_bronce_referenciados": 2135
+  },
+  "filas_celdas_comparadas_con_bronce": 28,
+  "diferencias_celdas": 0,
+  "limite": "Las versiones anteriores permanecen en el historial Git. No se repitio pip-audit ni gitleaks localmente; los ejecuta CI.",
+  "checkout_exportado": {
+    "linaje": "ok",
+    "archivos_codigo_sha256": 18,
+    "errores_hash": 0
+  }
+}

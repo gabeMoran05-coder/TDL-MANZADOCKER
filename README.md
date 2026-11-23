@@ -80,7 +80,7 @@ tests/         pruebas automáticas
 
 [Ficha E2](docs/E2/ENTREGA.md) · [Ética de datos](docs/etica-datos.md) · [Relatoría](docs/relatoria-E2.md) · [Dirección del producto](docs/E2/enfoque-producto.md)
 
-Se agrega **DENUE Colima de INEGI**, con minimización antes de Bronce, unión espacial en GeoPandas y mapa del contexto logístico en el tablero. La selección conservadora produce dos establecimientos; no representa el mercado completo. Los ocho archivos actuales de Oro y sus 522 registros tienen manifiesto verificable con URL, fecha de ingesta y snapshots de Bronce por SHA-256.
+Se agrega **DENUE Colima de INEGI**, con minimización antes de Bronce, unión espacial en GeoPandas y mapa del contexto logístico en el tablero. La captura publica 608 establecimientos en 28 celdas, sin desglose por categoría ni puntos individuales; otros 24 establecimientos quedan suprimidos por el umbral de tres. Los ocho archivos actuales de Oro y sus 574 registros tienen manifiesto verificable con URL, fecha de ingesta y snapshots de Bronce por SHA-256. El catálogo comercial del comparador se mantiene separado de esta captura.
 
 La dirección comercial propuesta es **planeación de capacidad y margen para transportistas que retiran contenedores de importación**, atendiendo a varias empresas del mismo segmento. El tablero incorpora un escenario con entradas propias; TEU no se convierte automáticamente en viajes, ingresos o ahorros. Precio, datos operativos, venta y piloto siguen por validar. Los entregables E2 de Estadística y Calidad completos se declaran pendientes en la ficha.
 

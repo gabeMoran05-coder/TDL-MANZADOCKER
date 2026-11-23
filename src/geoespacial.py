@@ -65,7 +65,7 @@ def transformar(documento: dict) -> tuple[gpd.GeoDataFrame, list[dict]]:
 
 
 COLUMNAS_CELDAS = ["celda", "registro_bronce", "sur", "oeste", "norte", "este", "lat", "lon",
-                   "total", *[f"scian_{c}" for c in CATEGORIAS], "zona_estudio",
+                   "total", "zona_estudio",
                    "paso_grados", "k_minimo", "url_origen", "fecha_captura_utc", "archivo_bronce"]
 
 
@@ -73,9 +73,13 @@ def transformar_agregado(documento: dict, archivo_bronce: str) -> tuple[gpd.GeoD
     """Valida los conteos por celda y los convierte en polígonos con su zona de estudio."""
     agregado = documento["agregado"]
     k, paso = agregado["k_minimo"], agregado["paso_grados"]
+    if "elements" in documento or "por_categoria" in agregado.get("suprimidas", {}):
+        raise ValueError("Captura DENUE contiene detalle individual o categorías")
     filas, rechazos, vistas = [], [], set()
     for i, c in enumerate(agregado["celdas"], start=1):
         try:
+            if set(c) != {"celda", "sur", "oeste", "norte", "este", "total"}:
+                raise ValueError("campos de celda fuera del contrato de privacidad")
             if c["celda"] in vistas:
                 raise ValueError("celda duplicada")
             if not (c["sur"] < c["norte"] and c["oeste"] < c["este"]):
@@ -84,22 +88,20 @@ def transformar_agregado(documento: dict, archivo_bronce: str) -> tuple[gpd.GeoD
                 raise ValueError("celda de tamaño distinto al paso declarado")
             if c["total"] < k:
                 raise ValueError("celda bajo el umbral de anonimato publicada")
-            conocidos = [n for n in c["por_categoria"].values() if n is not None]
-            if any(0 < n < k for n in conocidos) or sum(conocidos) > c["total"]:
-                raise ValueError("conteo por categoría incoherente o bajo el umbral")
             vistas.add(c["celda"])
             filas.append({
                 "celda": c["celda"], "registro_bronce": i,
                 "sur": c["sur"], "oeste": c["oeste"], "norte": c["norte"], "este": c["este"],
                 "lat": round((c["sur"] + c["norte"]) / 2, 6),
                 "lon": round((c["oeste"] + c["este"]) / 2, 6), "total": int(c["total"]),
-                **{f"scian_{cat}": c["por_categoria"].get(cat) for cat in CATEGORIAS},
                 "paso_grados": paso, "k_minimo": k, "url_origen": documento["url_origen"],
                 "fecha_captura_utc": documento["fecha_captura_utc"],
                 "archivo_bronce": archivo_bronce,
             })
         except (ValueError, TypeError, KeyError) as error:
             rechazos.append({"registro_bronce": f"agregado:{i}", "motivo": str(error)})
+    if not filas:
+        raise ValueError("Ninguna celda publicable")
     poligonos = gpd.GeoDataFrame(
         filas, geometry=[box(f["oeste"], f["sur"], f["este"], f["norte"]) for f in filas],
         crs="EPSG:4326")
@@ -118,14 +120,12 @@ def ejecutar(raiz: Path) -> dict:
     if sha256(ruta.read_bytes()) != puntero["sha256"]:
         raise ValueError("La captura DENUE fue alterada")
     documento = json.loads(ruta.read_text(encoding="utf-8"))
-    puntos, rechazos = transformar(documento)
+    rechazos = []
     for carpeta in ["data/plata", "data/oro", "data/cuarentena/e2", "calidad/e2"]:
         (raiz / carpeta).mkdir(parents=True, exist_ok=True)
-    tabla = pd.DataFrame(puntos.drop(columns="geometry"))
-    tabla["archivo_bronce"] = puntero["archivo"]
-    tabla.to_csv(raiz / "data/plata/denue_establecimientos.csv", index=False, lineterminator="\n")
-    tabla.to_csv(raiz / "data/oro/contexto_geografico.csv", index=False, lineterminator="\n")
-    puntos.to_file(raiz / "data/oro/contexto_geografico.geojson", driver="GeoJSON")
+    for anterior in ["data/plata/denue_establecimientos.csv", "data/oro/contexto_geografico.csv",
+                     "data/oro/contexto_geografico.geojson"]:
+        (raiz / anterior).unlink(missing_ok=True)
     pd.DataFrame(rechazos, columns=["registro_bronce", "motivo"]).to_csv(
         raiz / "data/cuarentena/e2/denue.csv", index=False, lineterminator="\n")
     agregado = {}
@@ -156,8 +156,8 @@ def ejecutar(raiz: Path) -> dict:
     resumen = {
         "estado": "ok", "archivo_bronce": puntero["archivo"], "agregado": agregado,
         "sha256_bronce": puntero["sha256"], "fecha_captura_utc": documento["fecha_captura_utc"],
-        "entrada": len(documento["elements"]), "aceptados": len(puntos),
-        "rechazados": len(rechazos), "por_zona": puntos.zona.value_counts().to_dict(),
+        "entrada": len(documento.get("agregado", {}).get("celdas", [])),
+        "aceptados": agregado.get("celdas_publicadas", 0), "rechazados": len(rechazos),
         "crs": "EPSG:4326", "union": "geopandas.sjoin, intersects, celdas de estudio",
     }
     (raiz / "calidad/e2/geoespacial.json").write_text(

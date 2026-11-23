@@ -89,19 +89,9 @@ def generar(raiz: Path = RAIZ) -> dict:
     documento = json.loads((raiz / denue).read_text(encoding="utf-8"))
     if hash_archivo(raiz / denue) != puntero["sha256"]:
         raise ValueError("Captura DENUE alterada")
+    if "elements" in documento:
+        raise ValueError("Captura DENUE contiene detalle individual")
     archivos_bronce[denue] = puntero["sha256"]
-    denue_ids = {}
-    for n, r in enumerate(documento["elements"], start=1):
-        identificador = str(r["id_denue"])
-        clave = f"denue:{puntero['sha256'][:16]}:{n}"
-        origenes[clave] = {
-            "fuente": "denue", "archivo_bronce": denue, "registro": n,
-            "id_origen": identificador,
-            "url_origen": documento["url_origen"],
-            "fecha_captura_utc": documento["fecha_captura_utc"],
-        }
-        denue_ids[identificador] = clave
-    grupos["denue"] = sorted(denue_ids.values())
     celda_ids = {}
     for n, c in enumerate(documento.get("agregado", {}).get("celdas", []), start=1):
         clave = f"denue_agregado:{puntero['sha256'][:16]}:{n}"
@@ -127,18 +117,17 @@ def generar(raiz: Path = RAIZ) -> dict:
                 registros.append({
                     "registro": n, "clave_negocio": r["celda"], "grupos": [],
                     "origenes_directos": [celda_ids[r["celda"]]],
-                    "metodo": "conteo DENUE por celda y categoría (k-anonimato) + sjoin del centro",
+                    "metodo": "total DENUE por celda (umbral k=3) + sjoin del centro",
                 })
                 continue
-            geo = ruta.stem == "contexto_geografico"
+            if ruta.stem == "contexto_geografico":
+                raise ValueError("Producto individual DENUE obsoleto: regenerar E2")
             registros.append({
                 "registro": n,
-                "clave_negocio": str(r.get("id_denue", r.get("id_origen", r.get("fecha", r.get("clave", n))))),
-                "grupos": [] if geo else ["asipona", "banxico"],
-                "origenes_directos": ([denue_ids[r["id_denue"]]] if geo
-                                       else por_periodo.get(str(r.get("fecha", ""))[:7], [])),
-                "metodo": "establecimiento DENUE + sjoin con celdas" if geo else
-                          "E1: integración, agregación, imputación causal y/o ajuste estadístico",
+                "clave_negocio": str(r.get("id_origen", r.get("fecha", r.get("clave", n)))),
+                "grupos": ["asipona", "banxico"],
+                "origenes_directos": por_periodo.get(str(r.get("fecha", ""))[:7], []),
+                "metodo": "E1: integración, agregación, imputación causal y/o ajuste estadístico",
             })
         oro[ruta.relative_to(raiz).as_posix()] = {
             "sha256": hash_archivo(ruta), "registros": registros,
@@ -211,7 +200,8 @@ def validar(raiz: Path = RAIZ) -> dict:
     for archivo, producto in m["oro"].items():
         if hash_archivo(raiz / archivo) != producto["sha256"]:
             raise ValueError("Oro alterado o manifiesto desactualizado: " + archivo)
-        if len(leer(raiz / archivo)) != len(producto["registros"]):
+        datos_oro = leer(raiz / archivo)
+        if len(datos_oro) != len(producto["registros"]):
             raise ValueError("Número de registros sin cobertura: " + archivo)
         for n, registro in enumerate(producto["registros"], start=1):
             if registro["registro"] != n:
@@ -222,6 +212,22 @@ def validar(raiz: Path = RAIZ) -> dict:
                 raise ValueError("Registro sin origen: " + archivo)
             if not set(ids).issubset(m["origenes"]):
                 raise ValueError("Referencia Bronce desconocida")
+            if Path(archivo).stem == "denue_celdas":
+                if registro["grupos"] or len(ids) != 1:
+                    raise ValueError("Celda Oro requiere un único origen directo")
+                origen = m["origenes"][ids[0]]
+                fila = datos_oro[n - 1]
+                if (origen["fuente"] != "denue_agregado"
+                        or registro["clave_negocio"] != fila["celda"]
+                        or origen["id_origen"] != fila["celda"]
+                        or int(fila["registro_bronce"]) != origen["registro"]
+                        or any(fila[c] != origen[c] for c in
+                               ["archivo_bronce", "url_origen", "fecha_captura_utc"])):
+                    raise ValueError("Celda Oro no coincide con su referencia Bronce")
+                celda = cache[(origen["archivo_bronce"], "denue_agregado")][origen["registro"] - 1]
+                if any(float(fila[c]) != celda[c] for c in
+                       ["sur", "oeste", "norte", "este", "total"]):
+                    raise ValueError("Valores de celda Oro no coinciden con Bronce")
             filas += 1
     resultado = {"estado": "ok", "archivos_oro": len(reales), "registros_oro": filas,
                  "registros_con_linaje": filas, "cobertura_pct": 100,
@@ -245,7 +251,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("accion", choices=["generar", "validar", "consultar"], default="validar", nargs="?")
     parser.add_argument("--raiz", type=Path, default=RAIZ)
-    parser.add_argument("--archivo", default="data/oro/contexto_geografico.csv")
+    parser.add_argument("--archivo", default="data/oro/denue_celdas.csv")
     parser.add_argument("--registro", type=int, default=1)
     args = parser.parse_args()
     resultado = (consultar(args.raiz, args.archivo, args.registro) if args.accion == "consultar"

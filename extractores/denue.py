@@ -1,8 +1,6 @@
 """DENUE Colima: logística de Manzanillo minimizada antes de Bronce.
 
-Guarda dos productos: (1) la selección original de sociedades con forma societaria
-explícita (puntos, sin nombres) y (2) conteos agregados por celda y categoría de todos
-los establecimientos SCIAN 484/488/493, sin datos individuales (k-anonimato, k=3).
+Guarda únicamente conteos por celda de establecimientos SCIAN 484/488/493.
 """
 
 from __future__ import annotations
@@ -57,16 +55,15 @@ def minimizar(filas) -> tuple[list[dict], dict]:
 
 
 PASO_GRADOS = 0.01   # celda de ~1.1 km; rejilla de estudio, no límite oficial
-K_MINIMO = 3         # celdas y conteos por categoría con menos de K se suprimen
+K_MINIMO = 3         # celdas con menos de K establecimientos se suprimen
 
 
 def agregar(filas, paso: float = PASO_GRADOS, k: int = K_MINIMO) -> dict:
-    """Cuenta establecimientos logísticos de Manzanillo por celda y categoría.
+    """Cuenta establecimientos logísticos de Manzanillo por celda.
 
     Se aplica antes de persistir: no sale ningún id, nombre, razón social, domicilio
     ni coordenada individual. Celdas con menos de k establecimientos se suman a un
-    renglón suprimido sin ubicación; dentro de una celda publicada, una categoría con
-    1..k-1 establecimientos se reporta como None (suprimida).
+    renglón suprimido sin ubicación. No se publica desglose por categoría.
     """
     celdas: dict[tuple[int, int], dict[str, int]] = {}
     for r in filas:
@@ -85,21 +82,17 @@ def agregar(filas, paso: float = PASO_GRADOS, k: int = K_MINIMO) -> dict:
         clave = (math.floor(lat / paso), math.floor(lon / paso))
         conteo = celdas.setdefault(clave, dict.fromkeys(CATEGORIAS, 0))
         conteo[actividad[:3]] += 1
-    publicadas, suprimidas = [], {"celdas": 0, "establecimientos": 0,
-                                  "por_categoria": dict.fromkeys(CATEGORIAS, 0)}
+    publicadas, suprimidas = [], {"celdas": 0, "establecimientos": 0}
     for (i, j), conteo in sorted(celdas.items()):
         total = sum(conteo.values())
         if total < k:
             suprimidas["celdas"] += 1
             suprimidas["establecimientos"] += total
-            for c, n in conteo.items():
-                suprimidas["por_categoria"][c] += n
             continue
         publicadas.append({
             "celda": f"{i}_{j}", "sur": round(i * paso, 6), "oeste": round(j * paso, 6),
             "norte": round((i + 1) * paso, 6), "este": round((j + 1) * paso, 6),
             "total": total,
-            "por_categoria": {c: (n if n == 0 or n >= k else None) for c, n in conteo.items()},
         })
     return {"paso_grados": paso, "k_minimo": k, "celdas": publicadas, "suprimidas": suprimidas,
             "total_establecimientos": sum(c["total"] for c in publicadas)
@@ -128,24 +121,23 @@ def ejecutar(raiz: Path = RAIZ, forzar: bool = False) -> dict:
         with archivo.open(nombres[0]) as datos:
             texto = datos.read().removeprefix(b"\xef\xbb\xbf").decode("cp1252")
             crudas = list(csv.DictReader(io.StringIO(texto)))
-            filas, conteos = minimizar(crudas)
             agregado = agregar(crudas)
             del crudas, texto  # el detalle individual no sale de memoria
-    if not filas:
-        raise ValueError("DENUE no devolvió sociedades logísticas seleccionadas")
+    if not agregado["celdas"]:
+        raise ValueError("DENUE no devolvió celdas publicables")
     documento = {
         "fuente": "INEGI / DENUE Colima", "url_origen": URL,
         "fecha_captura_utc": ahora, "archivo_csv_origen": nombres[0],
-        "sha256_zip_origen": sha256(respuesta.content), "elements": filas, "conteos": conteos,
+        "sha256_zip_origen": sha256(respuesta.content),
         "agregado": agregado,
         "metadato_edicion": metadato, "codificacion_csv_origen": "cp1252",
         "licencia": "Términos de Libre Uso de la Información del INEGI",
         "terminos": "https://www.inegi.org.mx/inegi/terminos.html",
-        "seleccion": "06/007, SCIAN 484/488/493, forma societaria explícita",
-        "privacidad": "Lista blanca; sin nombres, razón social, domicilio, contactos ni CLEE",
-        "privacidad_agregado": (f"Conteos por celda de {PASO_GRADOS} grados y categoría SCIAN, "
-                                f"sin identificadores ni coordenadas individuales; celdas y "
-                                f"categorías con menos de {K_MINIMO} establecimientos suprimidas"),
+        "seleccion": "06/007, SCIAN 484/488/493",
+        "privacidad": "Solo totales por celda, sin registros individuales ni categorías",
+        "privacidad_agregado": (f"Totales por celda de {PASO_GRADOS} grados; "
+                                f"celdas con menos de {K_MINIMO} establecimientos suprimidas. "
+                                "Sin registros individuales ni desglose por categoría."),
     }
     contenido = (json.dumps(documento, ensure_ascii=False, indent=2) + "\n").encode()
     carpeta.mkdir(parents=True, exist_ok=True)
@@ -154,9 +146,9 @@ def ejecutar(raiz: Path = RAIZ, forzar: bool = False) -> dict:
     destino.write_bytes(contenido)
     puntero.write_text(json.dumps({
         "archivo": destino.relative_to(raiz).as_posix(), "sha256": sha256(contenido),
-        "fecha_captura_utc": ahora, "registros": len(filas),
+        "fecha_captura_utc": ahora, "registros": len(agregado["celdas"]),
     }, indent=2) + "\n", encoding="utf-8")
-    return {"registros": len(filas), "archivos_nuevos": 1}
+    return {"registros": len(agregado["celdas"]), "archivos_nuevos": 1}
 
 
 if __name__ == "__main__":

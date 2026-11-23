@@ -100,7 +100,7 @@ El mapa incorpora cinco ubicaciones públicas del DENUE, recorridos viales de re
 
 Las consultas usan un perfil de automóvil y no certifican accesos ni restricciones para tractocamiones. Las ubicaciones no representan clientes o convenios del equipo.
 
-**URL:** _pendiente de publicar en Streamlit Community Cloud._
+**URL pública:** https://tdl-manzadocker.streamlit.app/ (comprobada el 22/11/2026 sin iniciar sesión: carga el pronóstico, el mapa con las 28 celdas del agregado DENUE y el simulador).
 
 ```bash
 pip install -r tablero/requirements.txt

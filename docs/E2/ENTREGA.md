@@ -2,7 +2,7 @@
 
 **Equipo:** Emilio Rodrigo Ayala Reynoso · Karol Gabriel Morán Aréchiga.<br>
 **Etiqueta de esta entrega:** `e2`.<br>
-**Tablero público:** pendiente de publicar; no se presenta una ejecución local como URL pública.<br>
+**Tablero público:** https://tdl-manzadocker.streamlit.app/ (comprobado el 22/11/2026 sin iniciar sesión).<br>
 **Alcance trabajado:** Ingeniería de Datos de E2 y aterrizaje del producto. Los apartados de Estadística y Calidad señalan lo que falta; esta ficha no los declara terminados.
 
 ## Resumen en tres líneas
@@ -65,13 +65,15 @@ Los centros de las celdas se unen a cuatro zonas del rectángulo de estudio. El 
 - **Robustez de captura:** durante la captura, INEGI cortó la conexión (`ChunkedEncodingError`); el extractor ético solo reintentaba ante 429/5xx. Ahora también reintenta ante conexión cortada o tiempo de espera ([prueba](../../tests/test_extractor_base.py)).
 - **Documentación:** se corrigieron los acentos dañados (`?` en lugar de letra acentuada) de esta ficha y de la declaración de ética; ambos archivos son UTF-8 válido.
 - **Verificación local (19/11/2026):** 87 pruebas aprobadas, cobertura 95.47 % (umbral 90 %), Ruff sin hallazgos, pip-audit sin vulnerabilidades conocidas (incluye `tablero/requirements.txt`) y gitleaks sin secretos en el historial. Pipeline E2 sin red: 10 archivos y 578 registros de Oro con linaje 100 %.
-- **Pendiente:** URL pública del tablero (solo puede publicarla el dueño del repositorio en Streamlit Community Cloud) y la decisión con Gabriel sobre mover el tag `e2`.
+- **Pendiente (actualizado el 22/11):** la decisión con Gabriel sobre mover el tag `e2`, que sigue en la versión anterior. La URL pública del tablero ya existe y se comprobó.
 
 ### Corrección de privacidad posterior a la integración
 
 Se eliminó el desglose por categoría, porque en 11 celdas permitía deducir un conteo suprimido por resta. Se retiraron de la versión actual los snapshots con puntos y categorías y sus productos individuales de Plata/Oro. Se conserva el catálogo comercial de referencia del comparador, separado del agregado. El historial de Git sigue conteniendo las versiones anteriores; esta corrección no revoca datos ya publicados. La comprobación de linaje contrasta también cada fila Oro con su celda y valores en Bronce.
 
-Verificación del 22/11/2026: 91 pruebas aprobadas, cobertura de `src` de 94.65 %, Ruff sin hallazgos y pipeline con 574 registros Oro (8 archivos), todos con linaje. Las 28 filas del CSV agregado se contrastaron con Bronce sin diferencias. Evidencia: [revisión de privacidad](../../calidad/e2/revision_privacidad.json) y [cobertura](../../calidad/e2/cobertura-privacidad.json). Las cifras de verificaciones anteriores se conservan como antecedentes fechados.
+**Verificación independiente de Emilio (22/11/2026, sobre `main` en `02a756b`):** se reprodujeron 91 pruebas aprobadas y cobertura de `src` de 94.65 %, con Ruff sin hallazgos y CI en verde en GitHub. La app publicada se abrió sin sesión en un navegador y mostró el pronóstico de noviembre (344,909 TEU, rango 307,550–382,269), el mapa con 28 celdas azules (608 establecimientos) y el simulador; la consola solo registró errores de analítica y de las API internas de Streamlit Cloud, no de la app.
+
+Verificación del 22/11/2026 (Gabriel): 91 pruebas aprobadas, cobertura de `src` de 94.65 %, Ruff sin hallazgos y pipeline con 574 registros Oro (8 archivos), todos con linaje. Las 28 filas del CSV agregado se contrastaron con Bronce sin diferencias. Evidencia: [revisión de privacidad](../../calidad/e2/revision_privacidad.json) y [cobertura](../../calidad/e2/cobertura-privacidad.json). Las cifras de verificaciones anteriores se conservan como antecedentes fechados.
 
 ## Análisis Estadístico
 

@@ -65,7 +65,7 @@ Los centros de las celdas se unen a cuatro zonas del rectángulo de estudio. El 
 - **Robustez de captura:** durante la captura, INEGI cortó la conexión (`ChunkedEncodingError`); el extractor ético solo reintentaba ante 429/5xx. Ahora también reintenta ante conexión cortada o tiempo de espera ([prueba](../../tests/test_extractor_base.py)).
 - **Documentación:** se corrigieron los acentos dañados (`?` en lugar de letra acentuada) de esta ficha y de la declaración de ética; ambos archivos son UTF-8 válido.
 - **Verificación local (19/11/2026):** 87 pruebas aprobadas, cobertura 95.47 % (umbral 90 %), Ruff sin hallazgos, pip-audit sin vulnerabilidades conocidas (incluye `tablero/requirements.txt`) y gitleaks sin secretos en el historial. Pipeline E2 sin red: 10 archivos y 578 registros de Oro con linaje 100 %.
-- **Pendiente (actualizado el 22/11):** la decisión con Gabriel sobre mover el tag `e2`, que sigue en la versión anterior. La URL pública del tablero ya existe y se comprobó.
+- **Tag `e2` (22/11/2026):** Emilio lo movió de `f1fb6d9` (versión del 17/11, sin la integración ni las correcciones posteriores) al commit final de `main`, porque Gabriel no estaba disponible antes de la entrega. La decisión se le informa a Gabriel; `f1fb6d9` sigue en el historial y se puede restaurar. La URL pública del tablero ya existe y se comprobó.
 
 ### Corrección de privacidad posterior a la integración
 

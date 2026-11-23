@@ -34,6 +34,8 @@ El 19/11, INEGI cortó la conexión a media descarga (`ChunkedEncodingError`) y 
 
 **Defecto de privacidad en mi agregado (defecto 8 de Emilio, encontrado por Gabriel el 22/11).** Yo suprimía las categorías con 1 o 2 establecimientos pero publicaba también el total de la celda, así que el valor suprimido se despejaba restando; Gabriel comprobó que ocurría en 11 celdas. Además, la captura inicial conservaba dos puntos individuales con identificador y coordenadas, por una regla de selección anterior. Se corrigió quitando el desglose y los puntos de la versión actual y comprobando cada celda contra Bronce. Una prueba mía incluso mostraba el caso (`{"484": 3, "488": None, "493": 0}` con total 4) y yo la di por buena en lugar de ver que dejaba el dato recuperable. Las versiones anteriores siguen en el historial de Git; la corrección no las revoca.
 
+El tag `e2` quedó en la versión del 17/11 mientras el trabajo siguió en `main`; el 22/11 Emilio lo movió al commit final porque Gabriel no estaba disponible antes de la hora límite, y lo deja registrado en la ficha en lugar de hacerlo en silencio.
+
 Los pendientes de licencia comercial ASIPONA, datos operativos de un cliente, precio, tablero público, experimento y auditoría no se presentan como problemas ya resueltos.
 
 ## 5. ¿Qué aprendimos de cada materia?

@@ -1,0 +1,147 @@
+{
+  "n": 34,
+  "variables": [
+    "teu_total",
+    "ton_contenerizada",
+    "buques_contenerizada",
+    "teu_importacion",
+    "teu_exportacion"
+  ],
+  "inicio": "2024-01-01",
+  "fin": "2026-10-01",
+  "sha256_entrada": "03c6d2266b809ac0fcd1e049e878b47e9b678698dfc8904dbadd6d741e8bb408",
+  "covarianza": {
+    "teu_total": {
+      "teu_total": 439845617.2344028,
+      "ton_contenerizada": 1738124878.0276294,
+      "buques_contenerizada": 102446.75490196,
+      "teu_importacion": 125809067.04723708,
+      "teu_exportacion": 245682938.54634577
+    },
+    "ton_contenerizada": {
+      "teu_total": 1738124878.0276294,
+      "ton_contenerizada": 15539735173.9082,
+      "buques_contenerizada": 412481.63547237,
+      "teu_importacion": 752308423.7228165,
+      "teu_exportacion": 623962195.8992869
+    },
+    "buques_contenerizada": {
+      "teu_total": 102446.75490196,
+      "ton_contenerizada": 412481.63547237,
+      "buques_contenerizada": 42.02941176,
+      "teu_importacion": 31889.81372549,
+      "teu_exportacion": 58298.89928699
+    },
+    "teu_importacion": {
+      "teu_total": 125809067.04723708,
+      "ton_contenerizada": 752308423.7228165,
+      "buques_contenerizada": 31889.81372549,
+      "teu_importacion": 84066829.46256685,
+      "teu_exportacion": 36645476.8600713
+    },
+    "teu_exportacion": {
+      "teu_total": 245682938.54634577,
+      "ton_contenerizada": 623962195.8992869,
+      "buques_contenerizada": 58298.89928699,
+      "teu_importacion": 36645476.8600713,
+      "teu_exportacion": 179859426.3467023
+    }
+  },
+  "correlacion": {
+    "teu_total": {
+      "teu_total": 1.0,
+      "ton_contenerizada": 0.66482759,
+      "buques_contenerizada": 0.75347946,
+      "teu_importacion": 0.65425865,
+      "teu_exportacion": 0.87349065
+    },
+    "ton_contenerizada": {
+      "teu_total": 0.66482759,
+      "ton_contenerizada": 1.0,
+      "buques_contenerizada": 0.5103947,
+      "teu_importacion": 0.65820592,
+      "teu_exportacion": 0.37322426
+    },
+    "buques_contenerizada": {
+      "teu_total": 0.75347946,
+      "ton_contenerizada": 0.5103947,
+      "buques_contenerizada": 1.0,
+      "teu_importacion": 0.53649168,
+      "teu_exportacion": 0.67052828
+    },
+    "teu_importacion": {
+      "teu_total": 0.65425865,
+      "ton_contenerizada": 0.65820592,
+      "buques_contenerizada": 0.53649168,
+      "teu_importacion": 1.0,
+      "teu_exportacion": 0.29801728
+    },
+    "teu_exportacion": {
+      "teu_total": 0.87349065,
+      "ton_contenerizada": 0.37322426,
+      "buques_contenerizada": 0.67052828,
+      "teu_importacion": 0.29801728,
+      "teu_exportacion": 1.0
+    }
+  },
+  "valores_propios": [
+    3.42428907913896,
+    0.8740950219962328,
+    0.37460902993802386,
+    0.2985923012222009,
+    0.0284145677045805
+  ],
+  "varianza_explicada": [
+    0.6848578158277921,
+    0.17481900439924658,
+    0.07492180598760478,
+    0.059718460244440184,
+    0.005682913540916101
+  ],
+  "cargas": {
+    "PC1": {
+      "teu_total": 0.961939,
+      "ton_contenerizada": 0.768149,
+      "buques_contenerizada": 0.846166,
+      "teu_importacion": 0.752705,
+      "teu_exportacion": 0.791421
+    },
+    "PC2": {
+      "teu_total": 0.154715,
+      "ton_contenerizada": -0.458779,
+      "buques_contenerizada": 0.184187,
+      "teu_importacion": -0.532958,
+      "teu_exportacion": 0.567196
+    },
+    "PC3": {
+      "teu_total": 0.094427,
+      "ton_contenerizada": 0.38277,
+      "buques_contenerizada": -0.354643,
+      "teu_importacion": -0.267689,
+      "teu_exportacion": 0.147482
+    },
+    "PC4": {
+      "teu_total": -0.157825,
+      "ton_contenerizada": 0.228862,
+      "buques_contenerizada": 0.35257,
+      "teu_importacion": -0.275523,
+      "teu_exportacion": -0.145216
+    },
+    "PC5": {
+      "teu_total": 0.130044,
+      "ton_contenerizada": -0.024056,
+      "buques_contenerizada": 0.00119,
+      "teu_importacion": -0.042666,
+      "teu_exportacion": -0.095407
+    }
+  },
+  "mardia": {
+    "asimetria": 3.179697703054191,
+    "chi2": 18.01828698397375,
+    "gl": 35.0,
+    "p_asimetria": 0.9921921260836097,
+    "curtosis": 29.646736923656718,
+    "z_curtosis": -1.86543031151602,
+    "p_curtosis": 0.06212111191596314
+  }
+}

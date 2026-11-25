@@ -1,0 +1,28 @@
+{
+  "ventana_utc": [
+    "2026-11-11",
+    "2026-11-24"
+  ],
+  "dias_exitosos": 13,
+  "dias": 14,
+  "dias_sin_exito": [
+    "2026-11-23"
+  ],
+  "completitud_no_nulos": {
+    "mensual_integrado.csv": {
+      "presentes": 2100,
+      "celdas": 2100,
+      "proporcion": 1.0
+    },
+    "terminales_mes.csv": {
+      "presentes": 4480,
+      "celdas": 4480,
+      "proporcion": 1.0
+    },
+    "denue_celdas.csv": {
+      "presentes": 420,
+      "celdas": 420,
+      "proporcion": 1.0
+    }
+  }
+}

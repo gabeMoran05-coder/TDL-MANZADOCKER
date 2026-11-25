@@ -114,3 +114,5 @@ Se declara en cada relatoría: herramienta y para qué se usó.
 ## Entrega E3 · Optimización y dataset
 
 [Ficha de Ingeniería](docs/E3/ENTREGA.md) · [Datasheet DENUE](docs/E3/datasheet.md) · [Relatoría](docs/relatoria-E3.md). La ficha distingue los resultados medidos y los pendientes del paquete integrador.
+
+Ampliación E3: [análisis multivariado](docs/E3/multivariado.md) · [calidad y Sello TDL](docs/E3/calidad.md). La etiqueta `e3` conserva su versión original; el estado y los pendientes se describen en la ficha.

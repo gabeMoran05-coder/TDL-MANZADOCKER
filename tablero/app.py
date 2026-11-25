@@ -12,6 +12,7 @@ Lee solo archivos ya generados por el pipeline (no hace peticiones a las fuentes
 
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -72,6 +73,38 @@ def mostrar_negocio() -> None:
                        "No acredita ahorro conseguido ni garantiza demanda. Evita contar un costo dos veces.")
         else:
             st.info("Completa las ocho entradas con datos de tu operación. No usamos cifras inventadas.")
+
+
+def mostrar_pca() -> None:
+    """Muestra solo el an?lisis que corresponde exactamente a la entrada versionada."""
+    resumen = RAIZ / "calidad/e3/pca.json"
+    puntos = RAIZ / "calidad/e3/pca_puntos.csv"
+    fuente = RAIZ / "data/plata/asipona_mensual.csv"
+    if not all(p.is_file() for p in (resumen, puntos, fuente)):
+        return
+    try:
+        metadatos = json.loads(resumen.read_text(encoding="utf-8"))
+        if hashlib.sha256(fuente.read_bytes()).hexdigest() != metadatos["sha256_entrada"]:
+            st.info("El an?lisis multivariado requiere actualizaci?n tras un cambio de datos.")
+            return
+        datos = pd.read_csv(puntos)
+        varianza = metadatos["varianza_explicada"]
+        st.subheader("Perfiles mensuales del puerto")
+        st.caption("PCA descriptivo de cinco variables observadas; cada punto es un mes, no una terminal. "
+                   "No demuestra causas ni diferencias entre empresas.")
+        st.write(f"PC1 resume actividad conjunta; PC2 contrasta exportaci?n con importaci?n y toneladas. "
+                 f"Ambos explican {100 * sum(varianza[:2]):.1f} % de la variaci?n estandarizada "
+                 f"en {metadatos['n']} meses ({metadatos['inicio']} a {metadatos['fin']}).")
+        grafica = alt.Chart(datos).mark_circle(size=65).encode(
+            x=alt.X("PC1:Q", title="PC1: actividad conjunta"),
+            y=alt.Y("PC2:Q", title="PC2: contraste de tr?ficos"),
+            tooltip=["fecha:N", "PC1:Q", "PC2:Q"],
+        ).interactive()
+        st.altair_chart(grafica, use_container_width=True)
+        st.caption("Meses consecutivos no son observaciones independientes. "
+                   "El an?lisis por terminal y la MANOVA est?n pendientes de datos adecuados.")
+    except (OSError, ValueError, KeyError):
+        st.info("No se pudo cargar el an?lisis multivariado.")
 
 
 def mostrar_geografia() -> None:
@@ -293,6 +326,7 @@ def main() -> None:
         st.dataframe(tabla.iloc[::-1], hide_index=True, width="stretch")
 
     mostrar_geografia()
+    mostrar_pca()
 
     # --- La confianza -----------------------------------------------------------------------
     st.subheader("¿Por qué confiar en estas cifras?")

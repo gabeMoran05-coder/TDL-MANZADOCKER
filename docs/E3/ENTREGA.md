@@ -17,6 +17,14 @@ La reducción de tiempo es 69.4 % y la de memoria rastreada 0.69 %. No se demues
 
 [Datasheet y condiciones de uso](datasheet.md). Se publica el agregado DENUE, no el integrado ASIPONA/Banxico, porque no consta una licencia abierta inequívoca para ASIPONA. La disponibilidad pública requiere subir los cambios; no se ha atribuido una licencia Creative Commons a la fuente.
 
-## Estado de entrega
+## Verificaci?n del 25/11/2026
 
-[Relatoría](../relatoria-E3.md). El documento integrador también pide para E3 análisis multivariado, cierre de auditoría, PSP y Sello TDL. No hay evidencia nueva de esos componentes en esta entrega de Ingeniería; no se declara completado el paquete de las tres materias ni el sello. El formulario oficial no fue proporcionado. La optimización de obtención según combinación ganadora o auditoría sigue pendiente de comprobar porque no hay evidencia de esos antecedentes. No se afirma mejora de errores.
+`python -m pytest -q --cov=src --cov-report=json:calidad/e3/cobertura.json`: 93 pruebas aprobadas y 94.67 % de cobertura de `src`. Ruff sin hallazgos en el tablero y los archivos nuevos de an?lisis, indicadores y pruebas. La cobertura no representa todo el tablero ni prueba por s? sola reproducibilidad independiente.
+
+## Ampliaci?n multidisciplinaria
+
+[An?lisis multivariado y l?mites de MANOVA](multivariado.md) ? [Autoevaluaci?n, PSP y estado del Sello TDL](calidad.md). El PCA descriptivo del puerto usa 34 meses, no las cuatro terminales previstas. Se agreg? el mapa al tablero con comprobaci?n del hash de origen. La matriz, Mardia y figuras son reproducibles; la dependencia temporal impide interpretar las pruebas como garant?a de normalidad. Falta informaci?n por terminal para una MANOVA defendible.
+
+La auditor?a cruzada no est? disponible y la combinaci?n ganadora del experimento E2 no se encuentra documentada. Las 14 fechas UTC hasta el 24/11 incluyen 13 d?as de captura programada exitosa. No hay evidencia suficiente para el sello; v?ase el detalle por criterio en calidad.md. Contin?a pendiente medir una reducci?n de errores y aplicar una optimizaci?n de captura derivada del experimento o auditor?a.
+
+La etiqueta `e3` publicada anteriormente se?ala el commit original; esta ampliaci?n no la sobrescribe. El formulario oficial no fue proporcionado. La etiqueta que finalmente deba evaluarse debe acordarse con el equipo y docentes si el formulario exige espec?ficamente `e3`.

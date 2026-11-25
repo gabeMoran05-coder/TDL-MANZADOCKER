@@ -72,6 +72,7 @@ def normalizar(datos: pd.DataFrame, fuente: str):
     originales, filas, rechazos = {}, [], []
     estructura = set(datos.columns) != columnas
     acumulados_incoherentes = set()
+    capturas = {}  # Una captura suele repetirse en miles de filas del mismo lote.
     if fuente == "asipona" and not estructura:
         for _, grupo in datos.reset_index(drop=True).groupby(["anio", "variable"]):
             meses = pd.to_numeric(grupo.mes, errors="coerce")
@@ -99,7 +100,10 @@ def normalizar(datos: pd.DataFrame, fuente: str):
             motivos.append("esquema_bronce: columnas ausentes o inesperadas")
         if posicion in acumulados_incoherentes:
             motivos.append("conflicto_suma_mensual_y_metadatos_anuales")
-        captura = pd.to_datetime(r.get("fecha_captura_utc"), errors="coerce", utc=True)
+        fecha_captura = r.get("fecha_captura_utc")
+        if fecha_captura not in capturas:
+            capturas[fecha_captura] = pd.to_datetime(fecha_captura, errors="coerce", utc=True)
+        captura = capturas[fecha_captura]
         if pd.isna(captura):
             motivos.append("fecha_captura_utc_invalida")
         valor = numero(r.get("valor", ""))

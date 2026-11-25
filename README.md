@@ -110,3 +110,7 @@ Muestra el pronóstico de TEU del siguiente mes con su intervalo del 95%, la ser
 
 ## Uso de IA generativa
 Se declara en cada relatoría: herramienta y para qué se usó.
+
+## Entrega E3 · Optimización y dataset
+
+[Ficha de Ingeniería](docs/E3/ENTREGA.md) · [Datasheet DENUE](docs/E3/datasheet.md) · [Relatoría](docs/relatoria-E3.md). La ficha distingue los resultados medidos y los pendientes del paquete integrador.

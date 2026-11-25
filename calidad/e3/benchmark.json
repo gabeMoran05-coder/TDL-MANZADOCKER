@@ -1,0 +1,29 @@
+{
+  "baseline_commit": "ceceab9",
+  "entrada": "data\\bronce\\banxico\\tipo_cambio_fix.csv",
+  "entrada_sha256": "b0a82f215ccbc103e1bc3cd13ac905fe803e1b14524a28f647247d664f8a29e8",
+  "python": "3.14.7",
+  "pandas": "3.0.5",
+  "metodo": "3 ejecuciones secuenciales por versión, mediana sin tracemalloc; pico Python en ejecución separada",
+  "filas": 1483,
+  "antes_segundos": [
+    8.172140600014245,
+    1.6537824000115506,
+    1.6428285000147298
+  ],
+  "despues_segundos": [
+    0.5060911999898963,
+    0.532341499987524,
+    0.49463529998320155
+  ],
+  "mediana_antes_s": 1.6537824000115506,
+  "mediana_despues_s": 0.5060911999898963,
+  "pico_antes_bytes": 2100184,
+  "pico_despues_bytes": 2085726,
+  "rechazos_antes": 0,
+  "rechazos_despues": 0,
+  "defectos_inyectados": 3,
+  "defectos_rechazados_antes": 3,
+  "defectos_rechazados_despues": 3,
+  "salidas_equivalentes": true
+}

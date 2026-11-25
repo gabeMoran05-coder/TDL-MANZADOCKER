@@ -16,8 +16,8 @@
     }
   },
   "banxico": {
-    "aceptados": 1483,
-    "entrada": 1483,
+    "aceptados": 1484,
+    "entrada": 1484,
     "imputados": 0,
     "rechazados": 0
   },
@@ -27,7 +27,7 @@
     "e2.py": "41a72d14c5a309cbc16606e0ab5db52354af78255a8e8f5e1ca582550aac564d",
     "fiabilidad.py": "0550a3586544ebb73dc2bdedb86a987b107092ac194816aac9fd4683aa75f30f",
     "geoespacial.py": "5cb74c10e9d5a700f75675866e55fda3132d0bb02c1f91a87cd666b68ca66fbb",
-    "limpieza.py": "92d146ae96ffbe3f528d26b84cc189ec4b8776309ebcbca0499b8c023d482cfb",
+    "limpieza.py": "babe3ced71f1cddd19c64046454ddce87b396e7326ad1b0346aac123f9c5c1ba",
     "linaje.py": "64b5baba7988596f6c1aee9e72849d3096bd95c00d8803a60ad4147bdce7c150",
     "negocio.py": "6dc1a5ee983829d141a298a12dedb7fd31e34808f8bd0c7f35bbf8675891f196",
     "preprocesamiento.py": "639604417ffb416066c8bd4cd3e19c6bc84fff855aacb0541ecdb9729dd4bdbe",
@@ -35,10 +35,10 @@
     "rutas.py": "9ab30a7282ba3e2b8545d31112ac4aec72971c41742e01b793b563583aee4120"
   },
   "corte_entrenamiento": "2026-04-01",
-  "ejecucion_id": "1e1976bb11e1d08b",
+  "ejecucion_id": "c2f1395007b256f5",
   "entradas_sha256": {
     "data/bronce/asipona/em_mensual.csv": "d04eb674c8de3daa1da7947501b53b4dbf39505a928847142905e997a3e2feb6",
-    "data/bronce/banxico/tipo_cambio_fix.csv": "b0a82f215ccbc103e1bc3cd13ac905fe803e1b14524a28f647247d664f8a29e8"
+    "data/bronce/banxico/tipo_cambio_fix.csv": "b60791e08b2eda231651592cd5fccfebd8c55d6addaf53f978ede14a72331029"
   },
   "estado": "ok",
   "meses_banxico": 71,
@@ -52,7 +52,7 @@
     "periodo_no_publicado": 11,
     "periodo_no_publicado; periodo_posterior_a_captura": 11
   },
-  "reduccion_banxico_pct": 95.2124,
+  "reduccion_banxico_pct": 95.2156,
   "terminales_mes": 280,
   "versiones": {
     "numpy": "2.5.5",

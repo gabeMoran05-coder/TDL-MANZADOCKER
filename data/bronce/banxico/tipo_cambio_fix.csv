@@ -1483,3 +1483,4 @@ fecha,serie,valor,valor_crudo,url_origen,fecha_captura_utc
 2026-11-23,SF43718,19.1648,19.1648,https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/2026-11-14/2026-11-24,2026-11-24T01:29:45Z
 2026-11-24,SF43718,19.3668,19.3668,https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/2026-11-14/2026-11-24,2026-11-24T23:24:43Z
 2026-11-25,SF43718,19.704,19.7040,https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/2026-11-15/2026-11-25,2026-11-25T22:57:37Z
+2026-11-26,SF43718,19.7203,19.7203,https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/2026-11-16/2026-11-26,2026-11-26T22:50:04Z

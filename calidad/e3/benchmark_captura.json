@@ -1,0 +1,47 @@
+{
+  "baseline_commit": "f9275de",
+  "python": "3.14.7",
+  "requests": "2.32.3",
+  "metodo": "400 casos sinteticos, 5 corridas secuenciales sin red; memoria tracemalloc en corrida separada",
+  "codigo_actual_sha256": "f8190356f2695fa926ba9ba1cbf6900e29a3294ece12a323c91f70409fe24dda",
+  "antes": {
+    "tiempos_s": [
+      0.051213899976573884,
+      0.04708839999511838,
+      0.04478750002454035,
+      0.04313380000530742,
+      0.04832999999052845
+    ],
+    "mediana_s": 0.04708839999511838,
+    "pico_memoria_python_bytes": 645369,
+    "casos": 400,
+    "errores_decision": 100,
+    "intentos_indebidos": 100,
+    "errores_por_codigo": {
+      "429": 100,
+      "403": 0,
+      "503": 0,
+      "404": 0
+    }
+  },
+  "despues": {
+    "tiempos_s": [
+      0.05650549998972565,
+      0.06508539998321794,
+      0.06901480001397431,
+      0.08059610001510009,
+      0.059161200013477355
+    ],
+    "mediana_s": 0.06508539998321794,
+    "pico_memoria_python_bytes": 620415,
+    "casos": 400,
+    "errores_decision": 0,
+    "intentos_indebidos": 0,
+    "errores_por_codigo": {
+      "429": 0,
+      "403": 0,
+      "503": 0,
+      "404": 0
+    }
+  }
+}

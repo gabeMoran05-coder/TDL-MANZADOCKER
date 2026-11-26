@@ -1,30 +1,49 @@
-﻿# E3 · Ingeniería de Datos: ficha de entrega
+# E3 · Ingeniería de Datos: ficha de entrega
 
-## Optimización medida
+## Optimización de normalización: entrada real
 
-Se reutiliza por lote el resultado de interpretar cada fecha de captura repetida durante la normalización. No cambia reglas ni puertas. Se midió exclusivamente `normalizar` de Banxico, no la captura de red ni el pipeline integral. La selección es una mejora propia; no se afirma que provenga del experimento E2 o de una auditoría externa, ambos pendientes de evidenciar.
+Se reutiliza durante cada lote el resultado de interpretar fechas de captura repetidas. La comparación ejecuta `normalizar` de Banxico en la versión anterior `ceceab9` y la optimizada, con el mismo CSV Bronce de 1,484 filas, sin red. No mide todo el pipeline ni la descarga.
 
 | Indicador | Antes | Después |
 |---|---:|---:|
-| Mediana de 3 corridas, 1,483 filas | 1.654 s | 0.506 s |
-| Pico de memoria Python con tracemalloc, corrida separada | 2,100,184 bytes | 2,085,726 bytes |
-| Rechazos sobre entrada real | 0 | 0 |
-| Defectos sintéticos detectados | 3/3 | 3/3 |
+| Mediana de 3 corridas | 3.235 s | 0.897 s |
+| Pico de memoria Python, medición separada | 2,104,185 bytes | 2,087,309 bytes |
+| Rechazos sobre la entrada real | 0 | 0 |
+| Defectos sintéticos rechazados | 3/3 | 3/3 |
 
-La reducción de tiempo es 69.4 % y la de memoria rastreada 0.69 %. No se demuestra reducción de errores: el número detectado y las salidas son iguales. Memoria Python no equivale al pico RSS del proceso; los resultados dependen de equipo y entorno. El primer tiempo incluye calentamiento y se reportan todas las corridas. [Resultados y versiones](../../calidad/e3/benchmark.json); [código reproducible](../../scripts/benchmark_e3.py). Comando: `python -m scripts.benchmark_e3`. Requiere Git y el commit base `ceceab9`. Compara cuadros, originales y rechazos, además de tres defectos inyectados; no prueba todos los casos posibles.
+La mediana disminuyó **72.3 %** y el pico rastreado **0.8 %** en este entorno. Las salidas, originales y rechazos fueron equivalentes; no se observa reducción de errores en esta carga. `tracemalloc` no mide toda la memoria RSS ni asignaciones nativas. [Resultados, hashes y versiones](../../calidad/e3/benchmark_26nov.json). Las mediciones anteriores del 25/11 se conservan en [benchmark.json](../../calidad/e3/benchmark.json).
 
-## Dataset para terceros
+## Corrección medida de la captura: respuestas simuladas
 
-[Datasheet y condiciones de uso](datasheet.md). Se publica el agregado DENUE, no el integrado ASIPONA/Banxico, porque no consta una licencia abierta inequívoca para ASIPONA. La disponibilidad pública requiere subir los cambios; no se ha atribuido una licencia Creative Commons a la fuente.
+Se detectó que una respuesta **HTTP 429 en robots.txt** se trataba como permiso de captura. Ahora bloquea la descarga, igual que 403 y 5xx: saturación no significa que se permitan todas las rutas. La prueba usa un servidor simulado: 100 respuestas 429, 100 de cada uno de los controles 403, 503 y 404, sin red. El resultado no prueba cuántas veces ocurrió el problema en operación.
 
-## Verificaci?n del 25/11/2026
+| Indicador sobre 400 casos simulados | Antes | Después |
+|---|---:|---:|
+| Decisiones incorrectas | 100 | 0 |
+| Intentos de descarga pese al bloqueo esperado | 100 | 0 |
+| Mediana de 5 corridas | 0.0471 s | 0.0651 s |
+| Pico de memoria Python, corrida separada | 645,369 bytes | 620,415 bytes |
 
-`python -m pytest -q --cov=src --cov-report=json:calidad/e3/cobertura.json`: 93 pruebas aprobadas y 94.67 % de cobertura de `src`. Ruff sin hallazgos en el tablero y los archivos nuevos de an?lisis, indicadores y pruebas. La cobertura no representa todo el tablero ni prueba por s? sola reproducibilidad independiente.
+En esta prueba los errores de decisión bajaron de 25 % a 0 %; los 100 casos 429 dejaron de autorizar descargas. El tiempo **aumentó** aproximadamente 38.2 % en esta carga pequeña y simulada; no se presenta como mejora de velocidad de captura. La memoria rastreada disminuyó aproximadamente 3.9 %, sin equivaler al uso total del proceso. [Datos completos](../../calidad/e3/benchmark_captura.json), [código](../../extractores/base.py) y [pruebas](../../tests/test_extractor_base.py).
 
-## Ampliaci?n multidisciplinaria
+La mejora de 429 es una corrección identificada al revisar el código. No se localizó el resultado de un experimento factorial E2 ni un informe de auditoría cruzada; por ello no se atribuye a ninguno ni se afirma cumplido el requisito del documento integrador de aplicar su combinación ganadora o recomendaciones. Tampoco se cuantifica una reducción de fallos reales en producción.
 
-[An?lisis multivariado y l?mites de MANOVA](multivariado.md) ? [Autoevaluaci?n, PSP y estado del Sello TDL](calidad.md). El PCA descriptivo del puerto usa 34 meses, no las cuatro terminales previstas. Se agreg? el mapa al tablero con comprobaci?n del hash de origen. La matriz, Mardia y figuras son reproducibles; la dependencia temporal impide interpretar las pruebas como garant?a de normalidad. Falta informaci?n por terminal para una MANOVA defendible.
+### Reproducción
 
-La auditor?a cruzada no est? disponible y la combinaci?n ganadora del experimento E2 no se encuentra documentada. Las 14 fechas UTC hasta el 24/11 incluyen 13 d?as de captura programada exitosa. No hay evidencia suficiente para el sello; v?ase el detalle por criterio en calidad.md. Contin?a pendiente medir una reducci?n de errores y aplicar una optimizaci?n de captura derivada del experimento o auditor?a.
+Desde un clon con Python, dependencias de `requirements.txt` y el historial Git que incluye `ceceab9` y `f9275de`:
 
-La etiqueta `e3` publicada anteriormente se?ala el commit original; esta ampliaci?n no la sobrescribe. El formulario oficial no fue proporcionado. La etiqueta que finalmente deba evaluarse debe acordarse con el equipo y docentes si el formulario exige espec?ficamente `e3`.
+```bash
+python -m scripts.benchmark_e3
+python -m scripts.benchmark_captura_e3
+python -m pytest -q tests/test_extractor_base.py
+```
+
+Las mediciones dependen del equipo y del CSV Bronce; el JSON registra su SHA-256. Para reproducir la medición de normalización del 26/11, usar la captura referenciada en `benchmark_26nov.json`. El primer comando sobrescribe `benchmark.json` y el segundo sobrescribe `benchmark_captura.json`; conviene guardar copias antes de comparar.
+
+## Dataset y ficha
+
+El agregado [DENUE por celda](../../data/oro/denue_celdas.csv) y su [datasheet](datasheet.md) ya están publicados en la etiqueta `e3`. Conservan los términos de libre uso y atribución del INEGI; no se asigna esa licencia a ASIPONA ni a Banxico. La ficha declara metodología, composición, supresión, limitaciones, fecha y hashes.
+
+## Estado del paquete
+
+[Relatoría](../relatoria-E3.md) · [Análisis multivariado](multivariado.md) · [Calidad y Sello TDL](calidad.md). El PCA descriptivo corresponde a meses del puerto, no a la MANOVA por terminal solicitada en E0. La auditoría cruzada, el experimento E2, la validación independiente y otros requisitos del paquete de las tres materias permanecen pendientes; el sello no se declara obtenido. El formulario oficial no fue proporcionado. La etiqueta `e3` original ya existe y no se ha sobrescrito; esta revisión se identifica como `e3-revision-2`. Si el formulario exige exclusivamente `e3`, el equipo debe acordar cómo proceder antes de cambiar la etiqueta original.

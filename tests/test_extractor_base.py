@@ -45,3 +45,23 @@ def test_falla_clara_si_la_conexion_no_se_recupera(monkeypatch):
     with pytest.raises(RuntimeError, match="tras 3 intentos: Timeout"):
         e.get("https://ejemplo.mx/a.zip", intentos=3)
     assert len(llamadas) == 3
+
+
+@pytest.mark.parametrize(('codigo', 'permitido'), [(429, False), (404, True), (503, False)])
+def test_respuesta_robots_no_convierte_saturacion_en_permiso(monkeypatch, codigo, permitido):
+    e = base.ExtractorEtico(pausa=0)
+    llamadas = []
+
+    class RespuestaRobots:
+        status_code = codigo
+
+    def get(url, **kwargs):
+        llamadas.append(url)
+        return RespuestaRobots()
+
+    monkeypatch.setattr(e.sesion, 'get', get)
+    assert e.permitido('https://ejemplo.mx/datos') is permitido
+    if not permitido:
+        with pytest.raises(PermissionError):
+            e.get('https://ejemplo.mx/datos')
+        assert llamadas == ['https://ejemplo.mx/robots.txt']

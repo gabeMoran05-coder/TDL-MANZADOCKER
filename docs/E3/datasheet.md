@@ -6,10 +6,10 @@ El equipo Emilio Rodrigo Ayala Reynoso y Karol Gabriel Morán Aréchiga elaboró
 
 ## Acceso, versión y licencia
 
-- Dataset: [CSV UTF-8](../../data/oro/denue_celdas.csv) y [GeoJSON EPSG:4326](../../data/oro/denue_celdas.geojson). La publicación efectiva para terceros depende de subir este commit al repositorio remoto.
+- Dataset: [CSV UTF-8](../../data/oro/denue_celdas.csv) y [GeoJSON EPSG:4326](../../data/oro/denue_celdas.geojson), publicados en la etiqueta [e3](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/tree/e3/data/oro).
 - SHA-256 CSV: `6e9e5d407f2746cf35352d756f9ba6239a207d0a5d75e9e5343c70336416d506`.
 - Fuente: [descarga DENUE Colima](https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip), SHA-256 del ZIP `948e292e567ce16a8b7485f15846ddaaf9c9cda6fda9be07334bb6afc5480af6`. Captura: 2026-11-19 19:32:06 UTC; metadato del diccionario: 20/05/2026. La fecha del diccionario no prueba la fecha de actualización de todos los registros.
-- Condiciones abiertas del proveedor: [Términos de Libre Uso del INEGI](https://www.inegi.org.mx/inegi/terminos.html), consultados el 25/11/2026. Permiten copiar, publicar, adaptar y uso comercial con las condiciones de créditos, metadatos y señalamiento de transformaciones. Conservar atribución y metadatos, identificar la elaboración del equipo y no sugerir aval del INEGI. No se afirma que sea CC BY o CC0. [Aviso de fuente](../../data/bronce/denue/LICENCIA.md). Estos términos no licencian las otras fuentes del repositorio.
+- Condiciones abiertas del proveedor: [Términos de Libre Uso del INEGI](https://www.inegi.org.mx/inegi/terminos.html), revisados el 26/11/2026. Permiten copiar, publicar, adaptar y uso comercial con las condiciones de créditos, metadatos y señalamiento de transformaciones. Conservar atribución y metadatos, identificar la elaboración del equipo y no sugerir aval del INEGI. No se afirma que sea CC BY o CC0. [Aviso de fuente](../../data/bronce/denue/LICENCIA.md). Estos términos no licencian las otras fuentes del repositorio.
 
 ## Composición y diccionario
 

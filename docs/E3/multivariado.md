@@ -1,4 +1,4 @@
-﻿# Análisis multivariado E3
+# Análisis multivariado E3
 
 ## Alcance y muestra
 

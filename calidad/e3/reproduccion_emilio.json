@@ -1,0 +1,25 @@
+{
+  "quien": "Emilio Ayala (no preparó los scripts de E3; los escribió Gabriel Morán)",
+  "fecha_utc": "2026-11-28T02:40Z",
+  "version_reproducida": "e3-revision-2 (a500d43)",
+  "como": "git worktree limpio en carpeta temporal, entorno virtual nuevo desde requirements.txt (Python 3.14, Windows 11), mismos comandos de la ficha",
+  "limite": "mismo equipo de Emilio; no es un tercer equipo ni el equipo auditor",
+  "resultados": {
+    "scripts.analisis_e3": {
+      "pca.json": "SHA-256 idéntico",
+      "pca_puntos.csv": "SHA-256 idéntico",
+      "pca_diagnosticos.png": "difiere (metadatos de la imagen); no se usa como dato"
+    },
+    "scripts.indicadores_e3": {
+      "indicadores.json": "SHA-256 idéntico"
+    },
+    "scripts.benchmark_captura_e3 (simulado, 400 casos)": {
+      "errores_decision": "100 -> 0, igual al registrado",
+      "mediana_s": "0.0187 -> 0.0235 (+26 %); Gabriel registró +38 %",
+      "pico_tracemalloc_bytes": "640903 -> 808212 (+26 %); Gabriel registró -3.9 %",
+      "conclusion": "la corrección de decisiones se reproduce; tiempo y memoria dependen del equipo y no muestran ahorro"
+    },
+    "normalización Banxico (datos reales)": "ver calidad/e3/benchmark_proceso.json: -71.2 % de mediana con entrada fija, frente a -72.3 % registrado",
+    "pytest en la copia limpia": "96 pruebas aprobadas"
+  }
+}

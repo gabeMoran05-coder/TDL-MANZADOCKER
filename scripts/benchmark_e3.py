@@ -1,4 +1,4 @@
-﻿"""Comparación reproducible de normalización; no modifica capas de datos."""
+"""Comparación reproducible de normalización; no modifica capas de datos."""
 import hashlib
 import json
 import platform

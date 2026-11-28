@@ -1,4 +1,4 @@
-﻿# Calidad, modelos de proceso y Sello TDL · E3
+# Calidad, modelos de proceso y Sello TDL · E3
 
 ## Auditoría cruzada
 
@@ -38,11 +38,13 @@ Corte de evidencia de captura: 24/11/2026 23:24 UTC. Ventana de 14 días complet
 |---|---|---|
 | Disponibilidad captura, últimos 14 días | ≥95 % | 13/14 días con ejecución programada exitosa, 92.86 %; no alcanza bajo este criterio de calendario. [Bitácora](../../calidad/bitacora_captura.csv). |
 | Completitud Oro | ≥95 % | 100 % de celdas no nulas en mensual integrado (2,100/2,100), terminales (4,480/4,480) y DENUE (420/420). Medición parcial de tres CSV, no certifica todos los productos Oro ni pertinencia de campos. |
-| Cobertura automática | ≥60 % | [Informe](../../calidad/e3/cobertura.json), ver porcentaje total de `src`; no cubre todo el tablero. |
-| Secretos expuestos | 0 | Sin escaneo integral nuevo disponible en esta revisión; evidencia histórica E2 no prueba estado actual. Pendiente ejecutar gitleaks de historial y revisar alcance. |
+| Cobertura automática | ≥60 % | **Cumple.** 94.78 % de `src` con 97 pruebas aprobadas en `emilio/e3` el 27/11 (`pytest --cov=src`); [informe del 25/11](../../calidad/e3/cobertura.json). No cubre todo el tablero ni los extractores. |
+| Secretos expuestos | 0 | **Cumple.** gitleaks 8.30.1 el 27/11 sobre todo el historial (`--all`, 57 commits sin fusiones): 0 hallazgos. En la carpeta local solo aparece `.env`, ignorado por Git y nunca versionado. [Evidencia sin valores](../../calidad/e3/secretos.json). |
 | Hallazgos críticos de auditoría abiertos | 0 | Desconocido: no se recibió el informe cruzado. |
-| Reproducibilidad | Tercero clona y obtiene mismos resultados | Existe [verificación histórica de checkout](../../calidad/e2/validacion_checkout.json), no reproducción independiente de E3 por tercero. Pendiente. |
+| Reproducibilidad | Tercero clona y obtiene mismos resultados | **Parcial.** Emilio, que no escribió los scripts E3, los ejecutó en una copia limpia de `e3-revision-2` con entorno nuevo: `pca.json`, `pca_puntos.csv` e `indicadores.json` salieron con SHA-256 idéntico y pasaron 96 pruebas ([detalle](../../calidad/e3/reproduccion_emilio.json)). Es del mismo equipo y en su propio equipo de cómputo; falta un tercero externo. |
 
-[C?lculo reproducible](../../scripts/indicadores_e3.py) y [resultados](../../calidad/e3/indicadores.json). Ejecutar `python -m scripts.indicadores_e3`; el corte queda fijo para reproducir esta revisi?n.
+**Actualización del 27/11 (disponibilidad).** Las capturas programadas del 26 y 27/11 fallaron en DENUE: INEGI cambió los encabezados del CSV a mayúsculas y el extractor descartaba todas las filas («DENUE no devolvió celdas publicables»). ASIPONA y Banxico sí se capturaron. Con el mismo criterio de calendario, la ventana 14–27/11 da 11/14 días (78.57 %; sin éxito el 23, 26 y 27). La corrección y su prueba están en la rama `emilio/e3`; la captura diaria corre sobre `main`, así que seguirá fallando hasta que se una. Aunque se una de inmediato, cualquier ventana de 14 días que cierre antes de la entrega incluye esos tres días: el umbral de 95 % no puede alcanzarse para E3.
+
+[Cálculo reproducible](../../scripts/indicadores_e3.py) y [resultados](../../calidad/e3/indicadores.json). Ejecutar `python -m scripts.indicadores_e3`; el corte queda fijo para reproducir esta revisión.
 
 No se solicita ni declara obtenido el sello mientras falten los criterios y evidencias. El formulario oficial de entrega no fue proporcionado.

@@ -1,4 +1,4 @@
-﻿"""PCA descriptivo portuario; genera evidencia E3 sin modificar datos Oro."""
+"""PCA descriptivo portuario; genera evidencia E3 sin modificar datos Oro."""
 from __future__ import annotations
 
 import hashlib

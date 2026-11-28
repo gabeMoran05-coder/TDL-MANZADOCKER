@@ -1,0 +1,80 @@
+{
+  "tipo": "datos reales (captura Banxico Bronce fijada por commit), sin red",
+  "baseline_commit": "ceceab9",
+  "despues_commit": "8219021",
+  "despues_limpieza_sha256": "babe3ced71f1cddd19c64046454ddce87b396e7326ad1b0346aac123f9c5c1ba",
+  "entrada": {
+    "commit": "f9275de",
+    "ruta": "data/bronce/banxico/tipo_cambio_fix.csv",
+    "sha256": "b60791e08b2eda231651592cd5fccfebd8c55d6addaf53f978ede14a72331029",
+    "filas": 1484
+  },
+  "metodo": "3 rondas alternando versiones; cada ronda lanza un proceso por versión con 1 calentamiento y 5 corridas medidas; tracemalloc en corrida separada; memoria del proceso leída del sistema",
+  "entorno": {
+    "python": "3.14.7",
+    "pandas": "3.0.6",
+    "sistema": "Windows-11-10.0.26200-SP0",
+    "procesador": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD"
+  },
+  "antes": {
+    "corridas_medidas": 15,
+    "tiempos_s": [
+      1.3806590999993205,
+      1.6206500000007509,
+      1.538283699999738,
+      1.491489799998817,
+      1.28684930000054,
+      1.523888599998827,
+      1.9667193000004772,
+      1.339478699999745,
+      1.2831946999995125,
+      1.6300525000006019,
+      1.1079570000001695,
+      1.1753370000005816,
+      1.1444633999999496,
+      1.0866919000000053,
+      1.1400090999995882
+    ],
+    "mediana_s": 1.339478699999745,
+    "minimo_s": 1.0866919000000053,
+    "maximo_s": 1.9667193000004772,
+    "memoria_proceso_pico_mediana_bytes": 130895872,
+    "memoria_proceso_incremento_mediana_bytes": 21491712,
+    "pico_python_tracemalloc_mediana_bytes": 2108551,
+    "rechazos": 0,
+    "defectos_rechazados": 3,
+    "huella_salida": "5d5578b6efea8551386a3d6cbfd4dc207c99510397dc5cb3082f0a1ce1f6e9e3"
+  },
+  "despues": {
+    "corridas_medidas": 15,
+    "tiempos_s": [
+      0.6426075999988825,
+      0.8211496000003535,
+      0.6394933999999921,
+      0.7923417999991216,
+      1.2028645999998844,
+      0.33757059999879857,
+      0.43290589999924123,
+      0.3826349000009941,
+      0.36821380000037607,
+      0.43076039999868954,
+      0.37526570000045467,
+      0.3671224000008806,
+      0.3651537999994616,
+      0.38526699999965786,
+      0.3437501999997039
+    ],
+    "mediana_s": 0.38526699999965786,
+    "minimo_s": 0.33757059999879857,
+    "maximo_s": 1.2028645999998844,
+    "memoria_proceso_pico_mediana_bytes": 130891776,
+    "memoria_proceso_incremento_mediana_bytes": 21716992,
+    "pico_python_tracemalloc_mediana_bytes": 2088668,
+    "rechazos": 0,
+    "defectos_rechazados": 3,
+    "huella_salida": "5d5578b6efea8551386a3d6cbfd4dc207c99510397dc5cb3082f0a1ce1f6e9e3"
+  },
+  "reduccion_mediana_tiempo_pct": 71.2,
+  "reduccion_incremento_memoria_proceso_pct": -1.0,
+  "salidas_identicas": true
+}

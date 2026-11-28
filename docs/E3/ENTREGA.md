@@ -13,6 +13,38 @@ Se reutiliza durante cada lote el resultado de interpretar fechas de captura rep
 
 La mediana disminuyó **72.3 %** y el pico rastreado **0.8 %** en este entorno. Las salidas, originales y rechazos fueron equivalentes; no se observa reducción de errores en esta carga. `tracemalloc` no mide toda la memoria RSS ni asignaciones nativas. [Resultados, hashes y versiones](../../calidad/e3/benchmark_26nov.json). Las mediciones anteriores del 25/11 se conservan en [benchmark.json](../../calidad/e3/benchmark.json).
 
+### Medición complementaria: entrada fija y memoria total del proceso
+
+Entre corridas de la misma versión hubo mucha variación (8.17 s y 1.65 s el 25/11), y `benchmark_e3` lee la captura Banxico del día. Por eso Emilio agregó [benchmark_e3_proceso](../../scripts/benchmark_e3_proceso.py), que no reemplaza el anterior:
+- Fija la entrada en el commit `f9275de` y verifica su SHA-256 (`b60791e0…`, 1,484 filas, la misma del 26/11).
+- Ejecuta cada versión en un proceso propio y alterna 3 rondas, con un calentamiento y 5 corridas medidas por ronda.
+- Lee la memoria total del proceso del sistema operativo (pico de *working set* en Windows; `ru_maxrss` en Linux), aparte de `tracemalloc`.
+
+Medición del 27/11 en el equipo de Emilio (Windows 11, Python 3.14):
+
+| Indicador (15 corridas por versión) | Antes | Después |
+|---|---:|---:|
+| Mediana | 1.339 s | 0.385 s |
+| Mínimo y máximo | 1.087–1.967 s | 0.338–1.203 s |
+| Pico de memoria del proceso (mediana) | 124.8 MiB | 124.8 MiB |
+| Aumento de memoria del proceso durante la normalización | 20.5 MiB | 20.7 MiB |
+| Pico de memoria Python (`tracemalloc`) | 2,108,551 bytes | 2,088,668 bytes |
+| Rechazos y defectos sintéticos rechazados | 0 y 3/3 | 0 y 3/3 |
+
+- **Tiempo:** la mediana bajó **71.2 %**, en línea con el 72.3 % del 26/11.
+- **Memoria:** el proceso no usa menos memoria. Casi todo el pico viene de cargar pandas, y la diferencia en el aumento (+1 %) está dentro del ruido.
+- **Salidas:** las dos versiones dieron una salida con la misma huella SHA-256.
+
+[Resultados completos](../../calidad/e3/benchmark_proceso.json).
+
+## Corrección con datos reales: captura DENUE
+
+Las capturas programadas del 26 y 27/11 fallaron en DENUE: INEGI cambió los encabezados del CSV a mayúsculas (`CVE_MUN`, `CODIGO_ACT`, `LATITUD`…) y el extractor descartaba sus 42,223 filas. Ahora acepta los encabezados en mayúsculas o minúsculas, y una [prueba](../../tests/test_denue_agregado.py) comprueba que ambos dan el mismo agregado.
+- **Antes de la corrección:** con la descarga real del 27/11, el agregado tenía 0 celdas y la captura terminaba en error.
+- **Después:** con la misma descarga, 29 celdas y 635 establecimientos.
+
+La prueba se hizo en memoria, sin guardar en Bronce. Es un solo caso real y no mide una tasa de fallos.
+
 ## Corrección medida de la captura: respuestas simuladas
 
 Se detectó que una respuesta **HTTP 429 en robots.txt** se trataba como permiso de captura. Ahora bloquea la descarga, igual que 403 y 5xx: saturación no significa que se permitan todas las rutas. La prueba usa un servidor simulado: 100 respuestas 429, 100 de cada uno de los controles 403, 503 y 404, sin red. El resultado no prueba cuántas veces ocurrió el problema en operación.
@@ -34,9 +66,16 @@ Desde un clon con Python, dependencias de `requirements.txt` y el historial Git 
 
 ```bash
 python -m scripts.benchmark_e3
+python -m scripts.benchmark_e3_proceso
 python -m scripts.benchmark_captura_e3
-python -m pytest -q tests/test_extractor_base.py
+python -m pytest -q tests/test_extractor_base.py tests/test_denue_agregado.py
 ```
+
+El 27/11, Emilio (que no escribió estos scripts) los ejecutó en una copia limpia de `e3-revision-2`:
+- PCA e indicadores salieron con SHA-256 idéntico.
+- En el ensayo simulado, las decisiones incorrectas también bajaron de 100 a 0. El tiempo aumentó 26 % y la memoria `tracemalloc` aumentó 26 %, contra +38 % y −3.9 % registrados.
+
+[Detalle](../../calidad/e3/reproduccion_emilio.json).
 
 Las mediciones dependen del equipo y del CSV Bronce; el JSON registra su SHA-256. Para reproducir la medición de normalización del 26/11, usar la captura referenciada en `benchmark_26nov.json`. El primer comando sobrescribe `benchmark.json` y el segundo sobrescribe `benchmark_captura.json`; conviene guardar copias antes de comparar.
 
@@ -46,4 +85,15 @@ El agregado [DENUE por celda](../../data/oro/denue_celdas.csv) y su [datasheet](
 
 ## Estado del paquete
 
-[Relatoría](../relatoria-E3.md) · [Análisis multivariado](multivariado.md) · [Calidad y Sello TDL](calidad.md). El PCA descriptivo corresponde a meses del puerto, no a la MANOVA por terminal solicitada en E0. La auditoría cruzada, el experimento E2, la validación independiente y otros requisitos del paquete de las tres materias permanecen pendientes; el sello no se declara obtenido. El formulario oficial no fue proporcionado. La etiqueta `e3` original ya existe y no se ha sobrescrito; esta revisión se identifica como `e3-revision-2`. Si el formulario exige exclusivamente `e3`, el equipo debe acordar cómo proceder antes de cambiar la etiqueta original.
+[Relatoría](../relatoria-E3.md) · [Análisis multivariado](multivariado.md) · [Calidad y Sello TDL](calidad.md). El PCA descriptivo corresponde a meses del puerto, no a la MANOVA por terminal solicitada en E0. Se verificaron con evidencia:
+- 0 secretos en el historial.
+- Cobertura de 94.78 %.
+- Reproducción interna de los resultados E3.
+
+Siguen pendientes:
+- La auditoría cruzada.
+- El experimento E2.
+- La reproducción por un tercero externo.
+- La disponibilidad de captura: 78.57 % en 14–27/11, por el fallo de DENUE.
+
+El sello no se declara obtenido. El formulario oficial no fue proporcionado. La etiqueta `e3` original ya existe y no se ha sobrescrito; esta revisión se identifica como `e3-revision-2`. Si el formulario exige exclusivamente `e3`, el equipo debe acordar cómo proceder antes de cambiar la etiqueta original.

@@ -181,3 +181,10 @@ def test_valor_oro_cambiado_con_hash_actualizado_no_pasa(raiz_agregado, tmp_path
     linaje.guardar(m, manifiesto)
     with pytest.raises(ValueError, match="Valores de celda Oro"):
         linaje.validar(tmp_path)
+
+
+def test_encabezados_en_mayusculas_de_inegi_se_aceptan():
+    """Desde el 26/11/2026 INEGI publica CVE_MUN, CODIGO_ACT, LATITUD... en mayúsculas."""
+    mayus = [{k.upper(): v for k, v in r.items()} for r in filas_prueba()]
+    assert denue.agregar(mayus) == denue.agregar(filas_prueba())
+    assert denue.agregar(mayus)["celdas"]

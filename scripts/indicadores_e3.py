@@ -1,4 +1,4 @@
-﻿"""Indicadores E3 acotados a los archivos y ventana declarados."""
+"""Indicadores E3 acotados a los archivos y ventana declarados."""
 import json
 from datetime import date, timedelta
 from pathlib import Path

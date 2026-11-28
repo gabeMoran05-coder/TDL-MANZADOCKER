@@ -1,0 +1,117 @@
+{
+  "fuente": "ASIPONA Manzanillo, EM (ASPN-MAN-JES-F-05), tabla por empresa y tráfico",
+  "nota": "Acumulados anuales publicados; el año en curso es acumulado parcial (columna meses).",
+  "pdfs": [
+    {
+      "anio": 2021,
+      "archivo": "data/bronce/asipona/pdf/2021/EM-2021-12.pdf",
+      "mes_reporte": 12
+    },
+    {
+      "anio": 2022,
+      "archivo": "data/bronce/asipona/pdf/2022/EM-2022-12.pdf",
+      "mes_reporte": 12
+    },
+    {
+      "anio": 2023,
+      "archivo": "data/bronce/asipona/pdf/2023/EM-2023-12.pdf",
+      "mes_reporte": 12
+    },
+    {
+      "anio": 2024,
+      "archivo": "data/bronce/asipona/pdf/2024/EM-2024-12.pdf",
+      "mes_reporte": 12
+    },
+    {
+      "anio": 2025,
+      "archivo": "data/bronce/asipona/pdf/2025/EM-2025-12.pdf",
+      "mes_reporte": 12
+    },
+    {
+      "anio": 2026,
+      "archivo": "data/bronce/asipona/pdf/2026/EM-2026-10.pdf",
+      "mes_reporte": 10
+    }
+  ],
+  "filas": 28,
+  "validaciones": "terminales = TOTAL por tráfico y total = suma de tráficos, en ambas columnas de cada PDF; tolerancia de redondeo 2 TEU",
+  "redondeos_aceptados": [
+    {
+      "anio": 2025,
+      "columna": "actual",
+      "regla": "terminales = TOTAL (total)",
+      "diferencia": 1
+    },
+    {
+      "anio": 2025,
+      "columna": "actual",
+      "regla": "tráficos = total (CONTECON)",
+      "diferencia": -1
+    },
+    {
+      "anio": 2026,
+      "columna": "actual",
+      "regla": "tráficos = total (CONTECON)",
+      "diferencia": 1
+    },
+    {
+      "anio": 2026,
+      "columna": "actual",
+      "regla": "tráficos = total (TOTAL)",
+      "diferencia": 1
+    },
+    {
+      "anio": 2026,
+      "columna": "anterior",
+      "regla": "terminales = TOTAL (total)",
+      "diferencia": -1
+    },
+    {
+      "anio": 2026,
+      "columna": "anterior",
+      "regla": "tráficos = total (SSA)",
+      "diferencia": 1
+    }
+  ],
+  "verificacion_cruzada": {
+    "comparaciones": 16,
+    "con_diferencias": [
+      {
+        "anio": 2021,
+        "terminal": "SSA",
+        "diferencias": {
+          "exportacion": 241,
+          "transbordo": -241
+        }
+      },
+      {
+        "anio": 2022,
+        "terminal": "CONTECON",
+        "diferencias": {
+          "importacion": 22,
+          "transbordo": -22
+        }
+      },
+      {
+        "anio": 2023,
+        "terminal": "CONTECON",
+        "diferencias": {
+          "total": -683,
+          "importacion": 165,
+          "exportacion": 4,
+          "transbordo": -852
+        }
+      },
+      {
+        "anio": 2023,
+        "terminal": "SSA",
+        "diferencias": {
+          "total": 11,
+          "exportacion": -2,
+          "transbordo": 13
+        }
+      }
+    ]
+  },
+  "sha256_salida": "4ab9a8b36b51bdcdeba6c86b840fc0c70e3fb3eff1c412de30ebd7fe5364d818"
+}

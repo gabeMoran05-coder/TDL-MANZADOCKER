@@ -51,7 +51,8 @@ class ExtractorEtico:
             else:
                 if r.status_code >= 500:
                     rp.disallow_all = True
-                elif r.status_code in (401, 403):
+                elif r.status_code in (401, 403, 429):
+                    # 429 indica saturación, no ausencia de restricciones.
                     rp.disallow_all = True
                 elif r.status_code >= 400:
                     rp.allow_all = True  # RFC 9309: robots.txt inexistente

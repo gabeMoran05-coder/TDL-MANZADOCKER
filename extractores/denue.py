@@ -22,12 +22,18 @@ CATEGORIAS = {"484": "Autotransporte de carga", "488": "Servicios relacionados c
               "493": "Almacenamiento"}
 
 
+def _claves_minusculas(filas):
+    """INEGI cambió los encabezados a mayúsculas (descarga del 26/11/2026); se aceptan ambos."""
+    for r in filas:
+        yield {(k or "").strip().lower(): v for k, v in r.items()}
+
+
 def minimizar(filas) -> tuple[list[dict], dict]:
     """Excluye personas físicas y nunca devuelve razones sociales/contactos/domicilios."""
     salida = []
     conteos = {"leidos": 0, "seleccionados": 0, "sin_forma_societaria": 0,
                "coordenadas_invalidas": 0}
-    for n, r in enumerate(filas, start=1):
+    for n, r in enumerate(_claves_minusculas(filas), start=1):
         conteos["leidos"] += 1
         actividad = r.get("codigo_act", "").strip()
         if (r.get("cve_ent", "").strip().zfill(2) != "06"
@@ -66,7 +72,7 @@ def agregar(filas, paso: float = PASO_GRADOS, k: int = K_MINIMO) -> dict:
     renglón suprimido sin ubicación. No se publica desglose por categoría.
     """
     celdas: dict[tuple[int, int], dict[str, int]] = {}
-    for r in filas:
+    for r in _claves_minusculas(filas):
         actividad = r.get("codigo_act", "").strip()
         if (r.get("cve_ent", "").strip().zfill(2) != "06"
                 or r.get("cve_mun", "").strip().zfill(3) != "007"

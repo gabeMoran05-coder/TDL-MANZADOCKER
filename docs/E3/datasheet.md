@@ -1,4 +1,4 @@
-﻿# Datasheet: establecimientos logísticos por celda en Manzanillo
+# Datasheet: establecimientos logísticos por celda en Manzanillo
 
 ## Motivación y responsables
 
@@ -6,10 +6,11 @@ El equipo Emilio Rodrigo Ayala Reynoso y Karol Gabriel Morán Aréchiga elaboró
 
 ## Acceso, versión y licencia
 
-- Dataset: [CSV UTF-8](../../data/oro/denue_celdas.csv) y [GeoJSON EPSG:4326](../../data/oro/denue_celdas.geojson). La publicación efectiva para terceros depende de subir este commit al repositorio remoto.
+- Dataset: [CSV UTF-8](../../data/oro/denue_celdas.csv) y [GeoJSON EPSG:4326](../../data/oro/denue_celdas.geojson), publicados en la etiqueta [e3](https://github.com/gabeMoran05-coder/TDL-MANZADOCKER/tree/e3/data/oro).
 - SHA-256 CSV: `6e9e5d407f2746cf35352d756f9ba6239a207d0a5d75e9e5343c70336416d506`.
 - Fuente: [descarga DENUE Colima](https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip), SHA-256 del ZIP `948e292e567ce16a8b7485f15846ddaaf9c9cda6fda9be07334bb6afc5480af6`. Captura: 2026-11-19 19:32:06 UTC; metadato del diccionario: 20/05/2026. La fecha del diccionario no prueba la fecha de actualización de todos los registros.
-- Condiciones abiertas del proveedor: [Términos de Libre Uso del INEGI](https://www.inegi.org.mx/inegi/terminos.html), consultados el 25/11/2026. Permiten copiar, publicar, adaptar y uso comercial con las condiciones de créditos, metadatos y señalamiento de transformaciones. Conservar atribución y metadatos, identificar la elaboración del equipo y no sugerir aval del INEGI. No se afirma que sea CC BY o CC0. [Aviso de fuente](../../data/bronce/denue/LICENCIA.md). Estos términos no licencian las otras fuentes del repositorio.
+- Versión descrita: esta ficha corresponde a la captura del 19/11 indicada arriba; el CSV y el GeoJSON con ese hash están en las etiquetas `e3` y `e3-revision-2` (verificado el 27/11). El 27/11 INEGI ya servía otro ZIP (SHA-256 inicia en `f353b2575cd0`) con encabezados en mayúsculas; las capturas programadas del 26 y 27/11 fallaron por eso y no reemplazaron este archivo. Con la corrección del extractor, una prueba en memoria de esa descarga produjo 29 celdas y 635 establecimientos, sin guardarla. Cuando la captura diaria la incorpore, el hash cambiará y esta ficha deberá actualizarse.
+- Condiciones abiertas del proveedor: [Términos de Libre Uso del INEGI](https://www.inegi.org.mx/inegi/terminos.html), revisados el 26/11/2026. Permiten copiar, publicar, adaptar y uso comercial con las condiciones de créditos, metadatos y señalamiento de transformaciones. Conservar atribución y metadatos, identificar la elaboración del equipo y no sugerir aval del INEGI. No se afirma que sea CC BY o CC0. [Aviso de fuente](../../data/bronce/denue/LICENCIA.md). Estos términos no licencian las otras fuentes del repositorio.
 
 ## Composición y diccionario
 

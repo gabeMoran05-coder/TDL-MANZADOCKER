@@ -1,0 +1,109 @@
+{
+  "entrada": {
+    "archivo": "data/plata/terminal_trafico_anual.csv",
+    "sha256": "4ab9a8b36b51bdcdeba6c86b840fc0c70e3fb3eff1c412de30ebd7fe5364d818",
+    "observaciones": 28,
+    "terminales": [
+      "CONTECON",
+      "OCUPA",
+      "SSA",
+      "TIMSA"
+    ],
+    "anios": [
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ]
+  },
+  "modelo": "ln_total + lr_expo_impo + lr_trans_impo ~ C(terminal) + C(anio)",
+  "manova_terminal": {
+    "Wilks' lambda": {
+      "valor": 0.0011313000899441377,
+      "F": 66.20468590771982,
+      "gl_num": 9.0,
+      "gl_den": 39.09040159111332,
+      "p": 7.292044578930234e-21
+    },
+    "Pillai's trace": {
+      "valor": 1.9180299734676987,
+      "F": 10.636320377274911,
+      "gl_num": 9.0,
+      "gl_den": 54.0,
+      "p": 2.8680710993630783e-09
+    }
+  },
+  "permutacion": {
+    "permutaciones": 9999,
+    "semilla": 20261127,
+    "esquema": "terminales permutadas dentro de cada año",
+    "p_pillai": 0.0001,
+    "p_wilks": 0.0001
+  },
+  "supuestos": {
+    "mardia_residuos": {
+      "asimetria_b1": 2.713879841720724,
+      "chi2": 12.664772594696712,
+      "gl": 10.0,
+      "p_asimetria": 0.24302326162881,
+      "curtosis_b2": 15.083774551477207,
+      "z": 0.0404669529066416,
+      "p_curtosis": 0.9677208532101464
+    },
+    "box_m_residuos": {
+      "M": 28.67373554460511,
+      "chi2": 22.20223273071854,
+      "gl": 18.0,
+      "p": 0.22313030396713565,
+      "n_por_grupo": {
+        "CONTECON": 7,
+        "OCUPA": 7,
+        "SSA": 7,
+        "TIMSA": 7
+      }
+    },
+    "independencia": "Las mismas terminales se observan cada año; el bloque año absorbe choques comunes, pero puede quedar correlación serial dentro de cada terminal."
+  },
+  "anova_separados": {
+    "ln_total": {
+      "F": 511.99228724679296,
+      "p": 1.3158445124989743e-17,
+      "p_bonferroni": 3.947533537496923e-17
+    },
+    "lr_expo_impo": {
+      "F": 14.355278214085745,
+      "p": 5.073241004385164e-05,
+      "p_bonferroni": 0.00015219723013155492
+    },
+    "lr_trans_impo": {
+      "F": 44.10950917167699,
+      "p": 1.6839938252857242e-08,
+      "p_bonferroni": 5.051981475857173e-08
+    }
+  },
+  "perfil_promedio_pct": {
+    "CONTECON": {
+      "teu_importacion": 43.1,
+      "teu_exportacion": 40.2,
+      "teu_transbordo": 16.7
+    },
+    "OCUPA": {
+      "teu_importacion": 39.8,
+      "teu_exportacion": 57.4,
+      "teu_transbordo": 2.8
+    },
+    "SSA": {
+      "teu_importacion": 37.0,
+      "teu_exportacion": 34.8,
+      "teu_transbordo": 28.2
+    },
+    "TIMSA": {
+      "teu_importacion": 46.9,
+      "teu_exportacion": 40.0,
+      "teu_transbordo": 13.2
+    }
+  }
+}

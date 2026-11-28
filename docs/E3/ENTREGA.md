@@ -1,4 +1,41 @@
-# E3 · Ingeniería de Datos: ficha de entrega
+# Entrega E3 · Observatorio del Puerto de Manzanillo
+
+Equipo: Emilio Rodrigo Ayala Reynoso (Data Engineer) · Karol Gabriel Morán Aréchiga (Data Statistician) · Tablero: https://tdl-manzadocker.streamlit.app/
+
+## Resumen en tres líneas
+
+- **Optimización:** la normalización Banxico es 71–72 % más rápida con la misma salida. Se corrigió la captura cuando robots.txt responde 429 y cuando INEGI cambió sus encabezados.
+- **Dataset:** se publica el agregado DENUE por celda con datasheet y términos de libre uso del INEGI.
+- **Análisis:** la MANOVA muestra que las cuatro terminales difieren en tamaño y perfil de tráfico (Pillai = 1.92, p < 0.001, confirmado por permutación). El PCA resume la actividad mensual del puerto.
+
+## Mapa de la rúbrica
+
+| Materia | Criterio (puntos) | Evidencia | Estado |
+|---|---|---|---|
+| Ing. Datos | Optimización medida (50) | [Abajo en esta ficha](#optimización-de-normalización-entrada-real) · [benchmark con memoria de proceso](../../calidad/e3/benchmark_proceso.json) · [captura simulada](../../calidad/e3/benchmark_captura.json) | Tiempo −71.2 %; errores de decisión 100 → 0 (simulación); DENUE 0 → 29 celdas (real); memoria sin cambio. Sin experimento E2 ni auditoría que aplicar |
+| Ing. Datos | Dataset publicado (40) | [Datasheet](datasheet.md) · [CSV](../../data/oro/denue_celdas.csv) · [GeoJSON](../../data/oro/denue_celdas.geojson) | Completo |
+| Estadística | Matriz y normalidad (15) | [PCA, Mardia y Q-Q](multivariado.md#exploración-alternativa-un-mes-por-fila) · [MANOVA: Mardia y Box sobre residuos](multivariado.md#manova-las-cuatro-terminales-tienen-el-mismo-tamaño-y-perfil-de-tráfico) | Completo |
+| Estadística | Componentes principales (35) | [Multivariado](multivariado.md) · [pca.json](../../calidad/e3/pca.json) · [gráficas](../../calidad/e3/pca_diagnosticos.png) | Completo |
+| Estadística | MANOVA (25) | [Multivariado](multivariado.md#manova-las-cuatro-terminales-tienen-el-mismo-tamaño-y-perfil-de-tráfico) · [manova.json](../../calidad/e3/manova.json) · [datos por terminal](../../data/plata/terminal_trafico_anual.csv) | Wilks y Pillai, permutación, supuestos y contraste con varios ANOVA. Unidad anual (28 obs.) |
+| Estadística | Mapa en el tablero (15) | [Tablero](https://tdl-manzadocker.streamlit.app/) · [código](../../tablero/app.py) | PCA con interpretación |
+| Calidad | Cierre de auditoría (30) | [Calidad](calidad.md#auditoría-cruzada) | **Pendiente:** no se ha recibido el informe del equipo auditor |
+| Calidad | Modelos de proceso (25) | [Calidad](calidad.md#autoevaluación-de-proceso) | Completo |
+| Calidad | Retrospectiva PSP (25) | [Calidad](calidad.md#retrospectiva-psp) | Con registros reales; sin estimaciones previas |
+| Calidad | Tendencias (10) | [Calidad](calidad.md#tendencia-aplicada-observabilidad-de-datos) | Completo |
+| Calidad | Solicitud del Sello TDL | [Calidad](calidad.md#evaluación-del-sello-tdl) | Cumplen completitud, cobertura y secretos. No cumplen disponibilidad ni auditoría. Reproducibilidad parcial |
+| Las tres | Relatoría (10) | [relatoria-E3.md](../relatoria-E3.md) | Completo |
+
+Comandos para reproducir:
+
+```bash
+python -m src.terminales_trafico        # tabla por terminal y tráfico desde PDF en Bronce
+python -m scripts.manova_e3             # MANOVA y supuestos
+python -m scripts.analisis_e3           # PCA
+python -m scripts.benchmark_e3_proceso  # optimización con memoria de proceso
+python -m pytest -q --cov=src
+```
+
+# Ingeniería de Datos
 
 ## Optimización de normalización: entrada real
 
@@ -85,7 +122,7 @@ El agregado [DENUE por celda](../../data/oro/denue_celdas.csv) y su [datasheet](
 
 ## Estado del paquete
 
-[Relatoría](../relatoria-E3.md) · [Análisis multivariado](multivariado.md) · [Calidad y Sello TDL](calidad.md). El PCA descriptivo corresponde a meses del puerto, no a la MANOVA por terminal solicitada en E0. Se verificaron con evidencia:
+[Relatoría](../relatoria-E3.md) · [Análisis multivariado](multivariado.md) · [Calidad y Sello TDL](calidad.md). El PCA describe meses del puerto. La MANOVA por terminal se hizo con acumulados anuales, porque los EM no publican tráfico por terminal y mes. Se verificaron con evidencia:
 - 0 secretos en el historial.
 - Cobertura de 94.78 %.
 - Reproducción interna de los resultados E3.
